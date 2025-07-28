@@ -1,9 +1,11 @@
 import React from 'react';
+
 const Create = () => {
   return (
-    <div style={ padding: '2rem' }>
+    <div>
       <h2>Create Page</h2>
     </div>
   );
 };
+
 export default Create;

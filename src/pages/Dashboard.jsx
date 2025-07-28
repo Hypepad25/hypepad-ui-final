@@ -1,9 +1,11 @@
 import React from 'react';
+
 const Dashboard = () => {
   return (
-    <div style={ padding: '2rem' }>
+    <div>
       <h2>Dashboard Page</h2>
     </div>
   );
 };
+
 export default Dashboard;
