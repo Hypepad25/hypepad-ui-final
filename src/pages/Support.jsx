@@ -2,7 +2,7 @@ import React from 'react';
 
 const Support = () => {
   return (
-    <div style={ padding: '2rem' }>
+    <div>
       <h2>Support Page</h2>
     </div>
   );

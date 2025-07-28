@@ -2,7 +2,7 @@ import React from 'react';
 
 const Whitepaper = () => {
   return (
-    <div style={ padding: '2rem' }>
+    <div>
       <h2>Whitepaper Page</h2>
     </div>
   );

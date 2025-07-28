@@ -2,7 +2,7 @@ import React from 'react';
 
 const Partners = () => {
   return (
-    <div style={ padding: '2rem' }>
+    <div>
       <h2>Partners Page</h2>
     </div>
   );
