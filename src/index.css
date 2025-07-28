@@ -1,13 +1,12 @@
-
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background-color: #0e0e10;
-  color: #FF4500;
+  color: #fff;
 }
 
 a {
-  color: #FF4500;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -50,7 +49,17 @@ nav .wallet-button {
   color: #FF4500;
 }
 
+.hamburger {
+  display: none;
+}
+
 @media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #FF4500;
+  }
   nav .nav-links {
     display: none;
     flex-direction: column;
@@ -59,11 +68,5 @@ nav .wallet-button {
   }
   nav.expanded .nav-links {
     display: flex;
-  }
-  .hamburger {
-    display: block;
-    font-size: 2rem;
-    cursor: pointer;
-    color: #FF4500;
   }
 }
