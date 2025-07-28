@@ -1,4 +1,5 @@
 import React from 'react';
+
 const Support = () => {
   return (
     <div style={ padding: '2rem' }>
@@ -6,4 +7,5 @@ const Support = () => {
     </div>
   );
 };
+
 export default Support;

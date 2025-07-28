@@ -1,4 +1,5 @@
 import React from 'react';
+
 const Whitepaper = () => {
   return (
     <div style={ padding: '2rem' }>
@@ -6,4 +7,5 @@ const Whitepaper = () => {
     </div>
   );
 };
+
 export default Whitepaper;

@@ -1,4 +1,5 @@
 import React from 'react';
+
 const Staking = () => {
   return (
     <div style={ padding: '2rem' }>
@@ -6,4 +7,5 @@ const Staking = () => {
     </div>
   );
 };
+
 export default Staking;
