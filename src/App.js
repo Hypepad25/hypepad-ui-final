@@ -25,8 +25,9 @@ const App = () => {
         <span className="wallet-button">Connect Wallet</span>
       </nav>
       <div style={{ textAlign: 'center', margin: '2rem 0' }}>
-        <img src="/rocket-banner.png" alt="HYPEPAD Banner" style={{ maxWidth: '100%', height: 'auto' }} />
-        <h1 style={{ color: '#FFA500' }}>Anti-Bot. Staking. Referrals. All-in-One Launchpad.</h1>
+        <img src="/hypepad-banner.jpg" alt="HYPEPAD Banner" style={{ maxWidth: '100%', height: 'auto' }} />
+
+       <h1 style={{ color: '#FFA500' }}>Anti-Bot. Staking. Referrals. All-in-One Launchpad.</h1>
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
