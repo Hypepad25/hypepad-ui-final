@@ -1,0 +1,3 @@
+# HYPEPAD
+
+Frontend build placeholder.
