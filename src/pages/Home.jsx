@@ -1,1 +1,1 @@
-export default function Home() { return <div>Home Page</div>; }
+export default function Home() { return <div>Welcome to HYPEPAD</div>; }

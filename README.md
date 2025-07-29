@@ -1,3 +1,3 @@
-# HYPEPAD
+# HYPEPAD Full Build
 
-Frontend build placeholder.
+Includes hero section, dark theme, mobile nav, routing, and token tools.
