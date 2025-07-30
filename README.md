@@ -1,3 +1,3 @@
-# HYPEPAD Full Build
+# HYPEPAD UI Final Build
 
-Includes hero section, dark theme, mobile nav, routing, and token tools.
+Includes hero banner, dark theme, routing, and wallet connect.

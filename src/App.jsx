@@ -1,10 +1,22 @@
-import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Home from './pages/Home';
+import MemeLaunch from './pages/MemeLaunch';
+import TokenLaunch from './pages/TokenLaunch';
+import Dashboard from './pages/Dashboard';
 
-export default function App() {
+function App() {
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
-      <img src="/hypepad-banner.jpg" alt="HYPEPAD Banner" className="w-full max-w-4xl" />
-      <h1 className="text-4xl font-bold mt-6">The Future of Web3 Starts Here</h1>
-    </div>
-  )
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/meme-launch" element={<MemeLaunch />} />
+        <Route path="/token-launch" element={<TokenLaunch />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </Router>
+  );
 }
+
+export default App;
