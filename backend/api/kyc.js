@@ -1,1 +1,1 @@
-// kyc.js endpoint placeholder
+// kyc.js placeholder

@@ -1,1 +1,1 @@
-// admin.js endpoint placeholder
+// admin.js placeholder

@@ -1,2 +1,2 @@
-# HYPEPAD Structured Build
-This is the scaffolded build with correct structure.
+# HYPEPAD Full UI Build
+Includes actual App.jsx layout, navbar, routing, and wallet button.

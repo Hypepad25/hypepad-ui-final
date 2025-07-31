@@ -1,1 +1,8 @@
-export default function AdminPanel() { return <div>AdminPanel page</div>; }
+export default function AdminPanel() { 
+  return (
+    <div style={ padding: '1rem' }>
+      <h2>AdminPanel Page</h2>
+      <p>Placeholder content for AdminPanel.</p>
+    </div>
+  );
+}

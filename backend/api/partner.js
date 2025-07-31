@@ -1,1 +1,1 @@
-// partner.js endpoint placeholder
+// partner.js placeholder

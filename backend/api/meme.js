@@ -1,1 +1,1 @@
-// meme.js endpoint placeholder
+// meme.js placeholder

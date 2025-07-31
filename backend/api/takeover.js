@@ -1,1 +1,1 @@
-// takeover.js endpoint placeholder
+// takeover.js placeholder
