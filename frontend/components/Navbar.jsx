@@ -7,7 +7,11 @@ export default function Navbar() {
     <nav className="w-full bg-black text-white flex items-center justify-between px-4 py-2 relative">
       {/* Logo */}
       <div className="flex items-center gap-3">
-        <img src="/hypepad-rocket-logo.png" alt="HYPEPAD" className="h-8 w-auto" />
+        <img 
+          src="/hypepad-rocket-logo.png" 
+          alt="HYPEPAD" 
+          className="h-8 w-auto max-w-[40px] object-contain"
+        />
         <span className="font-bold text-xl tracking-wide">HYPEPAD</span>
       </div>
 
@@ -15,7 +19,9 @@ export default function Navbar() {
       <div className="hidden md:flex gap-6 items-center">
         <a href="/launch" className="hover:underline">Launch</a>
         <a href="/presale" className="hover:underline">Presale</a>
-        <a href="/meme" className="hover:underline">Meme Launcher</a>
+        <a href="/staking" className="hover:underline">Staking</a>
+        <a href="/launch-token" className="hover:underline">Launch Token</a>
+        <a href="/meme" className="hover:underline">Meme</a>
         <a href="/trending" className="hover:underline">Trending</a>
         <a href="/kyc" className="hover:underline">KYC/SAFU</a>
         <a href="/partners" className="hover:underline">Partners</a>
@@ -39,7 +45,9 @@ export default function Navbar() {
             <div className="absolute right-0 mt-2 w-60 bg-gray-900 border border-gray-700 rounded-lg flex flex-col p-4 gap-3 z-50">
               <a href="/launch" className="hover:underline">Launch</a>
               <a href="/presale" className="hover:underline">Presale</a>
-              <a href="/meme" className="hover:underline">Meme Launcher</a>
+              <a href="/staking" className="hover:underline">Staking</a>
+              <a href="/launch-token" className="hover:underline">Launch Token</a>
+              <a href="/meme" className="hover:underline">Meme</a>
               <a href="/trending" className="hover:underline">Trending</a>
               <a href="/kyc" className="hover:underline">KYC/SAFU</a>
               <a href="/partners" className="hover:underline">Partners</a>
