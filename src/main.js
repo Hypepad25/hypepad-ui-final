@@ -1,1 +1,0 @@
-// Main entry point for Vite + HYPEPAD UI

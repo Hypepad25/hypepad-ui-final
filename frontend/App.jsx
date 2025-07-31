@@ -1,0 +1,1 @@
+// Main HYPEPAD App component placeholder

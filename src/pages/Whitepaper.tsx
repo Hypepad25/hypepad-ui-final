@@ -1,1 +1,0 @@
-// placeholder content for src/pages/Whitepaper.tsx
