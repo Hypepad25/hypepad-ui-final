@@ -1,13 +1,21 @@
 export default function HeroBanner() {
   return (
     <section
-      className="w-full bg-cover bg-center relative flex items-center justify-center"
+      className="relative flex items-center justify-center w-full"
       style={{
         backgroundImage: "url('/hypepad-banner.png')",
-        minHeight: '500px', // Adjust height for hero section
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "contain", // Prevent stretching
+        backgroundPosition: "center",
+        minHeight: "400px", // Adjust hero height
+        maxHeight: "500px", // Optional: prevent oversized scaling
       }}
     >
-      <div className="bg-black bg-opacity-50 p-6 rounded-2xl text-center max-w-2xl">
+      {/* Optional dark overlay for readability */}
+      <div className="absolute inset-0 bg-black bg-opacity-50" />
+
+      {/* Content Layer */}
+      <div className="relative z-10 text-center p-6">
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-2">
           The Future of Web3 Starts Here
         </h1>
