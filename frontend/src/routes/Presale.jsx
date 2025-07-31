@@ -1,3 +1,10 @@
-git add frontend/src/routes/Presale.jsx
-git commit -m "fix: correct JSX inline style syntax in Presale.jsx"
-git push
+import React from 'react';
+
+export default function Presale() {
+  return (
+    <div style={{ padding: '1rem' }}>
+      <h2>Presale Page</h2>
+      <p>Placeholder content for Presale.</p>
+    </div>
+  );
+}
