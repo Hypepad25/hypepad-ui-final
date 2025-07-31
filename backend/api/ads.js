@@ -1,1 +1,1 @@
-// ads endpoint placeholder
+// ads.js endpoint placeholder

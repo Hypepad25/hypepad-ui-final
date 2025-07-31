@@ -1,0 +1,1 @@
+export default function LaunchToken() { return <div>LaunchToken page</div>; }

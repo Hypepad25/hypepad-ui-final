@@ -1,1 +1,1 @@
-// referral endpoint placeholder
+// referral.js endpoint placeholder

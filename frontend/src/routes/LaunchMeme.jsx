@@ -1,0 +1,1 @@
+export default function LaunchMeme() { return <div>LaunchMeme page</div>; }

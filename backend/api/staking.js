@@ -1,1 +1,1 @@
-// staking endpoint placeholder
+// staking.js endpoint placeholder

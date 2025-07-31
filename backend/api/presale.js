@@ -1,1 +1,1 @@
-// presale endpoint placeholder
+// presale.js endpoint placeholder

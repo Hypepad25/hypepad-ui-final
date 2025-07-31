@@ -1,0 +1,1 @@
+export default function TokenPage() { return <div>TokenPage page</div>; }

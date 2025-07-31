@@ -1,0 +1,1 @@
+export default function ConnectWallet(){return <button>Connect</button>; }

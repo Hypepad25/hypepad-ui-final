@@ -1,0 +1,1 @@
+export default function Staking() { return <div>Staking page</div>; }

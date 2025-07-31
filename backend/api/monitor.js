@@ -1,1 +1,1 @@
-// monitor endpoint placeholder
+// monitor.js endpoint placeholder

@@ -1,0 +1,1 @@
+export default function Presale() { return <div>Presale page</div>; }

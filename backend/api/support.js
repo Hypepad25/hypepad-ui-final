@@ -1,1 +1,1 @@
-// support endpoint placeholder
+// support.js endpoint placeholder

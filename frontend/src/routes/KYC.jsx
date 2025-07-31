@@ -1,0 +1,1 @@
+export default function KYC() { return <div>KYC page</div>; }
