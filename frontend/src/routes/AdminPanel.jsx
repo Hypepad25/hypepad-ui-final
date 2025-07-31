@@ -1,4 +1,4 @@
-export default function AdminPanel() { 
+export default function AdminPanel() {
   return (
     <div style={ padding: '1rem' }>
       <h2>AdminPanel Page</h2>

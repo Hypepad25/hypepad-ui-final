@@ -1,4 +1,4 @@
-export default function Presale() { 
+export default function Presale() {
   return (
     <div style={ padding: '1rem' }>
       <h2>Presale Page</h2>

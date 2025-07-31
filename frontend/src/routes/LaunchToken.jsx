@@ -1,4 +1,4 @@
-export default function LaunchToken() { 
+export default function LaunchToken() {
   return (
     <div style={ padding: '1rem' }>
       <h2>LaunchToken Page</h2>

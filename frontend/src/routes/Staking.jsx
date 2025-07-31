@@ -1,4 +1,4 @@
-export default function Staking() { 
+export default function Staking() {
   return (
     <div style={ padding: '1rem' }>
       <h2>Staking Page</h2>

@@ -1,4 +1,4 @@
-export default function KYC() { 
+export default function KYC() {
   return (
     <div style={ padding: '1rem' }>
       <h2>KYC Page</h2>

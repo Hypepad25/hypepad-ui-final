@@ -1,4 +1,4 @@
-export default function Airdrop() { 
+export default function Airdrop() {
   return (
     <div style={ padding: '1rem' }>
       <h2>Airdrop Page</h2>

@@ -1,4 +1,4 @@
-export default function Support() { 
+export default function Support() {
   return (
     <div style={ padding: '1rem' }>
       <h2>Support Page</h2>

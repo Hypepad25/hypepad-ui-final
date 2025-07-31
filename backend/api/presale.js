@@ -1,1 +1,1 @@
-// presale.js placeholder
+// presale logic placeholder

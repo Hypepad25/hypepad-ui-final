@@ -1,4 +1,4 @@
-export default function TokenPage() { 
+export default function TokenPage() {
   return (
     <div style={ padding: '1rem' }>
       <h2>TokenPage Page</h2>
