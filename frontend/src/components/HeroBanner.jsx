@@ -3,11 +3,11 @@ export default function HeroBanner() {
     <section
       className="w-full bg-cover bg-center relative flex items-center justify-center"
       style={{
-        backgroundImage: "url('/hypepad-banner.jpg')",
-        minHeight: '300px',
+        backgroundImage: "url('/hypepad-banner.png')",
+        minHeight: '500px', // Adjust height for hero section
       }}
     >
-      <div className="bg-black bg-opacity-60 p-6 rounded-2xl text-center max-w-2xl">
+      <div className="bg-black bg-opacity-50 p-6 rounded-2xl text-center max-w-2xl">
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-2">
           The Future of Web3 Starts Here
         </h1>
