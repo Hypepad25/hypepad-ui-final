@@ -1,47 +1,32 @@
 export default function TrendingSection() {
   return (
-    <div style={{ background: '#0f172a', paddingTop: 40, paddingBottom: 40 }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 16px' }}>
-        {/* Trending card */}
-        <div
-          style={{
-            background: '#1f2937',
-            borderRadius: 20,
-            padding: 24,
-            marginBottom: 32,
-            color: '#fff',
-            boxShadow: '0 20px 40px -10px rgba(0,0,0,0.4)',
-          }}
-        >
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: 16 }}>
+    <div className="bg-[#0f172a] py-12">
+      <div className="max-w-6xl mx-auto px-6 space-y-10">
+        <div className="bg-[#1f2937] rounded-2xl p-6 shadow-lg text-white">
+          <div className="flex flex-col md:flex-row justify-between gap-4">
             <div>
-              <div style={{ fontSize: 12, color: '#9ca3af' }}>Trending Token</div>
-              <div style={{ fontSize: 28, fontWeight: 700 }}>$HYPE</div>
+              <div className="text-sm text-gray-300">Trending Token</div>
+              <div className="text-2xl font-bold">$HYPE</div>
             </div>
-            <div style={{ textAlign: 'right' }}>
-              <div style={{ fontSize: 12, color: '#9ca3af' }}>Score</div>
-              <div style={{ fontSize: 28, fontWeight: 700 }}>9.8</div>
+            <div className="text-right">
+              <div className="text-sm text-gray-300">Score</div>
+              <div className="text-2xl font-bold">9.8</div>
             </div>
           </div>
-          <div style={{ marginTop: 16 }}>
-            <div style={{ background: '#374151', borderRadius: 999, height: 10, overflow: 'hidden' }}>
+          <div className="mt-4">
+            <div className="w-full bg-gray-700 rounded-full h-2.5 overflow-hidden">
               <div
-                style={{
-                  width: '75%',
-                  height: '100%',
-                  background: '#ff8c00',
-                  borderRadius: 999,
-                }}
+                className="h-2.5 rounded-full"
+                style={{ width: '75%', background: '#ff8c00' }}
               />
             </div>
-            <div style={{ fontSize: 12, color: '#9ca3af', marginTop: 6 }}>
+            <div className="text-sm text-gray-400 mt-1">
               Graduation progress: 75%
             </div>
           </div>
         </div>
 
-        {/* Feature grid */}
-        <div style={{ display: 'grid', gap: 24, gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))' }}>
+        <div className="grid gap-6 md:grid-cols-2">
           {[
             {
               title: 'Meme Coin Creator',
@@ -66,31 +51,14 @@ export default function TrendingSection() {
           ].map(f => (
             <div
               key={f.title}
-              style={{
-                background: '#1f2937',
-                borderRadius: 20,
-                padding: 20,
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                color: '#fff',
-              }}
+              className="bg-[#1f2937] rounded-2xl p-5 flex flex-col justify-between text-white"
             >
               <div>
-                <div style={{ fontSize: 18, fontWeight: 700 }}>{f.title}</div>
-                <div style={{ fontSize: 14, marginTop: 4, color: '#cbd5e1' }}>{f.desc}</div>
+                <div className="text-lg font-bold">{f.title}</div>
+                <div className="text-sm text-gray-400 mt-1">{f.desc}</div>
               </div>
-              <div style={{ marginTop: 12 }}>
-                <span
-                  style={{
-                    background: '#ff8c00',
-                    padding: '6px 14px',
-                    borderRadius: 999,
-                    fontSize: 11,
-                    fontWeight: 700,
-                    display: 'inline-block',
-                  }}
-                >
+              <div className="mt-4">
+                <span className="inline-block bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">
                   {f.badge}
                 </span>
               </div>
