@@ -4,7 +4,7 @@ import TrendingSection from '../components/TrendingSection';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#111827] text-white">
+    <div style={{ background: '#111827', minHeight: '100vh', color: '#fff' }}>
       <Navbar />
       <HeroBanner />
       <TrendingSection />

@@ -1,91 +1,103 @@
 export default function TrendingSection() {
   return (
-    <>
-      <section className="max-w-5xl mx-auto mt-12 px-4">
-        <div className="bg-[#1f2937] rounded-2xl p-6 shadow-lg">
-          <div className="flex flex-col md:flex-row justify-between gap-4">
+    <div style={{ background: '#0f172a', paddingTop: 40, paddingBottom: 40 }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 16px' }}>
+        {/* Trending card */}
+        <div
+          style={{
+            background: '#1f2937',
+            borderRadius: 20,
+            padding: 24,
+            marginBottom: 32,
+            color: '#fff',
+            boxShadow: '0 20px 40px -10px rgba(0,0,0,0.4)',
+          }}
+        >
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: 16 }}>
             <div>
-              <p className="text-gray-300 text-sm">Trending Token</p>
-              <h2 className="text-2xl font-bold">$HYPE</h2>
+              <div style={{ fontSize: 12, color: '#9ca3af' }}>Trending Token</div>
+              <div style={{ fontSize: 28, fontWeight: 700 }}>$HYPE</div>
             </div>
-            <div className="text-right">
-              <p className="text-gray-300 text-sm">Score</p>
-              <p className="text-2xl font-bold">9.8</p>
+            <div style={{ textAlign: 'right' }}>
+              <div style={{ fontSize: 12, color: '#9ca3af' }}>Score</div>
+              <div style={{ fontSize: 28, fontWeight: 700 }}>9.8</div>
             </div>
           </div>
-          <div className="mt-4">
-            <div className="w-full bg-gray-700 rounded-full h-2.5 overflow-hidden">
+          <div style={{ marginTop: 16 }}>
+            <div style={{ background: '#374151', borderRadius: 999, height: 10, overflow: 'hidden' }}>
               <div
-                className="bg-orange-500 h-2.5 rounded-full"
-                style={{ width: '75%' }}
-              ></div>
+                style={{
+                  width: '75%',
+                  height: '100%',
+                  background: '#ff8c00',
+                  borderRadius: 999,
+                }}
+              />
             </div>
-            <p className="text-sm text-gray-400 mt-1">
+            <div style={{ fontSize: 12, color: '#9ca3af', marginTop: 6 }}>
               Graduation progress: 75%
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="max-w-5xl mx-auto mt-8 px-4 space-y-6">
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="bg-[#1f2937] rounded-2xl p-5 flex flex-col justify-between">
-            <div>
-              <h3 className="font-bold text-lg">Meme Coin Creator</h3>
-              <p className="text-gray-400 text-sm mt-1">
-                Custom supply, bonding curve, graduation fee logic, and rug-proof LP burn.
-              </p>
-            </div>
-            <div className="mt-4">
-              <span className="inline-block bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-                LAUNCH
-              </span>
-            </div>
-          </div>
-
-          <div className="bg-[#1f2937] rounded-2xl p-5 flex flex-col justify-between">
-            <div>
-              <h3 className="font-bold text-lg">Anti-bot / Wallet Monitoring</h3>
-              <p className="text-gray-400 text-sm mt-1">
-                Cooldown timers, soft fingerprinting, and abuse prevention for devs and traders.
-              </p>
-            </div>
-            <div className="mt-4">
-              <span className="inline-block bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-                SECURE
-              </span>
-            </div>
-          </div>
-
-          <div className="bg-[#1f2937] rounded-2xl p-5 flex flex-col justify-between">
-            <div>
-              <h3 className="font-bold text-lg">Paid & Organic Trending</h3>
-              <p className="text-gray-400 text-sm mt-1">
-                Select slot durations, promote tokens, and show real-time ranking.
-              </p>
-            </div>
-            <div className="mt-4">
-              <span className="inline-block bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-                TRENDING
-              </span>
-            </div>
-          </div>
-
-          <div className="bg-[#1f2937] rounded-2xl p-5 flex flex-col justify-between">
-            <div>
-              <h3 className="font-bold text-lg">Tiered Rewards</h3>
-              <p className="text-gray-400 text-sm mt-1">
-                Flexible lock durations with APYs and penalty enforcement.
-              </p>
-            </div>
-            <div className="mt-4">
-              <span className="inline-block bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-                STAKING
-              </span>
             </div>
           </div>
         </div>
-      </section>
-    </>
+
+        {/* Feature grid */}
+        <div style={{ display: 'grid', gap: 24, gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))' }}>
+          {[
+            {
+              title: 'Meme Coin Creator',
+              desc: 'Custom supply, bonding curve, graduation fee logic, and rug-proof LP burn.',
+              badge: 'LAUNCH',
+            },
+            {
+              title: 'Anti-bot / Wallet Monitoring',
+              desc: 'Cooldown timers, soft fingerprinting, and abuse prevention for devs and traders.',
+              badge: 'SECURE',
+            },
+            {
+              title: 'Paid & Organic Trending',
+              desc: 'Select slot durations, promote tokens, and show real-time ranking.',
+              badge: 'TRENDING',
+            },
+            {
+              title: 'Tiered Rewards',
+              desc: 'Flexible lock durations with APYs and penalty enforcement.',
+              badge: 'STAKING',
+            },
+          ].map(f => (
+            <div
+              key={f.title}
+              style={{
+                background: '#1f2937',
+                borderRadius: 20,
+                padding: 20,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                color: '#fff',
+              }}
+            >
+              <div>
+                <div style={{ fontSize: 18, fontWeight: 700 }}>{f.title}</div>
+                <div style={{ fontSize: 14, marginTop: 4, color: '#cbd5e1' }}>{f.desc}</div>
+              </div>
+              <div style={{ marginTop: 12 }}>
+                <span
+                  style={{
+                    background: '#ff8c00',
+                    padding: '6px 14px',
+                    borderRadius: 999,
+                    fontSize: 11,
+                    fontWeight: 700,
+                    display: 'inline-block',
+                  }}
+                >
+                  {f.badge}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
