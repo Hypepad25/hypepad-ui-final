@@ -24,7 +24,10 @@ export default function Navbar() {
 
   return (
     <header className="w-full bg-[#111827] text-white flex items-center justify-between px-4 md:px-8 py-3 relative z-30">
-      <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
+        <img src="/rocket-logo.svg" alt="HYPEPAD" className="h-8 w-auto" />
+        <span className="font-bold text-xl tracking-wide">HYPEPAD</span>
+      </div>
         <div className="flex items-center gap-2">
           <div className="h-8 w-8 flex-shrink-0">
             <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
