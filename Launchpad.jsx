@@ -1,0 +1,1 @@
+export default function Launchpad(){return <div className="p-8"><h1 className="text-3xl font-bold">Launchpad</h1><p>Placeholder</p></div>;}
