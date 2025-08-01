@@ -1,66 +1,41 @@
 export default function TrendingSection() {
   return (
-    <div className="bg-[#0f172a] py-12">
-      <div className="max-w-6xl mx-auto px-6 space-y-10">
-        <div className="bg-[#1f2937] rounded-2xl p-6 shadow-lg text-white">
-          <div className="flex flex-col md:flex-row justify-between gap-4">
+    <div style={{background:'#0f172a', padding:'60px 0'}}>
+      <div style={{maxWidth:1000, margin:'0 auto', padding:'0 16px', display:'grid', gap:20}}>
+        <div style={{background:'#1f2937', borderRadius:16, padding:20, color:'#fff', boxShadow:'0 30px 60px -10px rgba(0,0,0,0.3)'}}>
+          <div style={{display:'flex', flexWrap:'wrap', justifyContent:'space-between', gap:10}}>
             <div>
-              <div className="text-sm text-gray-300">Trending Token</div>
-              <div className="text-2xl font-bold">$HYPE</div>
+              <div style={{fontSize:12, color:'#cbd5e1'}}>Trending Token</div>
+              <div style={{fontSize:24, fontWeight:700}}>$HYPE</div>
             </div>
-            <div className="text-right">
-              <div className="text-sm text-gray-300">Score</div>
-              <div className="text-2xl font-bold">9.8</div>
+            <div style={{textAlign:'right'}}>
+              <div style={{fontSize:12, color:'#cbd5e1'}}>Score</div>
+              <div style={{fontSize:24, fontWeight:700}}>9.8</div>
             </div>
           </div>
-          <div className="mt-4">
-            <div className="w-full bg-gray-700 rounded-full h-2.5 overflow-hidden">
-              <div
-                className="h-2.5 rounded-full"
-                style={{ width: '75%', background: '#ff8c00' }}
-              />
+          <div style={{marginTop:12}}>
+            <div style={{background:'#334155', borderRadius:999, height:8, overflow:'hidden'}}>
+              <div style={{width:'75%', height:8, borderRadius:999, background:'#ff8c00'}}/>
             </div>
-            <div className="text-sm text-gray-400 mt-1">
+            <div style={{fontSize:12, color:'#94a3b8', marginTop:6}}>
               Graduation progress: 75%
             </div>
           </div>
         </div>
-
-        <div className="grid gap-6 md:grid-cols-2">
+        <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))', gap:16}}>
           {[
-            {
-              title: 'Meme Coin Creator',
-              desc: 'Custom supply, bonding curve, graduation fee logic, and rug-proof LP burn.',
-              badge: 'LAUNCH',
-            },
-            {
-              title: 'Anti-bot / Wallet Monitoring',
-              desc: 'Cooldown timers, soft fingerprinting, and abuse prevention for devs and traders.',
-              badge: 'SECURE',
-            },
-            {
-              title: 'Paid & Organic Trending',
-              desc: 'Select slot durations, promote tokens, and show real-time ranking.',
-              badge: 'TRENDING',
-            },
-            {
-              title: 'Tiered Rewards',
-              desc: 'Flexible lock durations with APYs and penalty enforcement.',
-              badge: 'STAKING',
-            },
-          ].map(f => (
-            <div
-              key={f.title}
-              className="bg-[#1f2937] rounded-2xl p-5 flex flex-col justify-between text-white"
-            >
+            {title:'Meme Coin Creator', desc:'Custom supply, bonding curve, graduation fee logic, and rug-proof LP burn.', badge:'LAUNCH'},
+            {title:'Anti-bot / Wallet Monitoring', desc:'Cooldown timers, soft fingerprinting, and abuse prevention for devs and traders.', badge:'SECURE'},
+            {title:'Paid & Organic Trending', desc:'Select slot durations, promote tokens, and show real-time ranking.', badge:'TRENDING'},
+            {title:'Tiered Rewards', desc:'Flexible lock durations with APYs and penalty enforcement.', badge:'STAKING'},
+          ].map(f=>(
+            <div key={f.title} style={{background:'#1f2937', borderRadius:16, padding:16, color:'#fff', display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
               <div>
-                <div className="text-lg font-bold">{f.title}</div>
-                <div className="text-sm text-gray-400 mt-1">{f.desc}</div>
+                <div style={{fontSize:18, fontWeight:700}}>{f.title}</div>
+                <div style={{fontSize:14, color:'#94a3b8', marginTop:4}}>{f.desc}</div>
               </div>
-              <div className="mt-4">
-                <span className="inline-block bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-                  {f.badge}
-                </span>
+              <div style={{marginTop:12}}>
+                <span style={{background:'#ff8c00', padding:'6px 12px', borderRadius:999, fontSize:10, fontWeight:700, color:'#fff'}}>{f.badge}</span>
               </div>
             </div>
           ))}

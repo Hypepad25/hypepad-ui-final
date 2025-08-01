@@ -1,47 +1,37 @@
 import SEO from './SEO';
 
-export default function Layout({ children, seoProps }) {
+export default function Layout({children, seoProps}) {
   return (
-    <div className="bg-[#111827] min-h-screen text-white">
-      <SEO {...seoProps} />
+    <div style={{background:'#0f111f', minHeight:'100vh', color:'#fff', fontFamily:'system-ui,-apple-system,BlinkMacSystemFont,sans-serif'}}>
+      <SEO {...seoProps}/>
       {children}
-      <Footer />
+      <Footer/>
     </div>
   );
 }
 
-export function Footer() {
+export function Footer(){
   return (
-    <footer className="bg-[#0f172a] text-gray-300 py-10 px-6">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div>
-          <div className="font-bold text-lg mb-2">HYPEPAD</div>
-          <p className="text-sm">
-            The future of Web3 starts here. Fuel your launch. Rule the hype.
-          </p>
+    <footer style={{background:'#0f172a', padding:'40px 20px', color:'#ccc', fontSize:12}}>
+      <div style={{maxWidth: '1000px', margin:'0 auto', display:'flex', flexWrap:'wrap', gap:30}}>
+        <div style={{flex:'1 1 200px'}}>
+          <div style={{fontWeight:700, marginBottom:8}}>HYPEPAD</div>
+          <div>The future of Web3 starts here. Fuel your launch. Rule the hype.</div>
         </div>
-        <div>
-          <div className="font-bold mb-2">Links</div>
-          <div className="flex flex-col gap-1 text-sm">
-            <a href="/launch" className="hover:underline">Launch</a>
-            <a href="/presale" className="hover:underline">Presale</a>
-            <a href="/staking" className="hover:underline">Staking</a>
-            <a href="/launch-token" className="hover:underline">Launch Token</a>
-            <a href="/meme" className="hover:underline">Meme</a>
-            <a href="/trending" className="hover:underline">Trending</a>
-            <a href="/kyc" className="hover:underline">KYC/SAFU</a>
-            <a href="/partners" className="hover:underline">Partners</a>
-            <a href="/support" className="hover:underline">Support</a>
+        <div style={{flex:'1 1 200px'}}>
+          <div style={{fontWeight:700, marginBottom:8}}>Links</div>
+          <div style={{display:'flex', flexDirection:'column', gap:4}}>
+            {['Launch','Presale','Staking','Launch Token','Meme','Trending','KYC/SAFU','Partners','Support'].map(l=>(
+              <a key={l} href={'/'+l.toLowerCase().replace(/\s+/g,'-').replace('/','') } style={{color:'#fff'}}>{l}</a>
+            ))}
           </div>
         </div>
-        <div>
-          <div className="font-bold mb-2">Legal</div>
-          <p className="text-xs">
-            <strong>Disclaimer:</strong> HYPEPAD is not financial advice. Crypto assets are volatile; do your own research. Use is governed by our <a href="/terms" className="underline">Terms</a> and <a href="/privacy" className="underline">Privacy Policy</a>.
-          </p>
-          <p className="text-xs mt-2">
-            © {new Date().getFullYear()} HYPEPAD. All rights reserved.
-          </p>
+        <div style={{flex:'1 1 200px'}}>
+          <div style={{fontWeight:700, marginBottom:8}}>Legal</div>
+          <div style={{marginBottom:6}}>
+            <strong>Disclaimer:</strong> HYPEPAD is not financial advice. Crypto assets are volatile; do your own research. Use is governed by our <a href="/terms" style={{color:'#fff'}}>Terms</a> and <a href="/privacy" style={{color:'#fff'}}>Privacy Policy</a>.
+          </div>
+          <div>© {new Date().getFullYear()} HYPEPAD. All rights reserved.</div>
         </div>
       </div>
     </footer>
