@@ -5,7 +5,7 @@
     <stop offset="100%" stop-color="#ff8c00"/>
   </linearGradient>
 </defs>
-<g>
+<g filter="url(#shadow)">
   <path d="M32 4C32 4 19 17 19 30C19 44 32 58 32 58C32 58 45 44 45 30C45 17 32 4 32 4Z" fill="url(#g)" stroke="#fff" stroke-width="1"/>
   <circle cx="32" cy="28" r="6" fill="#1f2235" stroke="#fff" stroke-width="1"/>
   <path d="M16 46C16 46 12 52 12 56C12 57.1046 12.8954 58 14 58H22L16 46Z" fill="#22273f"/>

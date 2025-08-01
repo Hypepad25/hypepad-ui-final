@@ -1,1 +1,1 @@
-export default function LaunchToken(){return <div className="p-8"><h1 className="text-3xl font-bold">Launch Token</h1><p>Placeholder</p></div>;}
+// LaunchToken page placeholder

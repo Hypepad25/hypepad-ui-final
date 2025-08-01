@@ -21,54 +21,47 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="navbar" style={{ background: '#0f172a', padding: '12px 20px', display: 'flex', alignItems: 'center', gap: 16, position: 'sticky', top: 0, zIndex: 50, flexWrap: 'wrap' }}>
-        <div style={{ fontWeight: '700', fontSize: '1.25rem', letterSpacing: 1, color: '#fff' }}>HYPEPAD</div>
+      <header className="navbar">
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <div className="logo">HYPEPAD</div>
+        </div>
 
-        <nav style={{ display: 'flex', gap: 18, marginLeft: 20, flex: 1, flexWrap: 'wrap' }} className="nav-links">
+        <nav className="links">
           {LINKS.map(([label, href]) => (
-            <a key={href} href={href} style={{ color: '#fff', textDecoration: 'none', fontSize: 14 }}>
-              {label}
-            </a>
+            <a key={href} href={href}>{label}</a>
           ))}
         </nav>
 
-        <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-          <button style={{ background: '#ff8c00', border: 'none', padding: '10px 18px', borderRadius: 999, fontWeight: 600, cursor: 'pointer', color: '#000' }}>
-            Connect Wallet
-          </button>
+        <div className="actions">
+          <button className="btn-primary">Connect Wallet</button>
           <button
+            className="hamburger"
             aria-label="menu"
             onClick={() => setOpen(o => !o)}
-            style={{ background: 'none', border: 'none', display: 'flex', flexDirection: 'column', gap: 4, padding: 6, cursor: 'pointer' }}
           >
-            <span style={{ width: 22, height: 3, background: '#fff', borderRadius: 2, transition: 'all .25s', transform: open ? 'rotate(45deg) translateY(6px)' : 'none' }} />
-            <span style={{ width: 22, height: 3, background: '#fff', borderRadius: 2, transition: 'all .25s', opacity: open ? 0 : 1 }} />
-            <span style={{ width: 22, height: 3, background: '#fff', borderRadius: 2, transition: 'all .25s', transform: open ? 'rotate(-45deg) translateY(-6px)' : 'none' }} />
+            <span style={{ transform: open ? 'rotate(45deg) translateY(6px)' : '' }} />
+            <span style={{ opacity: open ? 0 : 1 }} />
+            <span style={{ transform: open ? 'rotate(-45deg) translateY(-6px)' : '' }} />
           </button>
         </div>
       </header>
 
       {open && (
-        <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            background: 'rgba(0,0,0,0.6)',
-            zIndex: 60,
-            display: 'flex',
-            justifyContent: 'flex-end',
-          }}
-        >
-          <div style={{ width: 260, background: '#1f2937', padding: 20, display: 'flex', flexDirection: 'column', gap: 16, height: '100%' }}>
+        <div className="mobile-overlay" style={{ display: 'block' }}>
+          <div className="mobile-panel">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ fontWeight: 700, fontSize: 16, color: '#fff' }}>Menu</div>
-              <button onClick={() => setOpen(false)} aria-label="close" style={{ background: 'none', border: 'none', color: '#fff', fontSize: 24, cursor: 'pointer' }}>
+              <div style={{ fontWeight: 700, fontSize: 16 }}>Menu</div>
+              <button
+                className="close-btn"
+                onClick={() => setOpen(false)}
+                aria-label="close"
+              >
                 ×
               </button>
             </div>
-            <nav style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            <nav style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {LINKS.map(([label, href]) => (
-                <a key={href} href={href} onClick={() => setOpen(false)} style={{ color: '#fff', textDecoration: 'none' }}>
+                <a key={href} href={href} style={{ color: '#fff', textDecoration: 'none' }} onClick={() => setOpen(false)}>
                   {label}
                 </a>
               ))}

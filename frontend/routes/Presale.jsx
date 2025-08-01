@@ -1,1 +1,1 @@
-export default function Presale(){return <div className="p-8"><h1 className="text-3xl font-bold">Presale</h1><p>Placeholder</p></div>;}
+// Presale page placeholder

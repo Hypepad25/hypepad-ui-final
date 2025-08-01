@@ -1,1 +1,0 @@
-export default function KYC(){return <div className="p-8"><h1 className="text-3xl font-bold">KYC/SAFU</h1><p>Placeholder</p></div>;}
