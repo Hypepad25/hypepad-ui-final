@@ -5,26 +5,22 @@ export default function HeroBanner() {
       style={{
         backgroundImage: "url('/hypepad-banner.png')",
         backgroundRepeat: "no-repeat",
-        backgroundSize: "contain", // Prevent stretching
+        backgroundSize: "cover",
         backgroundPosition: "center",
-        minHeight: "400px", // Adjust hero height
-        maxHeight: "500px", // Optional: prevent oversized scaling
+        minHeight: '550px',
       }}
     >
-      {/* Optional dark overlay for readability */}
-      <div className="absolute inset-0 bg-black bg-opacity-50" />
-
-      {/* Content Layer */}
-      <div className="relative z-10 text-center p-6">
-        <h1 className="text-4xl md:text-6xl font-bold text-white mb-2">
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/60" />
+      <div className="relative z-10 text-center px-6 max-w-2xl">
+        <h1 className="text-4xl md:text-6xl font-bold text-white mb-3">
           The Future of Web3 Starts Here
         </h1>
-        <p className="text-lg text-gray-200 mb-4">
+        <p className="text-lg text-gray-200 mb-6">
           Fuel Your Launch. Rule the Hype.
         </p>
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="/launch">
-            <button className="px-6 py-3 bg-orange-500 rounded-2xl font-semibold">
+            <button className="px-6 py-3 bg-orange-500 rounded-2xl font-semibold shadow">
               Launch Now
             </button>
           </a>
