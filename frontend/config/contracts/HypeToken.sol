@@ -1,0 +1,1 @@
+// HypeToken.sol placeholder contract
