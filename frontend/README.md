@@ -1,23 +1,16 @@
-HYPEPAD Mobile Hero Template
-===========================
+# HYPEPAD Navbar + Assets Patch
 
-Contents:
-- index.html : Mobile-first hero page with SEO, open graph tags, and structured data.
-- styles.css : Dark theme with orange accent, responsive nav, hero, trending card, footer, and legal section.
+## Included
+- Navbar.jsx: full top nav with all links and Resources dropdown, fallback rocket logo image.
+- rocket-logo.svg: rocket icon (used in navbar and as favicon fallback).
+- favicon.png: PNG favicon.
+- index.html: example head snippet showing favicon setup.
 
-Features included:
-* SEO meta tags (description, OG, Twitter cards)
-* Structured data (WebSite schema)
-* Placeholder sections for Launch, Staking, FAQ, Support, Legal.
-* Legal disclaimers area.
-* Fixed Connect Wallet button in header (stays visible separate from menu).
-* Mobile hamburger menu that expands links.
-* Trending token card with graduation progress and score.
-* Footer with all major link categories.
+## Installation
+1. Copy `rocket-logo.svg` and `favicon.png` into your public root so they are served at:
+   - `/rocket-logo.svg`
+   - `/favicon.png`
+2. Replace your existing Navbar component with the provided `Navbar.jsx`.
+3. Insert the favicon lines into your HTML `<head>` as in `index.html`.
+4. Rebuild, deploy, and hard refresh.
 
-Instructions:
-1. Replace placeholder links with actual routes.
-2. Host `hypepad-banner.jpg` and `rocket-icon.svg` in public directory.
-3. Integrate wallet connection logic where the "Connect Wallet" button exists.
-4. Add real trending data, token metrics, and staking details via JS or framework of choice.
-5. Ensure SSL, canonical tags, sitemap.xml, robots.txt are configured on deployment.
