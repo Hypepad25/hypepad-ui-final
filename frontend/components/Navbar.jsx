@@ -1,61 +1,112 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+const NAV_ITEMS = [
+  { label: 'Launch', href: '/launch' },
+  { label: 'Presale', href: '/presale' },
+  { label: 'Staking', href: '/staking' },
+  { label: 'Launch Token', href: '/launch-token' },
+  { label: 'Meme', href: '/meme' },
+  { label: 'Trending', href: '/trending' },
+  { label: 'KYC/SAFU', href: '/kyc' },
+  { label: 'Partners', href: '/partners' },
+  { label: 'Support', href: '/support' },
+];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
+  // disable body scroll when mobile menu open
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
   return (
-    <nav className="w-full bg-black text-white flex items-center justify-between px-4 py-2 relative">
-      {/* Logo */}
-      <div className="flex items-center gap-3">
-        <img 
-          src="/hypepad-rocket-logo.png" 
-          alt="HYPEPAD" 
-          className="h-8 w-auto max-w-[40px] object-contain"
-        />
+    <header className="w-full bg-[#111827] text-white flex items-center justify-between px-6 py-3 relative z-30">
+      <div className="flex items-center gap-4">
         <span className="font-bold text-xl tracking-wide">HYPEPAD</span>
       </div>
 
       {/* Desktop links */}
-      <div className="hidden md:flex gap-6 items-center">
-        <a href="/launch" className="hover:underline">Launch</a>
-        <a href="/presale" className="hover:underline">Presale</a>
-        <a href="/staking" className="hover:underline">Staking</a>
-        <a href="/launch-token" className="hover:underline">Launch Token</a>
-        <a href="/meme" className="hover:underline">Meme</a>
-        <a href="/trending" className="hover:underline">Trending</a>
-        <a href="/kyc" className="hover:underline">KYC/SAFU</a>
-        <a href="/partners" className="hover:underline">Partners</a>
-        <a href="/support" className="hover:underline">Support</a>
-      </div>
+      <nav className="hidden md:flex gap-6 items-center text-sm font-medium">
+        {NAV_ITEMS.map(item => (
+          <a key={item.href} href={item.href} className="hover:underline">
+            {item.label}
+          </a>
+        ))}
+      </nav>
 
-      {/* Connect Wallet + Mobile Menu */}
       <div className="flex items-center gap-4">
-        <button className="px-4 py-2 bg-orange-500 rounded-2xl font-semibold shadow-sm">
+        <button className="px-4 py-2 bg-orange-500 rounded-full font-semibold shadow-md hover:brightness-105 transition">
           Connect Wallet
         </button>
 
-        {/* Hamburger for mobile */}
+        {/* Mobile menu toggle */}
         <div className="md:hidden relative">
-          <button onClick={() => setOpen(!open)} className="flex flex-col gap-1">
-            <span className="block w-6 h-0.5 bg-white" />
-            <span className="block w-6 h-0.5 bg-white" />
-            <span className="block w-6 h-0.5 bg-white" />
+          <button
+            aria-label="Menu"
+            onClick={() => setOpen(o => !o)}
+            className="flex flex-col gap-1 focus:outline-none"
+          >
+            <span
+              className={`block w-6 h-0.5 bg-white transition-all ${
+                open ? 'rotate-45 translate-y-1.5' : ''
+              }`}
+            />
+            <span
+              className={`block w-6 h-0.5 bg-white transition-all ${
+                open ? 'opacity-0' : ''
+              }`}
+            />
+            <span
+              className={`block w-6 h-0.5 bg-white transition-all ${
+                open ? '-rotate-45 -translate-y-1.5' : ''
+              }`}
+            />
           </button>
-          {open && (
-            <div className="absolute right-0 mt-2 w-60 bg-gray-900 border border-gray-700 rounded-lg flex flex-col p-4 gap-3 z-50">
-              <a href="/launch" className="hover:underline">Launch</a>
-              <a href="/presale" className="hover:underline">Presale</a>
-              <a href="/staking" className="hover:underline">Staking</a>
-              <a href="/launch-token" className="hover:underline">Launch Token</a>
-              <a href="/meme" className="hover:underline">Meme</a>
-              <a href="/trending" className="hover:underline">Trending</a>
-              <a href="/kyc" className="hover:underline">KYC/SAFU</a>
-              <a href="/partners" className="hover:underline">Partners</a>
-              <a href="/support" className="hover:underline">Support</a>
+
+          {/* Slide-out panel */}
+          <div
+            className={`fixed inset-0 z-40 flex pointer-events-none ${
+              open ? '' : 'opacity-0'
+            } transition-opacity duration-200`}
+            aria-hidden={!open}
+          >
+            {/* backdrop */}
+            <div
+              className="flex-1 bg-black/60"
+              onClick={() => setOpen(false)}
+            />
+            {/* panel */}
+            <div className="w-64 bg-[#1f2937] p-6 flex flex-col gap-5 overflow-auto">
+              <div className="flex justify-between items-center">
+                <span className="font-bold text-lg">Menu</span>
+                <button
+                  aria-label="Close"
+                  onClick={() => setOpen(false)}
+                  className="text-white text-2xl leading-none"
+                >
+                  ×
+                </button>
+              </div>
+              <nav className="flex flex-col gap-3 text-sm">
+                {NAV_ITEMS.map(item => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className="hover:underline"
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </nav>
             </div>
-          )}
+          </div>
         </div>
       </div>
-    </nav>
+    </header>
   );
 }
