@@ -49,7 +49,7 @@ export default function SEO({
         name: fullTitle,
         description: description,
         inLanguage: 'en-US',
-        isPartOf: { '@id': SITE_URL + '/#website' },
+        isPartOf: { '@id': `${SITE_URL}/#website` },
         primaryImageOfPage: {
           '@type': 'ImageObject',
           url: image,
