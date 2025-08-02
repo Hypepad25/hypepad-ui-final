@@ -1,13 +1,10 @@
-HYPEPAD FULL BRANDED LANDING BUNDLE
+HYPEPAD Brand Assets Bundle
 
-Contents:
-- index.html: Fully responsive landing page with expanded nav (Home, Presale, Launch, Token Creator, Meme Launcher, Dashboard, Docs, Community, FAQ), header with logo, wallet CTA, badges, hero, feature cards, investor pitch, and footer. SEO/meta and JSON-LD included.
-- logo-192.png: logo image for header/apple touch.
-- favicon.ico: favicon for browser tab.
-- hypepad-banner.jpg: placeholder banner.
+Generated from provided logo image.
+Includes:
+- logo-512.png, logo-192.png, logo-64.png: PNG variants for header, touch icons, etc.
+- favicon.ico: multi-size favicon (16x16,32x32,48x48,64x64) for browser tabs.
+- hypepad-banner.jpg / .png: hero banner with gradient background, logo, and subtitle.
 
-Instructions:
-1. Drop all files into your public root.
-2. Replace placeholder banner with real banner if desired.
-3. Ensure the domain in canonical and JSON-LD is correct.
-4. Commit & push and redeploy.
+Replace existing placeholders with these. For full branding you can swap in your second photo by editing the banner image: if you upload it I can composite it with the logo/text.
+
