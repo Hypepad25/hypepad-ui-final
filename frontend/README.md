@@ -1,15 +1,33 @@
-Patch files to fix Vercel build error 'Cannot find module @vitejs/plugin-react'.
+Patch bundle to fix Vite React build error by adding the missing plugin and correct config.
 
-Use instructions:
-1. Apply vite-fix.patch:
+Files:
+  - vite-fix.patch: patch to add/replace frontend/vite.config.js with the proper React plugin config.
+  - package-json-add.patch: patch to insert @vitejs/plugin-react into devDependencies in frontend/package.json. You may need to merge manually if formatting differs.
+  - install_plugin.sh: helper script that installs @vitejs/plugin-react and writes/overwrites vite.config.js.
+
+Usage:
+1. Unzip into your repo root.
+2. Apply patches:
    git apply vite-fix.patch
-2. Install the missing dependency:
+   git apply package-json-add.patch  # adjust manually if it fails due to formatting
+3. Run installer:
+   chmod +x install_plugin.sh
+   ./install_plugin.sh
+4. Verify build locally:
    cd frontend
-   npm install -D @vitejs/plugin-react
-3. Commit changes:
+   npm run build
+5. Commit changes:
    git add frontend/vite.config.js frontend/package.json frontend/package-lock.json
-   git commit -m "Fix build: add @vitejs/plugin-react and correct Vite config"
-4. Push to remote and trigger redeploy.
+   git commit -m "fix: add @vitejs/plugin-react and correct Vite config"
+   git push
+6. Redeploy on Vercel with cache cleared.
 
-If package.json already has devDependencies block, you may need to manually merge the addition of "@vitejs/plugin-react": "^3.1.0" into it.
+If any patch application fails, manually:
+- Add "@vitejs/plugin-react": "^4.0.0" under devDependencies in frontend/package.json.
+- Create/update frontend/vite.config.js to:
+  import { defineConfig } from 'vite';
+  import react from '@vitejs/plugin-react';
 
+  export default defineConfig({
+    plugins: [react()],
+  });
