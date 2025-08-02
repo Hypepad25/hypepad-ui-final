@@ -1,14 +1,13 @@
-HYPEPAD FIXED LANDING PAGE
+HYPEPAD FULL BRANDED LANDING BUNDLE
 
-Files:
-- index.html : self-contained responsive landing page with header, hero, features, investor pitch, footer, SEO/OG, and mobile menu.
-- logo-192.png : placeholder logo (SVG content). Replace with real PNG/SVG if available.
-- favicon.ico : placeholder favicon (SVG content, rename to .ico or replace).
-- hypepad-banner.jpg : placeholder banner (SVG content; replace with real image).
+Contents:
+- index.html: Fully responsive landing page with expanded nav (Home, Presale, Launch, Token Creator, Meme Launcher, Dashboard, Docs, Community, FAQ), header with logo, wallet CTA, badges, hero, feature cards, investor pitch, and footer. SEO/meta and JSON-LD included.
+- logo-192.png: logo image for header/apple touch.
+- favicon.ico: favicon for browser tab.
+- hypepad-banner.jpg: placeholder banner.
 
 Instructions:
-1. Drop all files into your public root (e.g., root of deployment).
-2. Replace placeholder assets with real images: logo-192.png, favicon.ico, hypepad-banner.jpg.
-3. Commit & push.
-4. Clear cache and load site.
-
+1. Drop all files into your public root.
+2. Replace placeholder banner with real banner if desired.
+3. Ensure the domain in canonical and JSON-LD is correct.
+4. Commit & push and redeploy.
