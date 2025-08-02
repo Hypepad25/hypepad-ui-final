@@ -1,10 +1,12 @@
-HYPEPAD Brand Assets Bundle
+HYPEPAD COMPLETE REFINED LANDING PACKAGE
 
-Generated from provided logo image.
 Includes:
-- logo-512.png, logo-192.png, logo-64.png: PNG variants for header, touch icons, etc.
-- favicon.ico: multi-size favicon (16x16,32x32,48x48,64x64) for browser tabs.
-- hypepad-banner.jpg / .png: hero banner with gradient background, logo, and subtitle.
-
-Replace existing placeholders with these. For full branding you can swap in your second photo by editing the banner image: if you upload it I can composite it with the logo/text.
-
+- index.html: fully updated landing page with integrated banner, improved wording, full nav, support section (Telegram + email), investor pitch, and footer. Mobile menu fixed to slide from right so nothing is cut off.
+- assets/hypepad-banner-integrated.jpg/.png: new integrated banner image.
+- logo-192.png: logo.
+- favicon.ico: favicon.
+Instructions:
+1. Place all files into your public root.
+2. Replace YOUR_TELEGRAM with your group link.
+3. Update canonical URL.
+4. Commit & push, then deploy.
