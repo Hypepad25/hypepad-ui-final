@@ -1,9 +1,4 @@
-export default function SEO({
-  title = 'HYPEPAD - Launch Securely. Dominate the Hype.',
-  description = 'Next-gen multi-chain launchpad with meme coin tools, staking, graduated launches, and rug-proof launch intelligence. Built for creators and investors who demand security and speed.',
-  image = '/hypepad-banner.png',
-  url = typeof window !== 'undefined' ? window.location.href : 'https://yourdomain.com',
-}) {
+export default function SEO({title = 'HYPEPAD – Launch securely, dominate the hype', description = 'Next-gen multi-chain launchpad with meme coin tools, staking, graduated launches, and paid trending. Built for creators and investors who demand security and speed.', url = typeof window !== 'undefined' ? window.location.href : '', image = '/hypepad-banner.png'}) {
   return (
     <>
       <title>{title}</title>
@@ -22,18 +17,15 @@ export default function SEO({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebSite',
-            name: 'HYPEPAD',
-            url: url,
-            description: description,
-          }),
-        }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          name: 'HYPEPAD',
+          url: 'https://yourdomain.com',
+          description
+        })
+      }} />
     </>
   );
 }

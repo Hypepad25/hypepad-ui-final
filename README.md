@@ -1,33 +1,23 @@
-Patch bundle to fix Vite React build error by adding the missing plugin and correct config.
+HYPEPAD Mobile Hero Template
+===========================
 
-Files:
-  - vite-fix.patch: patch to add/replace frontend/vite.config.js with the proper React plugin config.
-  - package-json-add.patch: patch to insert @vitejs/plugin-react into devDependencies in frontend/package.json. You may need to merge manually if formatting differs.
-  - install_plugin.sh: helper script that installs @vitejs/plugin-react and writes/overwrites vite.config.js.
+Contents:
+- index.html : Mobile-first hero page with SEO, open graph tags, and structured data.
+- styles.css : Dark theme with orange accent, responsive nav, hero, trending card, footer, and legal section.
 
-Usage:
-1. Unzip into your repo root.
-2. Apply patches:
-   git apply vite-fix.patch
-   git apply package-json-add.patch  # adjust manually if it fails due to formatting
-3. Run installer:
-   chmod +x install_plugin.sh
-   ./install_plugin.sh
-4. Verify build locally:
-   cd frontend
-   npm run build
-5. Commit changes:
-   git add frontend/vite.config.js frontend/package.json frontend/package-lock.json
-   git commit -m "fix: add @vitejs/plugin-react and correct Vite config"
-   git push
-6. Redeploy on Vercel with cache cleared.
+Features included:
+* SEO meta tags (description, OG, Twitter cards)
+* Structured data (WebSite schema)
+* Placeholder sections for Launch, Staking, FAQ, Support, Legal.
+* Legal disclaimers area.
+* Fixed Connect Wallet button in header (stays visible separate from menu).
+* Mobile hamburger menu that expands links.
+* Trending token card with graduation progress and score.
+* Footer with all major link categories.
 
-If any patch application fails, manually:
-- Add "@vitejs/plugin-react": "^4.0.0" under devDependencies in frontend/package.json.
-- Create/update frontend/vite.config.js to:
-  import { defineConfig } from 'vite';
-  import react from '@vitejs/plugin-react';
-
-  export default defineConfig({
-    plugins: [react()],
-  });
+Instructions:
+1. Replace placeholder links with actual routes.
+2. Host `hypepad-banner.jpg` and `rocket-icon.svg` in public directory.
+3. Integrate wallet connection logic where the "Connect Wallet" button exists.
+4. Add real trending data, token metrics, and staking details via JS or framework of choice.
+5. Ensure SSL, canonical tags, sitemap.xml, robots.txt are configured on deployment.

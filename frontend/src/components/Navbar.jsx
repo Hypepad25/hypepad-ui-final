@@ -1,81 +1,53 @@
-import React, {useState, useEffect, useRef} from 'react';
+import { useState, useEffect } from 'react';
 
-const PRIMARY_LINKS = [
-  ['Home', '/'],
-  ['Launchpad', '/launchpad'],
-  ['Token Creator', '/launchpad/token-creator'],
-  ['Meme Coin Launcher', '/launchpad/meme-coin'],
-  ['Staking', '/staking'],
-];
-
-const EXTRA_LINKS = [
-  ['Trending', '/trending'],
-  ['Docs', '/docs'],
-  ['Support', '/support'],
-  ['FAQ', '/faq'],
-  ['Legal', '/legal'],
-  ['Terms', '/terms'],
-  ['Privacy', '/privacy'],
-  ['Disclaimers', '/disclaimers'],
-  ['Partners', '/partners'],
+const LINKS=[
+  ['Launch','/launch'],
+  ['Presale','/presale'],
+  ['Staking','/staking'],
+  ['Launch Token','/launch-token'],
+  ['Meme','/meme'],
+  ['Trending','/trending'],
+  ['KYC/SAFU','/kyc'],
+  ['Partners','/partners'],
+  ['Support','/support'],
 ];
 
 export default function Navbar(){
-  const [mobileOpen,setMobileOpen]=useState(false);
-  const [moreOpen,setMoreOpen]=useState(false);
-  const moreRef=useRef(null);
-  useEffect(()=>{function onClick(e){ if(moreRef.current && !moreRef.current.contains(e.target)){ setMoreOpen(false);} }
-    document.addEventListener('mousedown',onClick);
-    return ()=>document.removeEventListener('mousedown',onClick);
-  },[]);
+  const [open,setOpen]=useState(false);
+  useEffect(()=>{ document.body.style.overflow=open?'hidden':''; return ()=>{document.body.style.overflow='';};},[open]);
   return (
-    <header style={{display:'flex',alignItems:'center',justifyContent:'space-between',padding:'12px 24px',background:'#111827',position:'sticky',top:0,zIndex:50}}>
-      <div style={{display:'flex',alignItems:'center',gap:8}}>
-        <img src="/rocket-logo.svg" alt="HYPEPAD" style={{height:32}}/>
-        <span style={{fontWeight:700,fontSize:20}}>HYPEPAD</span>
-      </div>
-      <div style={{display:'none',gap:16}} className="desktop-links">
-        {PRIMARY_LINKS.map(([label,href])=>(
-          <a key={href} href={href} style={{fontSize:14,fontWeight:500}}>{label}</a>
-        ))}
-        <div style={{position:'relative'}} ref={moreRef}>
-          <button onClick={()=>setMoreOpen(o=>!o)} style={{background:'none',border:'none',color:'#fff',cursor:'pointer',fontSize:14,fontWeight:500}}>More ▾</button>
-          {moreOpen && (
-            <div style={{position:'absolute',top:'100%',marginTop:4,background:'#1f2937',borderRadius:6,padding:8,minWidth:160}}>
-              {EXTRA_LINKS.map(([label,href])=>(
-                <a key={href} href={href} style={{display:'block',padding:'4px 8px',fontSize:14}}>{label}</a>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-      <div style={{display:'flex',alignItems:'center',gap:12}}>
-        <button style={{padding:'8px 16px',background:'#f59e0b',border:'none',borderRadius:999,fontWeight:600}}>Connect Wallet</button>
-        <div className="mobile-menu" style={{display:'block',position:'relative'}}>
-          <button aria-label="Menu" onClick={()=>setMobileOpen(o=>!o)} style={{background:'none',border:'none',display:'flex',flexDirection:'column',gap:4}}>
-            <span style={{width:24,height:3,background:'#fff',display:'block',transform: mobileOpen ? 'rotate(45deg) translateY(6px)' : 'none'}}></span>
-            <span style={{width:24,height:3,background:'#fff',display:'block',opacity: mobileOpen ? 0:1}}></span>
-            <span style={{width:24,height:3,background:'#fff',display:'block',transform: mobileOpen ? 'rotate(-45deg) translateY(-6px)' : 'none'}}></span>
+    <>
+      <header style={{display:'flex', flexWrap:'wrap', alignItems:'center', justifyContent:'space-between', padding:12, background:'#0f172a', position:'sticky', top:0, zIndex:50, gap:16}}>
+        <div style={{fontWeight:700,fontSize:18,color:'#fff'}}>HYPEPAD</div>
+        <nav style={{display:'flex', gap:16, flex:1, marginLeft:16, flexWrap:'wrap'}}>
+          {LINKS.map(([label,href])=>(
+            <a key={href} href={href} style={{color:'#fff', textDecoration:'none', fontSize:14}}>{label}</a>
+          ))}
+        </nav>
+        <div style={{display:'flex', gap:12, alignItems:'center'}}>
+          <button style={{background:'#ff8c00', border:'none', padding:'10px 18px', borderRadius:999, fontWeight:600, cursor:'pointer', color:'#000'}}>Connect Wallet</button>
+          <button aria-label="menu" onClick={()=>setOpen(o=>!o)} style={{background:'none',border:'none',display:'flex',flexDirection:'column',gap:4,padding:6,cursor:'pointer'}}>
+            <span style={{width:22,height:3,background:'#fff',borderRadius:2,transition:'all .25s', transform: open?'rotate(45deg) translateY(6px)':'none'}}/>
+            <span style={{width:22,height:3,background:'#fff',borderRadius:2,transition:'all .25s', opacity: open?0:1}}/>
+            <span style={{width:22,height:3,background:'#fff',borderRadius:2,transition:'all .25s', transform: open?'rotate(-45deg) translateY(-6px)':'none'}}/>
           </button>
-          {mobileOpen && (
-            <div style={{position:'fixed',inset:0,display:'flex',zIndex:60}}>
-              <div style={{flex:1,background:'rgba(0,0,0,0.6)'}} onClick={()=>setMobileOpen(false)}></div>
-              <div style={{width:260,background:'#1f2937',padding:16,display:'flex',flexDirection:'column',gap:12,overflow:'auto'}}>
-                <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
-                  <div style={{display:'flex',alignItems:'center',gap:8}}>
-                    <img src="/rocket-logo.svg" alt="HYPEPAD" style={{height:24}}/>
-                    <span style={{fontWeight:700}}>HYPEPAD</span>
-                  </div>
-                  <button onClick={()=>setMobileOpen(false)} style={{background:'none',border:'none',color:'#fff',fontSize:22}}>×</button>
-                </div>
-                {[...PRIMARY_LINKS,...EXTRA_LINKS].map(([label,href])=>(
-                  <a key={href} href={href} style={{padding:'6px 0',fontSize:14}} onClick={()=>setMobileOpen(false)}>{label}</a>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
-      </div>
-    </header>
+      </header>
+      {open && (
+        <div style={{position:'fixed', inset:0, background:'rgba(0,0,0,0.6)', zIndex:60, display:'flex', justifyContent:'flex-end'}}>
+          <div style={{width:260, background:'#1f2937', padding:20, display:'flex', flexDirection:'column', gap:16, height:'100%'}}>
+            <div style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
+              <div style={{fontWeight:700, fontSize:16, color:'#fff'}}>Menu</div>
+              <button onClick={()=>setOpen(false)} aria-label="close" style={{background:'none',border:'none',color:'#fff',fontSize:24,cursor:'pointer'}}>×</button>
+            </div>
+            <nav style={{display:'flex', flexDirection:'column', gap:12}}>
+              {LINKS.map(([label,href])=>(
+                <a key={href} href={href} onClick={()=>setOpen(false)} style={{color:'#fff', textDecoration:'none'}}>{label}</a>
+              ))}
+            </nav>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
