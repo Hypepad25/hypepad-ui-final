@@ -7,36 +7,32 @@ export default function App() {
       <main style={{padding:'40px 20px', maxWidth: '1100px', margin: '0 auto'}}>
         <section style={{display:'flex', flexWrap:'wrap', gap:'30px', alignItems:'center', justifyContent:'space-between'}}>
           <div style={{flex:1, minWidth:280}}>
-            <h1 style={{fontSize:'2.2rem', margin:0}}>The Future of Web3 Starts Here</h1>
-            <p style={{margin:'10px 0', fontSize:'1rem', lineHeight:1.4}}>
+            <h1 style={{fontSize:'2.8rem', fontWeight:700, margin:0}}>The Future of Web3 Starts Here</h1>
+            <p style={{margin:'12px 0', fontSize:'1rem', lineHeight:1.4}}>
               Secure, launch-native token launches + multi-chain innovation with HYPEPAD.
             </p>
             <a href="/presale" style={{display:'inline-block', marginTop:10, background:'#ff8600', padding:'14px 24px', borderRadius:999, fontWeight:700, color:'#000'}}>Join $HYPE Presale</a>
           </div>
           <div style={{flex:1, minWidth:280}}>
-            <div style={{background:'#1f2230', padding:16, borderRadius:16}}>
-              <img src="/hypepad-banner.jpg" alt="HYPEPAD Banner" style={{width:'100%', borderRadius:12}} />
+            <div style={{borderRadius:16, overflow:'hidden', background:'#1f2230', padding:8}}>
+              <img src="/hypepad-banner.jpg" alt="HYPEPAD Banner" style={{width:'100%', borderRadius:12, display:'block'}} />
             </div>
           </div>
         </section>
         <section style={{marginTop:40}}>
-          <h2>Why HYPEPAD</h2>
-          <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(180px,1fr))', gap:16, marginTop:16}}>
-            <div style={{background:'#1f2230', padding:16, borderRadius:12, boxShadow:'0 10px 30px -10px rgba(255,134,0,0.2)'}}>
+          <h2 style={{fontSize:'2rem', marginBottom:16}}>Why HYPEPAD</h2>
+          <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(180px,1fr))', gap:16}}>
+            <div style={{background:'#1f2230', padding:16, borderRadius:12, boxShadow:'0 20px 40px -10px rgba(255,134,0,0.25)'}}>
               <strong>Multi-chain</strong>
-              <p>Solana + EVM support</p>
+              <p style={{marginTop:6}}>Solana + EVM support</p>
             </div>
-            <div style={{background:'#1f2230', padding:16, borderRadius:12, boxShadow:'0 10px 30px -10px rgba(255,134,0,0.2)'}}>
+            <div style={{background:'#1f2230', padding:16, borderRadius:12, boxShadow:'0 20px 40px -10px rgba(255,134,0,0.25)'}}>
               <strong>Rug-Proof Graduation</strong>
-              <p>Mandatory LP burn at $65K cap</p>
+              <p style={{marginTop:6}}>Mandatory LP burn at $65K cap</p>
             </div>
-            <div style={{background:'#1f2230', padding:16, borderRadius:12, boxShadow:'0 10px 30px -10px rgba(255,134,0,0.2)'}}>
-              <strong>Low Fees</strong>
-              <p>1% trade fees, competitive launch pricing</p>
-            </div>
-            <div style={{background:'#1f2230', padding:16, borderRadius:12, boxShadow:'0 10px 30px -10px rgba(255,134,0,0.2)'}}>
+            <div style={{background:'#1f2230', padding:16, borderRadius:12, boxShadow:'0 20px 40px -10px rgba(255,134,0,0.25)'}}>
               <strong>Security</strong>
-              <p>Anti-bot, KYC badges, audits</p>
+              <p style={{marginTop:6}}>Anti-bot, KYC badges, audits</p>
             </div>
           </div>
         </section>

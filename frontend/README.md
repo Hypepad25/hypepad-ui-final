@@ -1,19 +1,17 @@
-HYPEPAD CLEAN BUILD SKELETON
+HYPEPAD REFINED BUILD
 
-1. To get started:
-   npm install
+What's changed:
+- Logo + favicon added placeholders (replace with real assets)
+- Hero section styled properly, trimmed feature cards (removed Low Fees)
+- Navbar includes logo image and responsive mobile menu with proper ordering to avoid overlap.
+- SEO/meta tags included.
+- Dark theme, polished card shadows.
 
-2. Development:
-   npm run dev
+Usage:
+1. npm install
+2. npm run build
+3. Deploy dist/ to hosting or push to Vercel (auto build)
 
-3. Build for production:
-   npm run build
-
-4. Replace the placeholder 'hypepad-banner.jpg' with your actual banner in root.
-
-5. Deploy the 'dist' folder to your hosting or let Vercel auto-deploy from this repo.
-
-6. Commit and push to your GitHub, then trigger deployment on Vercel.
-
-SEO/Meta is in index.html. Navbar is fixed and mobile-friendly with connect wallet button not overlapping.
+Assets:
+Replace hypepad-banner.jpg, logo-192.png, favicon.ico with real files.
 
