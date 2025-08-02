@@ -1,81 +1,45 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Home from './routes/Home.jsx';
-import Presale from './routes/Presale.jsx';
-import Staking from './routes/Staking.jsx';
-import LaunchToken from './routes/LaunchToken.jsx';
-import LaunchMeme from './routes/LaunchMeme.jsx';
-import AdminPanel from './routes/AdminPanel.jsx';
-import KYC from './routes/KYC.jsx';
-import Trending from './routes/Trending.jsx';
-import Airdrop from './routes/Airdrop.jsx';
-import Support from './routes/Support.jsx';
-import Partner from './routes/Partner.jsx';
-import Portfolio from './routes/Portfolio.jsx';
-import TokenPage from './routes/TokenPage.jsx';
-import PresaleLanding from './routes/PresaleLanding.jsx';
-import ConnectWallet from './components/ConnectWallet.jsx';
-import ComparisonPinkSale from './routes/ComparisonPinkSale.jsx';
-import ComparisonPolkastarter from './routes/ComparisonPolkastarter.jsx';
-import ComparisonTrustPad from './routes/ComparisonTrustPad.jsx';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from '../components/Navbar.jsx';
+import SEO from '../components/SEO.jsx';
+import Hero from '../components/Hero.jsx';
 
-const Navbar = () => (
-  <div style={{
-    display: 'flex',
-    gap: '1rem',
-    padding: '0.75rem 1rem',
-    background: '#0f0f17',
-    color: '#fff',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    fontFamily: 'system-ui, sans-serif',
-    position: 'sticky',
-    top: 0,
-    zIndex: 100
-  }}>
-    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-      <div style={{ fontWeight: 'bold', fontSize: '1.25rem', color: 'orange' }}>HYPEPAD</div>
-      <Link to="/" style={{ color: '#fff', textDecoration: 'none' }}>Home</Link>
-      <Link to="/presale" style={{ color: '#fff', textDecoration: 'none' }}>Presale</Link>
-      <Link to="/staking" style={{ color: '#fff', textDecoration: 'none' }}>Staking</Link>
-      <Link to="/launch-token" style={{ color: '#fff', textDecoration: 'none' }}>Launch Token</Link>
-      <Link to="/launch-meme" style={{ color: '#fff', textDecoration: 'none' }}>Meme</Link>
-      <Link to="/trending" style={{ color: '#fff', textDecoration: 'none' }}>Trending</Link>
+function Placeholder({ title }) {
+  return (
+    <div className="max-w-4xl mx-auto p-8">
+      <SEO title={title} />
+      <h1 className="text-3xl font-bold mb-4">{title}</h1>
+      <p>This is the {title} page. Content coming soon.</p>
     </div>
-    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-      <ConnectWallet />
-    </div>
-  </div>
-);
+  );
+}
 
 export default function App() {
   return (
-    <div style={{ background: '#0f0f17', minHeight: '100vh', color: '#e5e5e5' }}>
-      <Router>
+    <>
+      <SEO />
+      <BrowserRouter>
         <Navbar />
-        <div style={{ padding: '1rem', fontFamily: 'system-ui, sans-serif' }}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/presale" element={<Presale />} />
-            <Route path="/staking" element={<Staking />} />
-            <Route path="/launch-token" element={<LaunchToken />} />
-            <Route path="/launch-meme" element={<LaunchMeme />} />
-            <Route path="/admin" element={<AdminPanel />} />
-            <Route path="/kyc" element={<KYC />} />
-            <Route path="/trending" element={<Trending />} />
-            <Route path="/airdrop" element={<Airdrop />} />
-            <Route path="/support" element={<Support />} />
-            <Route path="/partner" element={<Partner />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/token/:id" element={<TokenPage />} />
-            <Route path="/presale-landing" element={<PresaleLanding />} />
-            <Route path="/comparison/pinksale" element={<ComparisonPinkSale />} />
-            <Route path="/comparison/polkastarter" element={<ComparisonPolkastarter />} />
-            <Route path="/comparison/trustpad" element={<ComparisonTrustPad />} />
-            <Route path="*" element={<div>404: Page not found</div>} />
-          </Routes>
-        </div>
-      </Router>
-    </div>
+        <Routes>
+          <Route path="/" element={<div><Hero /></div>} />
+          <Route path="/launchpad" element={<Placeholder title="Launchpad" />} />
+          <Route path="/launchpad/token-creator" element={<Placeholder title="Token Creator" />} />
+          <Route path="/launchpad/meme-coin" element={<Placeholder title="Meme Coin Launcher" />} />
+          <Route path="/staking" element={<Placeholder title="Staking" />} />
+          <Route path="/trending" element={<Placeholder title="Trending" />} />
+          <Route path="/docs" element={<Placeholder title="Docs" />} />
+          <Route path="/support" element={<Placeholder title="Support" />} />
+          <Route path="/faq" element={<Placeholder title="FAQ" />} />
+          <Route path="/legal" element={<Placeholder title="Legal" />} />
+          <Route path="/terms" element={<Placeholder title="Terms" />} />
+          <Route path="/privacy" element={<Placeholder title="Privacy" />} />
+          <Route path="/disclaimers" element={<Placeholder title="Disclaimers" />} />
+          <Route path="/partners" element={<Placeholder title="Partners" />} />
+          <Route path="/comparison/pinksale" element={<Placeholder title="HYPEPAD vs PinkSale" />} />
+          <Route path="/comparison/polkastarter" element={<Placeholder title="HYPEPAD vs Polkastarter" />} />
+          <Route path="/comparison/trustpad" element={<Placeholder title="HYPEPAD vs TrustPad" />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
