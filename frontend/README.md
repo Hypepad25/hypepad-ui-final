@@ -1,23 +1,18 @@
-HYPEPAD Mobile Hero Template
-===========================
+Patch to fix build failure: adds @vitejs/plugin-react and ensures vite.config.js is correct.
 
-Contents:
-- index.html : Mobile-first hero page with SEO, open graph tags, and structured data.
-- styles.css : Dark theme with orange accent, responsive nav, hero, trending card, footer, and legal section.
+Steps to apply:
+1. Copy this patch into your repo root or fetch the script.
+2. Run:
 
-Features included:
-* SEO meta tags (description, OG, Twitter cards)
-* Structured data (WebSite schema)
-* Placeholder sections for Launch, Staking, FAQ, Support, Legal.
-* Legal disclaimers area.
-* Fixed Connect Wallet button in header (stays visible separate from menu).
-* Mobile hamburger menu that expands links.
-* Trending token card with graduation progress and score.
-* Footer with all major link categories.
+   ./apply_patch.sh
+3. Commit changes (package.json and package-lock.json updated, vite.config.js overwritten):
+   git add frontend/package.json frontend/package-lock.json frontend/vite.config.js
+   git commit -m "Fix build: add @vitejs/plugin-react and correct Vite config"
+4. Push and redeploy.
 
-Instructions:
-1. Replace placeholder links with actual routes.
-2. Host `hypepad-banner.jpg` and `rocket-icon.svg` in public directory.
-3. Integrate wallet connection logic where the "Connect Wallet" button exists.
-4. Add real trending data, token metrics, and staking details via JS or framework of choice.
-5. Ensure SSL, canonical tags, sitemap.xml, robots.txt are configured on deployment.
+If you prefer manual:
+- In frontend directory: npm install -D @vitejs/plugin-react
+- Replace your vite.config.js with the provided one (or ensure it has:
+import react from '@vitejs/plugin-react';
+plugins:[react()],
+ etc.)
