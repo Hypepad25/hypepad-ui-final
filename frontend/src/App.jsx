@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navbar from '../components/Navbar.jsx';
-import SEO from '../components/SEO.jsx';
-import Hero from '../components/Hero.jsx';
+import Navbar from './components/Navbar.jsx';
+import SEO from './components/SEO.jsx';
+import Hero from './components/Hero.jsx';
 
 function Placeholder({ title }) {
   return (
