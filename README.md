@@ -1,21 +1,37 @@
-# UI Fix Patch
+HYPEPAD QUICK FIXES BUNDLE
 
-Includes:
-- Correct rocket logo SVG
-- Favicon
-- Navbar with spacing fix and full links
-- Footer with pages/resources/contact
-- Hero component (slogan + description)
-- SEO component
-- Updated index.html with Tailwind CDN for layout
+Included:
+- Header.jsx : responsive header React component with mobile menu, wallet button, logo placeholder, and badges.
+- HeroSection.jsx : updated hero section component with layout, slogan, CTA, and banner.
+- styles.css : standalone CSS for non-React fallback (header + hero + general theming).
 
-Drop these into your existing repo (maintain directory structure):
-frontend/src/index.html
-frontend/src/components/Navbar.jsx
-frontend/src/components/Footer.jsx
-frontend/src/components/SEO.jsx
-frontend/src/components/Hero.jsx
-public/rocket-logo.svg
-public/favicon.png
+Instructions:
+1. For React project:
+   - Copy Header.jsx and HeroSection.jsx into your components folder.
+   - Import and render in your App, e.g.:
+     import Header from './components/Header';
+     import HeroSection from './components/HeroSection';
+     <Header />
+     <HeroSection />
+   - Ensure assets exist: /logo-192.png, /hypepad-banner.jpg
+   - Build and deploy.
 
-Then commit and push.
+2. For static fallback:
+   - Include styles.css in <head>:
+     <link rel="stylesheet" href="/styles.css" />
+   - Inline header HTML (see previous message) and hero HTML.
+   - Replace logo and banner placeholders.
+
+3. Add SEO JSON-LD in head as needed:
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"HYPEPAD Launchpad",
+  "url":"https://yourdomain.com",
+  "description":"Multi-chain token launchpad with rug-proof graduation, security, and growth tools for creators and investors."
+}
+</script>
+
+4. Commit & push to trigger deployment.
+
