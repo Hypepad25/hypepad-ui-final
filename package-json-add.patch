@@ -1,0 +1,7 @@
+*** Begin Patch
+*** Update File: frontend/package.json
+@@
+-  "devDependencies": {
++  "devDependencies": {
++    "@vitejs/plugin-react": "^3.1.0",
+*** End Patch
