@@ -1,40 +1,61 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-const cx = (...classes) => classes.filter(Boolean).join(" ");
+const cx = (...classes) => classes.filter(Boolean).join(' ');
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-
   return (
-    <nav style={{background:'#0f111a', color:'#f5f5f5'}} className="p-4 flex items-center justify-between relative flex-wrap">
-      <div style={{display:'flex', alignItems:'center', gap:'1rem'}}>
-        <div style={{fontWeight:700, fontSize:'1.25rem'}}>HYPEPAD</div>
-        <div className="desktop-nav" style={{display:'flex', gap:'1.5rem'}}>
-          <a href="/" style={{textDecoration:'none', color:'#f5f5f5'}}>Home</a>
-          <a href="/launch" style={{textDecoration:'none', color:'#f5f5f5'}}>Launch</a>
-          <a href="/token" style={{textDecoration:'none', color:'#f5f5f5'}}>Token Creator</a>
-          <a href="/meme" style={{textDecoration:'none', color:'#f5f5f5'}}>Meme Launcher</a>
-          <a href="/faq" style={{textDecoration:'none', color:'#f5f5f5'}}>FAQ</a>
+    <nav className="bg-black text-white p-4 flex items-center justify-between">
+      <div className="flex items-center space-x-4">
+        <div className="text-xl font-bold">HYPEPAD</div>
+        <div className="hidden md:flex gap-6">
+          <a href="/" className="hover:underline">Home</a>
+          <a href="/launch" className="hover:underline">Launch</a>
+          <a href="/token" className="hover:underline">Token Creator</a>
+          <a href="/meme" className="hover:underline">Meme Launcher</a>
+          <a href="/faq" className="hover:underline">FAQ</a>
         </div>
       </div>
-      <div style={{display:'flex', alignItems:'center', gap:'0.75rem'}}>
-        <div className="mobile-menu-wrapper" style={{position:'relative'}}>
-          <button aria-label="Toggle menu" onClick={() => setMobileOpen(o=>!o)} style={{background:'none', border:'none', display:'flex', flexDirection:'column', gap:'4px', width:'32px', height:'24px', cursor:'pointer', zIndex:20}}>
-            <span style={{display:'block', width:'24px', height:'4px', background:'#fff', transition:'transform .2s', transform: mobileOpen ? 'rotate(45deg) translateY(6px)' : 'none'}}></span>
-            <span style={{display:'block', width:'24px', height:'4px', background:'#fff', transition:'opacity .2s', opacity: mobileOpen ? 0 : 1}}></span>
-            <span style={{display:'block', width:'24px', height:'4px', background:'#fff', transition:'transform .2s', transform: mobileOpen ? 'rotate(-45deg) translateY(-6px)' : 'none'}}></span>
+
+      {/* Connect Wallet fixed top-right */}
+      <div className="flex items-center gap-4">
+        <button className="px-4 py-2 bg-orange-500 rounded-2xl font-semibold">Connect Wallet</button>
+        {/* Hamburger for mobile */}
+        <div className="md:hidden">
+          <button
+            aria-label="Toggle menu"
+            onClick={() => setMobileOpen((o) => !o)}
+            className="flex flex-col gap-1 relative w-8 h-6"
+          >
+            <span
+              className={cx(
+                'block w-6 h-0.5 bg-white transition-transform',
+                mobileOpen ? 'rotate-45 translate-y-1.5' : ''
+              )}
+            />
+            <span
+              className={cx(
+                'block w-6 h-0.5 bg-white transition-opacity',
+                mobileOpen ? 'opacity-0' : 'opacity-100'
+              )}
+            />
+            <span
+              className={cx(
+                'block w-6 h-0.5 bg-white transition-transform',
+                mobileOpen ? '-rotate-45 -translate-y-1.5' : ''
+              )}
+            />
           </button>
           {mobileOpen && (
-            <div style={{position:'absolute', right:0, marginTop:'8px', width:'160px', background:'#1f2230', border:'1px solid rgba(255,255,255,0.1)', borderRadius:'10px', padding:'8px', display:'flex', flexDirection:'column', gap:'4px'}}>
-              <a href="/" style={{padding:'6px 8px', color:'#f5f5f5', textDecoration:'none'}}>Home</a>
-              <a href="/launch" style={{padding:'6px 8px', color:'#f5f5f5', textDecoration:'none'}}>Launch</a>
-              <a href="/token" style={{padding:'6px 8px', color:'#f5f5f5', textDecoration:'none'}}>Token Creator</a>
-              <a href="/meme" style={{padding:'6px 8px', color:'#f5f5f5', textDecoration:'none'}}>Meme Launcher</a>
-              <a href="/faq" style={{padding:'6px 8px', color:'#f5f5f5', textDecoration:'none'}}>FAQ</a>
+            <div className="absolute right-0 mt-2 w-48 bg-gray-900 border border-gray-700 rounded-lg shadow-lg py-2 flex flex-col gap-2">
+              <a href="/" className="px-4 py-2 hover:bg-gray-800">Home</a>
+              <a href="/launch" className="px-4 py-2 hover:bg-gray-800">Launch</a>
+              <a href="/token" className="px-4 py-2 hover:bg-gray-800">Token Creator</a>
+              <a href="/meme" className="px-4 py-2 hover:bg-gray-800">Meme Launcher</a>
+              <a href="/faq" className="px-4 py-2 hover:bg-gray-800">FAQ</a>
             </div>
           )}
         </div>
-        <button style={{padding:'10px 16px', background:'#ff8600', border:'none', borderRadius:'999px', fontWeight:600, cursor:'pointer', whiteSpace:'nowrap'}}>Connect Wallet</button>
       </div>
     </nav>
   );
