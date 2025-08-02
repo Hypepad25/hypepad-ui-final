@@ -1,23 +1,21 @@
-# Layout Fix Patch
+# UI Fix Patch
 
-## Purpose
-Restores styling/layout by adding Tailwind via CDN and base fallback styles so utility classes (e.g., from existing Hero/Navbar) render correctly.
+Includes:
+- Correct rocket logo SVG
+- Favicon
+- Navbar with spacing fix and full links
+- Footer with pages/resources/contact
+- Hero component (slogan + description)
+- SEO component
+- Updated index.html with Tailwind CDN for layout
 
-## Files included
-- `frontend/src/index.html`: updated to include Tailwind CDN, base theme, favicon, and meta.
-- `frontend/src/global.css`: minimal global CSS.
+Drop these into your existing repo (maintain directory structure):
+frontend/src/index.html
+frontend/src/components/Navbar.jsx
+frontend/src/components/Footer.jsx
+frontend/src/components/SEO.jsx
+frontend/src/components/Hero.jsx
+public/rocket-logo.svg
+public/favicon.png
 
-## Installation
-Place these files into your repo (overwrite existing), then:
-```bash
-cd frontend
-npm ci
-npm run build
-```
-Commit and push:
-```bash
-git add src/index.html src/global.css
-git commit -m "fix: restore layout with Tailwind CDN and base global styles"
-git push
-```
-Then redeploy on Vercel (clear cache).
+Then commit and push.

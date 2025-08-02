@@ -36,18 +36,18 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="w-full bg-[#111827] text-white flex items-center justify-between px-4 md:px-8 py-3 relative z-30">
+    <header className="w-full bg-[#0f172a] text-white flex items-center justify-between px-4 md:px-8 py-3 relative z-30">
       <div className="flex items-center gap-2">
         <img
-          src="/rocket-logo.svg?v=2"
+          src="/rocket-logo.svg"
           alt="HYPEPAD"
-          className="h-8 w-auto"
+          className="h-8 w-auto mr-2"
           onError={(e) => {
             e.currentTarget.src =
-              'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="32" height="32"%3E%3Ccircle cx="16" cy="16" r="14" fill="%23ff8c00"/%3E%3C/svg%3E';
+              'data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\"%3E%3Ccircle cx=\"16\" cy=\"16\" r=\"14\" fill=\"%23ff8c00\"/%3E%3C/svg%3E';
           }}
         />
-        <span className="font-bold text-xl tracking-wide">HYPEPAD</span>
+        <span className="font-bold text-xl tracking-wider">HYPEPAD</span>
       </div>
 
       <div className="hidden md:flex items-center gap-4 flex-1 overflow-visible">
@@ -91,9 +91,9 @@ export default function Navbar() {
             onClick={() => setMobileOpen(o => !o)}
             className="flex flex-col gap-1"
           >
-            <span className={`block w-6 h-0.5 bg-white transition-transform ${mobileOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
-            <span className={`block w-6 h-0.5 bg-white transition-opacity ${mobileOpen ? 'opacity-0' : 'opacity-100'}`} />
-            <span className={`block w-6 h-0.5 bg-white transition-transform ${mobileOpen ? '-rotate-45 -translate-y-1.5' : ''}`} />
+            <span className={f"block w-6 h-0.5 bg-white transition-transform {('rotate-45 translate-y-1.5' if mobileOpen else '')}"} />
+            <span className={f"block w-6 h-0.5 bg-white transition-opacity {('opacity-0' if mobileOpen else 'opacity-100')}"} />
+            <span className={f"block w-6 h-0.5 bg-white transition-transform {('-rotate-45 -translate-y-1.5' if mobileOpen else '')}"} />
           </button>
 
           {mobileOpen && (
@@ -102,7 +102,7 @@ export default function Navbar() {
               <div className="w-72 bg-[#1f2937] p-6 flex flex-col gap-5 overflow-auto">
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-2">
-                    <img src="/rocket-logo.svg?v=2" alt="HYPEPAD" className="h-6 w-auto" />
+                    <img src="/rocket-logo.svg" alt="HYPEPAD" className="h-6 w-auto" />
                     <span className="font-bold text-lg">HYPEPAD</span>
                   </div>
                   <button onClick={() => setMobileOpen(false)} className="text-white text-2xl">×</button>

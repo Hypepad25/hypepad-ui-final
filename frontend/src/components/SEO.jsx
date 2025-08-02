@@ -1,8 +1,7 @@
 import React from 'react';
 
 const DEFAULT_TITLE = 'HYPEPAD – Launch securely. Dominate the hype.';
-const DEFAULT_DESCRIPTION =
-  'HYPEPAD is a next-gen multi-chain launchpad offering meme coin tools, staking, graduated launches, and rug-proof launch intelligence for creators and investors who demand speed and security.';
+const DEFAULT_DESCRIPTION = 'HYPEPAD is a next-gen multi-chain launchpad offering meme coin tools, staking, graduated launches, and rug-proof launch intelligence for creators and investors who demand speed and security.';
 const SITE_URL = 'https://www.hypepad.app';
 const DEFAULT_IMAGE = '/hypepad-banner.jpg';
 
