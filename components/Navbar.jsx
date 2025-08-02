@@ -1,81 +1,62 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-const LINKS = [
-  ['Launch', '/launch'],
-  ['Presale', '/presale'],
-  ['Staking', '/staking'],
-  ['Launch Token', '/launch-token'],
-  ['Meme', '/meme'],
-  ['Trending', '/trending'],
-  ['KYC/SAFU', '/kyc'],
-  ['Partners', '/partners'],
-  ['Support', '/support'],
-];
+const cx = (...classes) => classes.filter(Boolean).join(' ');
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
-  useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : '';
-    return () => (document.body.style.overflow = '');
-  }, [open]);
-
+  const [mobileOpen, setMobileOpen] = useState(false);
   return (
-    <>
-      <header className="navbar" style={{ background: '#0f172a', padding: '12px 20px', display: 'flex', alignItems: 'center', gap: 16, position: 'sticky', top: 0, zIndex: 50, flexWrap: 'wrap' }}>
-        <div style={{ fontWeight: '700', fontSize: '1.25rem', letterSpacing: 1, color: '#fff' }}>HYPEPAD</div>
+    <nav className="bg-black text-white p-4 flex items-center justify-between">
+      <div className="flex items-center space-x-4">
+        <div className="text-xl font-bold">HYPEPAD</div>
+        <div className="hidden md:flex gap-6">
+          <a href="/" className="hover:underline">Home</a>
+          <a href="/launch" className="hover:underline">Launch</a>
+          <a href="/token" className="hover:underline">Token Creator</a>
+          <a href="/meme" className="hover:underline">Meme Launcher</a>
+          <a href="/faq" className="hover:underline">FAQ</a>
+        </div>
+      </div>
 
-        <nav style={{ display: 'flex', gap: 18, marginLeft: 20, flex: 1, flexWrap: 'wrap' }} className="nav-links">
-          {LINKS.map(([label, href]) => (
-            <a key={href} href={href} style={{ color: '#fff', textDecoration: 'none', fontSize: 14 }}>
-              {label}
-            </a>
-          ))}
-        </nav>
-
-        <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-          <button style={{ background: '#ff8c00', border: 'none', padding: '10px 18px', borderRadius: 999, fontWeight: 600, cursor: 'pointer', color: '#000' }}>
-            Connect Wallet
-          </button>
+      {/* Connect Wallet fixed top-right */}
+      <div className="flex items-center gap-4">
+        <button className="px-4 py-2 bg-orange-500 rounded-2xl font-semibold">Connect Wallet</button>
+        {/* Hamburger for mobile */}
+        <div className="md:hidden">
           <button
-            aria-label="menu"
-            onClick={() => setOpen(o => !o)}
-            style={{ background: 'none', border: 'none', display: 'flex', flexDirection: 'column', gap: 4, padding: 6, cursor: 'pointer' }}
+            aria-label="Toggle menu"
+            onClick={() => setMobileOpen((o) => !o)}
+            className="flex flex-col gap-1 relative w-8 h-6"
           >
-            <span style={{ width: 22, height: 3, background: '#fff', borderRadius: 2, transition: 'all .25s', transform: open ? 'rotate(45deg) translateY(6px)' : 'none' }} />
-            <span style={{ width: 22, height: 3, background: '#fff', borderRadius: 2, transition: 'all .25s', opacity: open ? 0 : 1 }} />
-            <span style={{ width: 22, height: 3, background: '#fff', borderRadius: 2, transition: 'all .25s', transform: open ? 'rotate(-45deg) translateY(-6px)' : 'none' }} />
+            <span
+              className={cx(
+                'block w-6 h-0.5 bg-white transition-transform',
+                mobileOpen ? 'rotate-45 translate-y-1.5' : ''
+              )}
+            />
+            <span
+              className={cx(
+                'block w-6 h-0.5 bg-white transition-opacity',
+                mobileOpen ? 'opacity-0' : 'opacity-100'
+              )}
+            />
+            <span
+              className={cx(
+                'block w-6 h-0.5 bg-white transition-transform',
+                mobileOpen ? '-rotate-45 -translate-y-1.5' : ''
+              )}
+            />
           </button>
-        </div>
-      </header>
-
-      {open && (
-        <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            background: 'rgba(0,0,0,0.6)',
-            zIndex: 60,
-            display: 'flex',
-            justifyContent: 'flex-end',
-          }}
-        >
-          <div style={{ width: 260, background: '#1f2937', padding: 20, display: 'flex', flexDirection: 'column', gap: 16, height: '100%' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ fontWeight: 700, fontSize: 16, color: '#fff' }}>Menu</div>
-              <button onClick={() => setOpen(false)} aria-label="close" style={{ background: 'none', border: 'none', color: '#fff', fontSize: 24, cursor: 'pointer' }}>
-                ×
-              </button>
+          {mobileOpen && (
+            <div className="absolute right-0 mt-2 w-48 bg-gray-900 border border-gray-700 rounded-lg shadow-lg py-2 flex flex-col gap-2">
+              <a href="/" className="px-4 py-2 hover:bg-gray-800">Home</a>
+              <a href="/launch" className="px-4 py-2 hover:bg-gray-800">Launch</a>
+              <a href="/token" className="px-4 py-2 hover:bg-gray-800">Token Creator</a>
+              <a href="/meme" className="px-4 py-2 hover:bg-gray-800">Meme Launcher</a>
+              <a href="/faq" className="px-4 py-2 hover:bg-gray-800">FAQ</a>
             </div>
-            <nav style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              {LINKS.map(([label, href]) => (
-                <a key={href} href={href} onClick={() => setOpen(false)} style={{ color: '#fff', textDecoration: 'none' }}>
-                  {label}
-                </a>
-              ))}
-            </nav>
-          </div>
+          )}
         </div>
-      )}
-    </>
+      </div>
+    </nav>
   );
 }

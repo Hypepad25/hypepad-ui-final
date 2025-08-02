@@ -1,74 +1,62 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-const LINKS = [
-  ['Launch', '/launch'],
-  ['Presale', '/presale'],
-  ['Staking', '/staking'],
-  ['Launch Token', '/launch-token'],
-  ['Meme', '/meme'],
-  ['Trending', '/trending'],
-  ['KYC/SAFU', '/kyc'],
-  ['Partners', '/partners'],
-  ['Support', '/support'],
-];
+const cx = (...classes) => classes.filter(Boolean).join(' ');
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
-  useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : '';
-    return () => (document.body.style.overflow = '');
-  }, [open]);
-
+  const [mobileOpen, setMobileOpen] = useState(false);
   return (
-    <>
-      <header className="navbar">
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <div className="logo">HYPEPAD</div>
+    <nav className="bg-black text-white p-4 flex items-center justify-between">
+      <div className="flex items-center space-x-4">
+        <div className="text-xl font-bold">HYPEPAD</div>
+        <div className="hidden md:flex gap-6">
+          <a href="/" className="hover:underline">Home</a>
+          <a href="/launch" className="hover:underline">Launch</a>
+          <a href="/token" className="hover:underline">Token Creator</a>
+          <a href="/meme" className="hover:underline">Meme Launcher</a>
+          <a href="/faq" className="hover:underline">FAQ</a>
         </div>
+      </div>
 
-        <nav className="links">
-          {LINKS.map(([label, href]) => (
-            <a key={href} href={href}>{label}</a>
-          ))}
-        </nav>
-
-        <div className="actions">
-          <button className="btn-primary">Connect Wallet</button>
+      {/* Connect Wallet fixed top-right */}
+      <div className="flex items-center gap-4">
+        <button className="px-4 py-2 bg-orange-500 rounded-2xl font-semibold">Connect Wallet</button>
+        {/* Hamburger for mobile */}
+        <div className="md:hidden">
           <button
-            className="hamburger"
-            aria-label="menu"
-            onClick={() => setOpen(o => !o)}
+            aria-label="Toggle menu"
+            onClick={() => setMobileOpen((o) => !o)}
+            className="flex flex-col gap-1 relative w-8 h-6"
           >
-            <span style={{ transform: open ? 'rotate(45deg) translateY(6px)' : '' }} />
-            <span style={{ opacity: open ? 0 : 1 }} />
-            <span style={{ transform: open ? 'rotate(-45deg) translateY(-6px)' : '' }} />
+            <span
+              className={cx(
+                'block w-6 h-0.5 bg-white transition-transform',
+                mobileOpen ? 'rotate-45 translate-y-1.5' : ''
+              )}
+            />
+            <span
+              className={cx(
+                'block w-6 h-0.5 bg-white transition-opacity',
+                mobileOpen ? 'opacity-0' : 'opacity-100'
+              )}
+            />
+            <span
+              className={cx(
+                'block w-6 h-0.5 bg-white transition-transform',
+                mobileOpen ? '-rotate-45 -translate-y-1.5' : ''
+              )}
+            />
           </button>
-        </div>
-      </header>
-
-      {open && (
-        <div className="mobile-overlay" style={{ display: 'block' }}>
-          <div className="mobile-panel">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ fontWeight: 700, fontSize: 16 }}>Menu</div>
-              <button
-                className="close-btn"
-                onClick={() => setOpen(false)}
-                aria-label="close"
-              >
-                ×
-              </button>
+          {mobileOpen && (
+            <div className="absolute right-0 mt-2 w-48 bg-gray-900 border border-gray-700 rounded-lg shadow-lg py-2 flex flex-col gap-2">
+              <a href="/" className="px-4 py-2 hover:bg-gray-800">Home</a>
+              <a href="/launch" className="px-4 py-2 hover:bg-gray-800">Launch</a>
+              <a href="/token" className="px-4 py-2 hover:bg-gray-800">Token Creator</a>
+              <a href="/meme" className="px-4 py-2 hover:bg-gray-800">Meme Launcher</a>
+              <a href="/faq" className="px-4 py-2 hover:bg-gray-800">FAQ</a>
             </div>
-            <nav style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {LINKS.map(([label, href]) => (
-                <a key={href} href={href} style={{ color: '#fff', textDecoration: 'none' }} onClick={() => setOpen(false)}>
-                  {label}
-                </a>
-              ))}
-            </nav>
-          </div>
+          )}
         </div>
-      )}
-    </>
+      </div>
+    </nav>
   );
 }
