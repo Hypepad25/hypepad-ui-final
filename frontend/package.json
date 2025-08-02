@@ -1,10 +1,11 @@
 {
-  "name": "hypepad-frontend",
-  "version": "1.0.0",
-  "type": "module",
+  "name": "hypepad-standalone",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -12,7 +13,6 @@
     "react-router-dom": "^6.14.1"
   },
   "devDependencies": {
-    "vite": "^5.4.19",
-    "@vitejs/plugin-react": "^4.0.1"
+    "vite": "^4.4.9"
   }
 }
