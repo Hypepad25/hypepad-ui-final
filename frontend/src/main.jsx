@@ -1,7 +1,11 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './App';
+import App from './App.jsx';
 import './global.css';
+import { WalletProvider } from './wallet/setup.js';
 
-const root = createRoot(document.getElementById('root'));
-root.render(<App />);
+createRoot(document.getElementById('root')).render(
+  <WalletProvider>
+    <App />
+  </WalletProvider>
+);

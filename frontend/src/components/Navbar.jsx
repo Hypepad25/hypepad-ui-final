@@ -1,63 +1,95 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from 'react';
 
-const cx = (...classes) => classes.filter(Boolean).join(" ");
+const PRIMARY_LINKS = [
+  ['Home', '/'],
+  ['Launchpad', '/launchpad'],
+  ['Token Creator', '/launchpad/token-creator'],
+  ['Meme Coin Launcher', '/launchpad/meme-coin'],
+  ['Staking', '/staking'],
+];
+
+const EXTRA_LINKS = [
+  ['Trending', '/trending'],
+  ['Docs', '/docs'],
+  ['Support', '/support'],
+  ['FAQ', '/faq'],
+  ['Legal', '/legal'],
+  ['Terms', '/terms'],
+  ['Privacy', '/privacy'],
+  ['Disclaimers', '/disclaimers'],
+  ['Partners', '/partners'],
+];
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
+  const moreRef = useRef(null);
+
+  useEffect(() => {
+    function handle(e) {
+      if (moreRef.current && !moreRef.current.contains(e.target)) {
+        setMoreOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handle);
+    return () => document.removeEventListener('mousedown', handle);
+  }, []);
 
   return (
-    <nav className="bg-[#0f111a] text-white p-4 flex items-center justify-between relative flex-wrap max-w-full">
-      <div className="flex items-center gap-3">
-        <img src="/logo.svg" alt="HYPEPAD" className="h-8 w-auto" />
-        <div className="hidden md:flex gap-6">
-          <a href="/" className="hover:underline">Home</a>
-          <a href="/launch" className="hover:underline">Launch</a>
-          <a href="/token" className="hover:underline">Token Creator</a>
-          <a href="/meme" className="hover:underline">Meme Launcher</a>
-          <a href="/faq" className="hover:underline">FAQ</a>
-        </div>
+    <header className="w-full bg-[#0f172a] text-white flex items-center justify-between px-4 md:px-8 py-3 relative z-30">
+      <div className="flex items-center gap-4">
+        <img
+          src="/rocket-logo.svg"
+          alt="HYPEPAD"
+          className="h-16 w-auto"
+          style={{ display: 'block' }}
+          onError={(e) => {
+            e.currentTarget.src =
+              'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="48" height="48"%3E%3Ccircle cx="24" cy="24" r="20" fill="%23ff8c00"/%3E%3C/svg%3E';
+          }}
+        />
+        <span className="font-bold text-xl tracking-wider">HYPEPAD</span>
       </div>
 
-      <div className="flex items-center gap-3">
-        <div className="md:hidden relative">
-          <button
-            aria-label="Toggle menu"
-            onClick={() => setMobileOpen((o) => !o)}
-            className="flex flex-col gap-1 w-8 h-6 z-20"
+      <div className="hidden md:flex items-center gap-4 flex-1 overflow-visible">
+        {PRIMARY_LINKS.map(([label, href]) => (
+          <a
+            key={href}
+            href={href}
+            className="hover:underline text-sm font-medium whitespace-nowrap"
           >
-            <span
-              className={cx(
-                "block w-6 h-0.5 bg-white transition-transform",
-                mobileOpen ? "rotate-45 translate-y-1.5" : ""
-              )}
-            />
-            <span
-              className={cx(
-                "block w-6 h-0.5 bg-white transition-opacity",
-                mobileOpen ? "opacity-0" : "opacity-100"
-              )}
-            />
-            <span
-              className={cx(
-                "block w-6 h-0.5 bg-white transition-transform",
-                mobileOpen ? "-rotate-45 -translate-y-1.5" : ""
-              )}
-            />
+            {label}
+          </a>
+        ))}
+
+        <div className="relative" ref={moreRef}>
+          <button
+            onClick={() => setMoreOpen((o) => !o)}
+            className="hover:underline text-sm font-medium flex items-center gap-1"
+          >
+            More ▾
           </button>
-          {mobileOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-[#1f2230] border border-gray-700 rounded-lg shadow-lg py-2 flex flex-col gap-2">
-              <a href="/" className="px-4 py-2 hover:bg-gray-800">Home</a>
-              <a href="/launch" className="px-4 py-2 hover:bg-gray-800">Launch</a>
-              <a href="/token" className="px-4 py-2 hover:bg-gray-800">Token Creator</a>
-              <a href="/meme" className="px-4 py-2 hover:bg-gray-800">Meme Launcher</a>
-              <a href="/faq" className="px-4 py-2 hover:bg-gray-800">FAQ</a>
+          {moreOpen && (
+            <div className="absolute top-full mt-2 bg-[#1f2937] rounded-md shadow-lg min-w-[180px] py-2 z-50">
+              {EXTRA_LINKS.map(([label, href]) => (
+                <a
+                  key={href}
+                  href={href}
+                  className="block px-4 py-2 text-sm hover:bg-[#272f4a] whitespace-nowrap"
+                >
+                  {label}
+                </a>
+              ))}
             </div>
           )}
         </div>
-        <button className="px-4 py-2 bg-orange-500 rounded-full font-semibold whitespace-nowrap z-10">
+      </div>
+
+      <div className="flex items-center gap-4">
+        <button className="px-4 py-2 bg-orange-500 rounded-full font-semibold shadow hover:brightness-105 transition">
           Connect Wallet
         </button>
       </div>
-    </nav>
+    </header>
   );
 }

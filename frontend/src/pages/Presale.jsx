@@ -1,13 +1,12 @@
-// src/pages/Presale.jsx
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import SEO from '../components/SEO.jsx';
-import { useAccount, useConnect, useBalance } from 'wagmi';
-import { InjectedConnector } from 'wagmi/connectors/injected';
+import { useAccount, useBalance } from 'wagmi';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 function Countdown({ target }) {
-  const [remaining, setRemaining] = useState(() => Math.max(0, target - Date.now()));
+  const [remaining, setRemaining] = React.useState(() => Math.max(0, target - Date.now()));
 
-  useEffect(() => {
+  React.useEffect(() => {
     const iv = setInterval(() => {
       setRemaining(Math.max(0, target - Date.now()));
     }, 1000);
@@ -32,17 +31,13 @@ function Countdown({ target }) {
 }
 
 export default function Presale() {
-  const startTimestamp = Date.now() + 1000 * 60 * 60 * 24; // 24h from now
-  const totalAllocation = 1000000; // tokens
-  const [sold, setSold] = useState(250000); // example
+  const startTimestamp = Date.now() + 1000 * 60 * 60 * 24;
+  const totalAllocation = 1000000;
+  const sold = 250000;
   const progress = Math.min(1, sold / totalAllocation);
-
-  const { connect } = useConnect({
-    connector: new InjectedConnector(),
-  });
   const { address, isConnected } = useAccount();
   const { data: balance } = useBalance({
-    address: address,
+    address,
     watch: true,
   });
 
@@ -84,22 +79,12 @@ export default function Presale() {
               <div className="mb-2">
                 Balance: {balance ? balance.formatted + ' ' + balance.symbol : '...'}
               </div>
-              <button
-                className="px-6 py-3 bg-accent text-black font-semibold rounded-full"
-                onClick={() => {
-                  alert('Participate logic goes here');
-                }}
-              >
+              <button className="px-6 py-3 bg-accent text-black font-semibold rounded-full">
                 Participate
               </button>
             </div>
           ) : (
-            <button
-              onClick={() => connect()}
-              className="px-6 py-3 bg-accent text-black font-semibold rounded-full"
-            >
-              Connect Wallet
-            </button>
+            <ConnectButton />
           )}
         </div>
 

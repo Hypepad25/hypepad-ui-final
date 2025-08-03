@@ -1,4 +1,3 @@
-// src/wallet/setup.js
 import '@rainbow-me/rainbowkit/styles.css';
 import {
   getDefaultWallets,
@@ -15,7 +14,6 @@ const { chains, publicClient } = configureChains(
 
 const { connectors } = getDefaultWallets({
   appName: 'HYPEPAD',
-  projectId: '', // optional: set if you have
   chains,
 });
 

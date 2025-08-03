@@ -1,14 +1,16 @@
-// src/components/Hero.jsx
 import React from 'react';
 
 export default function Hero() {
   return (
-    <section className="relative pt-20 pb-16 bg-gradient-to-r from-[#0f172a] to-[#1f2235]">
+    <section className="relative pt-20 pb-16 bg-gradient-to-r from-[#0f172a] to-[#1f2235] overflow-hidden">
       <div className="max-w-5xl mx-auto px-6 text-center">
-        <div className="inline-block mb-6">
-          <h1 className="text-5xl md:text-6xl font-extrabold leading-tight text-white">
-            Launch securely. Dominate the hype.
-          </h1>
+        <div className="flex flex-col items-center gap-4 mb-6">
+          <div className="flex items-center gap-4">
+            <img src="/rocket-logo.svg" alt="HYPEPAD" className="h-20 w-auto" />
+            <h1 className="text-5xl md:text-6xl font-extrabold leading-tight text-white">
+              Launch securely. Dominate the hype.
+            </h1>
+          </div>
         </div>
         <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
           Next-gen multi-chain launchpad with meme coin tools, staking, graduated launches, and rug-proof launch intelligence. Built for creators and investors who demand speed and security.
