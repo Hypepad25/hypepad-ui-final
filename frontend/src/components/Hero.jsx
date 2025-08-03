@@ -1,20 +1,31 @@
+// src/components/Hero.jsx
 import React from 'react';
 
 export default function Hero() {
   return (
-    <section className="relative mt-8 rounded-2xl overflow-hidden min-h-[420px] flex flex-col items-center justify-center bg-[url('/hypepad-banner.jpg')] bg-center bg-cover text-center px-6 py-16">
-      <div className="absolute inset-0 bg-gradient-to-r from-[rgba(15,17,26,0.55)] to-[rgba(15,17,26,0.9)]"></div>
-      <div className="relative max-w-2xl">
-        <h1 className="text-5xl font-extrabold leading-tight mb-4">
-          Launch securely. Dominate the hype.
-        </h1>
-        <p className="text-lg mb-6">
+    <section className="relative pt-20 pb-16 bg-gradient-to-r from-[#0f172a] to-[#1f2235]">
+      <div className="max-w-5xl mx-auto px-6 text-center">
+        <div className="inline-block mb-6">
+          <h1 className="text-5xl md:text-6xl font-extrabold leading-tight text-white">
+            Launch securely. Dominate the hype.
+          </h1>
+        </div>
+        <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
           Next-gen multi-chain launchpad with meme coin tools, staking, graduated launches, and rug-proof launch intelligence. Built for creators and investors who demand speed and security.
         </p>
-        <div className="inline-block">
-          <button className="bg-accent text-black px-6 py-3 rounded-full font-semibold uppercase tracking-wider hover:brightness-105 transition">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/launchpad"
+            className="px-8 py-4 bg-accent text-black font-semibold rounded-full uppercase tracking-wider shadow hover:brightness-105 transition"
+          >
             Get Started
-          </button>
+          </a>
+          <a
+            href="/presale"
+            className="px-8 py-4 border border-white text-white font-semibold rounded-full uppercase tracking-wider hover:bg-white hover:text-black transition"
+          >
+            View Presale
+          </a>
         </div>
       </div>
     </section>
