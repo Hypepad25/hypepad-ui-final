@@ -59,4 +59,5 @@ export default function Footer() {
         <p className="mt-1">Built for creators and investors who demand security and speed.</p>
       </div>
     </footer>
+  );
 }
