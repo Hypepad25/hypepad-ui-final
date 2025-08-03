@@ -1,3 +1,4 @@
+// src/wallet/setup.js
 import '@rainbow-me/rainbowkit/styles.css';
 import {
   getDefaultWallets,
@@ -7,6 +8,8 @@ import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { mainnet, goerli } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 
+const projectId = process.env.WALLETCONNECT_PROJECT_ID || '';
+
 const { chains, publicClient } = configureChains(
   [mainnet, goerli],
   [publicProvider()]
@@ -14,6 +17,7 @@ const { chains, publicClient } = configureChains(
 
 const { connectors } = getDefaultWallets({
   appName: 'HYPEPAD',
+  projectId: projectId, // required for RainbowKit / WalletConnect v2
   chains,
 });
 
