@@ -6,11 +6,9 @@ import {
   RainbowKitProvider,
   ConnectButton,
 } from '@rainbow-me/rainbowkit';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import { WagmiConfig, createConfig, configureChains } from 'wagmi';
 import { mainnet, goerli } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
-
-const projectId = process.env.WALLETCONNECT_PROJECT_ID || '';
 
 const { chains, publicClient } = configureChains(
   [mainnet, goerli],
@@ -19,7 +17,6 @@ const { chains, publicClient } = configureChains(
 
 const { connectors } = getDefaultWallets({
   appName: 'HYPEPAD',
-  projectId,
   chains,
 });
 

@@ -1,3 +1,4 @@
+// frontend/src/pages/Presale.jsx
 import React, { useState, useEffect } from 'react';
 import SEO from '../components/SEO.jsx';
 import { useAccount, useBalance } from 'wagmi';
@@ -70,9 +71,9 @@ export default function Presale() {
           </div>
           <div className="w-full bg-[#272f4a] rounded-full h-4 overflow-hidden">
             <div
-                className="bg-accent h-full rounded-full transition-all"
-                style={{ width: `${progress * 100}%` }}
-              />
+              className="bg-accent h-full rounded-full transition-all"
+              style={{ width: `${progress * 100}%` }}
+            />
           </div>
         </div>
 

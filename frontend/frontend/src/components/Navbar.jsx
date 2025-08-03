@@ -34,18 +34,17 @@ export default function Navbar() {
     return () => document.removeEventListener('mousedown', handle);
   }, []);
   return (
-    <header className="w-full bg-[#0f172a] text-white flex items-center justify-between px-4 md:px-8 py-3 relative z-30">
+    <header className="w-full bg-[#0f172a] text-white flex flex-wrap items-center justify-between px-4 md:px-8 py-3 relative z-30">
       <div className="flex items-center gap-3">
         <img
           src="/rocket-logo.svg"
           alt="HYPEPAD"
-          className="h-14 w-auto mr-2"
+          className="h-16 w-auto mr-2"
           style={{ display: 'block' }}
         />
-        <span className="font-bold text-xl tracking-wider">HYPEPAD</span>
+        <span className="font-bold text-2xl tracking-wider">HYPEPAD</span>
       </div>
-
-      <div className="hidden md:flex items-center gap-4 flex-1 overflow-visible">
+      <nav className="hidden md:flex items-center gap-4 flex-1 overflow-visible ml-6 flex-wrap">
         {PRIMARY_LINKS.map(([label, href]) => (
           <a key={href} href={href} className="hover:underline text-sm font-medium whitespace-nowrap">
             {label}
@@ -65,16 +64,38 @@ export default function Navbar() {
             </div>
           )}
         </div>
-      </div>
-
-      <div className="flex items-center gap-4">
-        <a href="/presale" className="px-4 py-2 bg-accent text-black rounded-full font-semibold">Presale</a>
+      </nav>
+      <div className="flex items-center gap-4 ml-auto">
+        <a href="/presale" className="px-4 py-2 bg-accent text-black rounded-full font-semibold">
+          Presale
+        </a>
         <div className="md:hidden relative">
           <button aria-label="Menu" onClick={() => setMobileOpen(o => !o)} className="flex flex-col gap-1">
             <span className={`block w-6 h-0.5 bg-white transition-transform ${mobileOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
             <span className={`block w-6 h-0.5 bg-white transition-opacity ${mobileOpen ? 'opacity-0' : 'opacity-100'}`} />
             <span className={`block w-6 h-0.5 bg-white transition-transform ${mobileOpen ? '-rotate-45 -translate-y-1.5' : ''}`} />
           </button>
+          {mobileOpen && (
+            <div className="fixed inset-0 z-40 flex">
+              <div className="flex-1 bg-black/60" onClick={() => setMobileOpen(false)} />
+              <div className="w-72 bg-[#1f2937] p-6 flex flex-col gap-5 overflow-auto">
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <img src="/rocket-logo.svg" alt="HYPEPAD" className="h-6 w-auto" />
+                    <span className="font-bold text-lg">HYPEPAD</span>
+                  </div>
+                  <button onClick={() => setMobileOpen(false)} className="text-white text-2xl">×</button>
+                </div>
+                <nav className="flex flex-col gap-3 text-sm">
+                  {[...PRIMARY_LINKS, ...EXTRA_LINKS].map(([label, href]) => (
+                    <a key={href} href={href} className="hover:underline" onClick={() => setMobileOpen(false)}>
+                      {label}
+                    </a>
+                  ))}
+                </nav>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </header>

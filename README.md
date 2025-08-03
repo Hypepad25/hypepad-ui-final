@@ -1,16 +1,19 @@
-# Stable v1 fix bundle
+# Hotfix Stable Launch Bundle
 
-This includes:
-- wagmi v1 + RainbowKit v0.7.4 compatibility, using publicProvider (no missing specifier)
-- Hero, Navbar, Presale with ConnectButton
-- Wallet setup and favicon/logo references
+## Summary
+This bundle pins versions to the compatible older stack so you can deploy immediately:
+- RainbowKit v0.7.4 + wagmi@0.7.6 + ethers (no viem) avoids previous dependency/specifier errors.
+- Hero, Navbar, Presale, Wallet setup, and assets included.
+- React plugin via Vite is assumed in existing config; if not, add @vitejs/plugin-react in devDependencies.
 
-Apply:
+## Steps
 cd frontend
 rm -rf node_modules package-lock.json
-npm ci
-echo "WALLETCONNECT_PROJECT_ID=your_project_id_here" > .env
+npm install --legacy-peer-deps
 npm run build
 git add .
-git commit -m "apply stable v1 UI + wallet fix"
+git commit -m "hotfix: stable v0.7.4/wagmi 0.7.6 build for launch"
 git push origin main
+
+Deploy on Vercel with cache cleared. No WalletConnect v2 projectId needed for basic connect.
+
