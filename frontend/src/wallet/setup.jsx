@@ -1,4 +1,3 @@
-// frontend/src/wallet/setup.jsx
 import React from 'react';
 import '@rainbow-me/rainbowkit/styles.css';
 import {
@@ -6,7 +5,7 @@ import {
   RainbowKitProvider,
   ConnectButton,
 } from '@rainbow-me/rainbowkit';
-import { WagmiConfig, createConfig, configureChains } from 'wagmi';
+import { WagmiConfig, createClient, configureChains } from 'wagmi';
 import { mainnet, goerli } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 
@@ -20,7 +19,7 @@ const { connectors } = getDefaultWallets({
   chains,
 });
 
-const wagmiConfig = createConfig({
+const wagmiClient = createClient({
   autoConnect: true,
   connectors,
   publicClient,
@@ -28,7 +27,7 @@ const wagmiConfig = createConfig({
 
 export function WalletProvider({ children }) {
   return (
-    <WagmiConfig config={wagmiConfig}>
+    <WagmiConfig config={wagmiClient}>
       <RainbowKitProvider chains={chains}>
         {children}
       </RainbowKitProvider>
