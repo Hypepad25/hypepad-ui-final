@@ -6,17 +6,13 @@ import {
   RainbowKitProvider,
   ConnectButton,
 } from '@rainbow-me/rainbowkit';
-import { WagmiConfig } from 'wagmi';
-import {
-  configureChains,
-  createConfig,
-} from '@wagmi/core';
-import { mainnet, goerli } from '@wagmi/core/chains';
-import { publicProvider } from '@wagmi/core/providers/public';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import { mainnet, goerli } from 'wagmi/chains';
+import { publicProvider } from 'wagmi/providers/public';
 
 const projectId = process.env.WALLETCONNECT_PROJECT_ID || '';
 
-const { chains, publicClient, webSocketPublicClient } = configureChains(
+const { chains, publicClient } = configureChains(
   [mainnet, goerli],
   [publicProvider()]
 );
@@ -31,7 +27,6 @@ const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
   publicClient,
-  webSocketPublicClient,
 });
 
 export function WalletProvider({ children }) {
