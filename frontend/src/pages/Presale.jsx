@@ -1,12 +1,13 @@
-import React from 'react';
+// src/pages/Presale.jsx
+import React, { useState, useEffect } from 'react';
 import SEO from '../components/SEO.jsx';
 import { useAccount, useBalance } from 'wagmi';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { ConnectButton } from '../wallet/setup.js'; // re-exported
 
 function Countdown({ target }) {
-  const [remaining, setRemaining] = React.useState(() => Math.max(0, target - Date.now()));
+  const [remaining, setRemaining] = useState(() => Math.max(0, target - Date.now()));
 
-  React.useEffect(() => {
+  useEffect(() => {
     const iv = setInterval(() => {
       setRemaining(Math.max(0, target - Date.now()));
     }, 1000);
@@ -31,13 +32,14 @@ function Countdown({ target }) {
 }
 
 export default function Presale() {
-  const startTimestamp = Date.now() + 1000 * 60 * 60 * 24;
-  const totalAllocation = 1000000;
-  const sold = 250000;
+  const startTimestamp = Date.now() + 1000 * 60 * 60 * 24; // 24h from now
+  const totalAllocation = 1000000; // tokens
+  const [sold] = useState(250000); // example
   const progress = Math.min(1, sold / totalAllocation);
+
   const { address, isConnected } = useAccount();
   const { data: balance } = useBalance({
-    address,
+    address: address,
     watch: true,
   });
 
@@ -45,10 +47,17 @@ export default function Presale() {
     <>
       <SEO title="Presale | HYPEPAD" description="Join the HYPEPAD presale. Secure, graduated launches with rug-proof intelligence." />
       <div className="max-w-4xl mx-auto px-6 py-12">
-        <h1 className="text-4xl font-bold mb-2">Presale</h1>
-        <p className="text-gray-300 mb-6">
-          Participate in the upcoming presale. Secure your spot, view progress, and connect your wallet to join.
-        </p>
+        <div className="flex justify-between items-center mb-6">
+          <div>
+            <h1 className="text-4xl font-bold mb-2">Presale</h1>
+            <p className="text-gray-300">
+              Participate in the upcoming presale. Secure your spot, view progress, and connect your wallet to join.
+            </p>
+          </div>
+          <div>
+            <ConnectButton />
+          </div>
+        </div>
 
         <Countdown target={startTimestamp} />
 
@@ -79,12 +88,21 @@ export default function Presale() {
               <div className="mb-2">
                 Balance: {balance ? balance.formatted + ' ' + balance.symbol : '...'}
               </div>
-              <button className="px-6 py-3 bg-accent text-black font-semibold rounded-full">
+              <button
+                className="px-6 py-3 bg-accent text-black font-semibold rounded-full"
+                onClick={() => {
+                  alert('Participate logic goes here');
+                }}
+              >
                 Participate
               </button>
             </div>
           ) : (
-            <ConnectButton />
+            <div className="text-center">
+              <p className="text-sm text-gray-400 mb-2">
+                Connect your wallet to participate
+              </p>
+            </div>
           )}
         </div>
 
