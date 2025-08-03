@@ -1,37 +1,31 @@
-HYPEPAD QUICK FIXES BUNDLE
+# HYPEPAD All-in-One Working Bundle
 
-Included:
-- Header.jsx : responsive header React component with mobile menu, wallet button, logo placeholder, and badges.
-- HeroSection.jsx : updated hero section component with layout, slogan, CTA, and banner.
-- styles.css : standalone CSS for non-React fallback (header + hero + general theming).
+## What’s included
+- Full frontend scaffold with Vite + React + Tailwind fallback.
+- SEO component, Navbar (large logo), Hero (no presale badge), Footer.
+- Presale page with countdown, progress, and RainbowKit ConnectButton wallet connect.
+- Wallet setup using RainbowKit v2 / wagmi v2 / viem v2 with required projectId support.
+- Correct build config (vite.config.js) including React plugin.
+- Dependencies in package.json aligned for successful build.
 
-Instructions:
-1. For React project:
-   - Copy Header.jsx and HeroSection.jsx into your components folder.
-   - Import and render in your App, e.g.:
-     import Header from './components/Header';
-     import HeroSection from './components/HeroSection';
-     <Header />
-     <HeroSection />
-   - Ensure assets exist: /logo-192.png, /hypepad-banner.jpg
-   - Build and deploy.
+## Quick start
 
-2. For static fallback:
-   - Include styles.css in <head>:
-     <link rel="stylesheet" href="/styles.css" />
-   - Inline header HTML (see previous message) and hero HTML.
-   - Replace logo and banner placeholders.
+1. Push this into your repository root:
+   ```bash
+   cd frontend
+   npm ci
+   echo "WALLETCONNECT_PROJECT_ID=your_project_id_here" > .env
+   npm run build
+   git add .
+   git commit -m "chore: use all-in-one working bundle with wallet connect and UI"
+   git push origin main
+   ```
 
-3. Add SEO JSON-LD in head as needed:
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"WebApplication",
-  "name":"HYPEPAD Launchpad",
-  "url":"https://yourdomain.com",
-  "description":"Multi-chain token launchpad with rug-proof graduation, security, and growth tools for creators and investors."
-}
-</script>
+2. In Vercel dashboard, set environment variable:
+   - `WALLETCONNECT_PROJECT_ID` = your real project ID
 
-4. Commit & push to trigger deployment.
+3. Deploy with “Clear cache and deploy” to ensure fresh install.
 
+## Notes
+- Replace placeholder presale participation with real logic.
+- Ensure assets like `rocket-logo.svg` and `favicon.png` are in `public/` in your repo.
