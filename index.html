@@ -1,278 +1,86 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<title>HYPEPAD Launchpad & Presale</title>
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="description" content="Launch. Graduate. Grow. Multi-chain, rug-proof token launches with built-in growth and investor trust on HYPEPAD." />
-<meta name="keywords" content="crypto launchpad, rug-proof graduation, multi-chain token launch, HYPEPAD presale, investor security, meme coin launcher" />
-<link rel="icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/logo-192.png" />
-<link rel="canonical" href="https://yourdomain.com/" />
-<meta property="og:title" content="HYPEPAD Launchpad & Presale" />
-<meta property="og:description" content="Launch. Graduate. Grow. Secure, multi-chain token launches with built-in growth engine and investor trust." />
-<meta property="og:image" content="/assets/hypepad-banner-integrated.jpg" />
-<meta name="twitter:card" content="summary_large_image" />
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"WebApplication",
-  "name":"HYPEPAD Launchpad",
-  "url":"https://yourdomain.com",
-  "description":"Unified multi-chain launchpad with rug-proof graduation, investor trust scoring, and growth engine."
-}
-</script>
+<meta charset="utf-8"/>
+<title>HYPEPAD</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link rel="icon" href="/favicon.ico"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/logo-192.png"/>
 <style>
-:root {--bg:#0f111a;--fg:#f5f5f5;--accent:#ff8600;--radius:16px;--muted:#555;}
-*{box-sizing:border-box;}
-body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--fg);line-height:1.5;}
-a{color:inherit;text-decoration:none;}
-h1{font-size:2.8rem;margin:0;font-weight:700;}
-h2{font-size:2rem;margin:0 0 12px;font-weight:700;}
-.container{max-width:1200px;margin:0 auto;padding:0 16px;}
-.sticky{position:sticky;top:0;z-index:100;}
-.header{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px;flex-wrap:wrap;}
-.brand{display:flex;align-items:center;gap:8px;}
-.brand img{height:36px;width:auto;}
-.nav{display:flex;gap:16px;font-size:0.9rem;flex-wrap:wrap;}
-.nav a{position:relative;padding:6px 4px;}
-.nav a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:3px;background:linear-gradient(90deg,var(--accent),#ffcc66);border-radius:2px;transition:width .25s;}
-.nav a:hover::after{width:100%;}
-.actions{display:flex;align-items:center;gap:12px;position:relative;flex-wrap:wrap;}
-.badge{background:#1f2230;padding:6px 12px;border-radius:999px;font-size:11px;display:flex;gap:6px;align-items:center;}
-.wallet-btn{background: linear-gradient(90deg,var(--accent) 0%, #ff6600 100%);padding:10px 18px;border-radius:999px;font-weight:600;color:#000;border:none;cursor:pointer;white-space:nowrap;box-shadow:0 20px 50px -10px rgba(255,134,0,0.5);transition:filter .2s;}
-.wallet-btn:hover{filter:brightness(1.05);}
-.hamburger{display:none;background:none;border:none;flex-direction:column;gap:4px;padding:6px;cursor:pointer;}
-.hamburger span{display:block;width:24px;height:3px;background:#fff;border-radius:2px;transition:transform .2s, opacity .2s;}
-.mobile-menu{position:fixed;top:0;right:0;bottom:0;width:260px;background:#0f111a;border-left:1px solid rgba(255,255,255,0.08);padding:20px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;}
-.mobile-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:40;}
-.hero{position:relative;display:flex;flex-wrap:wrap;gap:40px;padding:80px 16px;align-items:center;overflow:hidden;}
-.banner{flex:1;min-width:300px;position:relative;border-radius:16px;overflow:hidden;}
-.banner::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,17,26,.6),rgba(31,34,48,.6));mix-blend-mode:overlay;}
-.banner img{width:100%;display:block;object-fit:cover;}
-.hero-content{flex:1;min-width:280px;}
-.cta-primary{display:inline-block;background:var(--accent);padding:16px 28px;border-radius:999px;font-weight:700;color:#000;margin-top:16px;text-decoration:none;}
-.features{padding:60px 16px;}
-.feature-grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:16px;}
-.card{background:#1f2230;padding:24px;border-radius:16px;position:relative;overflow:hidden;box-shadow:0 30px 70px -20px rgba(255,134,0,0.25);min-height:140px;}
-.card strong{display:block;font-size:1.1rem;margin-bottom:8px;}
-.pitch{padding:60px 16px;background:linear-gradient(135deg,#0f111a,#1f2230);}
-.pitch-grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:20px;}
-.support{padding:50px 16px;background:#0f142b;border-radius:16px;margin:40px 0;}
-.support-grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));}
-.footer{padding:60px 16px;font-size:14px;color:#aaa;}
-.footer-inner{display:flex;flex-wrap:wrap;gap:30px;max-width:1100px;margin:0 auto;}
-.footer-col{flex:1;min-width:220px;}
-.footer a{color:#fff;display:block;margin-bottom:6px;}
-.copy{text-align:center;margin-top:30px;font-size:13px;opacity:0.7;}
-.badge-small{background:#1f2230;padding:4px 10px;border-radius:999px;font-size:10px;display:inline-block;}
-@media (max-width:1024px){.nav{display:none;}.hamburger{display:flex;}}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;background:#0f111a;color:#f5f5f5;}
+.container{max-width:1100px;margin:0 auto;padding:16px;}
+.header{display:flex;justify-content:space-between;align-items:center;padding:20px;}
+.brand{display:flex;gap:8px;align-items:center;}
+.nav{display:flex;gap:16px;flex-wrap:wrap;}
+a{color:inherit;text-decoration:none;font-weight:600;}
+.hero{padding:100px 16px;display:flex;gap:40px;flex-wrap:wrap;align-items:center;}
+.banner{flex:1;min-width:280px;border-radius:16px;overflow:hidden;position:relative;}
+.banner img{width:100%;display:block;border-radius:12px;object-fit:cover;}
+.cta{background:#ff8600;color:#000;padding:16px 28px;border-radius:999px;font-weight:700;display:inline-block;margin-right:10px;}
+.features{margin-top:60px;display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
+.card{background:#1f2230;padding:20px;border-radius:16px;box-shadow:0 25px 60px -15px rgba(255,134,0,0.25);}
+.footer{margin-top:80px;padding:40px;font-size:14px;display:flex;gap:40px;flex-wrap:wrap;}
+.footer-col{flex:1;min-width:200px;}
 </style>
 </head>
 <body>
-
-<!-- HEADER -->
-<div class="sticky">
   <div class="container">
-    <div class="header">
+    <header class="header">
       <div class="brand">
-        <img src="/logo-192.png" alt="HYPEPAD Logo" />
-        <div style="font-weight:700;letter-spacing:1px;">HYPEPAD</div>
+        <img src="logo-192.png" alt="logo" style="height:36px;"/>
+        <div style="font-weight:700;font-size:1.2rem;">HYPEPAD</div>
       </div>
-      <div class="nav">
-        <a href="/">Home</a>
-        <a href="/presale">Presale</a>
-        <a href="/launch">Launch</a>
-        <a href="/token">Token Creator</a>
-        <a href="/meme">Meme Launcher</a>
-        <a href="/dashboard">Dashboard</a>
+      <nav class="nav">
+        <a href="launch.html">Launch</a>
+        <a href="hype_presale.html">$HYPE Presale</a>
+        <a href="launch.html#presale">Presale/IDO</a>
         <a href="/docs">Docs</a>
         <a href="/community">Community</a>
-        <a href="/faq">FAQ</a>
-        <div style="position:relative;">
-          <a href="#">Support ▾</a>
-          <div style="position:absolute; top:28px; left:0; background:#1f2230; border-radius:8px; padding:10px; display:flex; flex-direction:column; gap:6px; min-width:180px; box-shadow:0 15px 40px rgba(0,0,0,0.5);">
-            <a href="https://t.me/HYPEPAD_OFFICIAL" target="_blank">Telegram</a>
-            <a href="mailto:contact@hypepad.app">Email Support</a>
-          </div>
-        </div>
+      </nav>
+    </header>
+    <section class="hero">
+      <div class="hero-text" style="flex:1;min-width:280px;">
+        <h1 style="font-size:2.8rem;margin:0;">Launch. Graduate. Grow.</h1>
+        <p style="font-size:1.1rem;">HYPEPAD is a multi-chain rug-proof launchpad aligning incentives between creators, investors, and the community. Back the ecosystem early via the <a href="hype_presale.html" style="color:#ffcc66;">$HYPE Presale</a>.</p>
+        <a class="cta" href="hype_presale.html">Join $HYPE Presale</a>
+        <a class="cta" href="launch.html">View Launch / IDO</a>
       </div>
-      <div class="actions">
-        <div class="badge">
-          <div>Live Projects: <strong style="margin-left:4px;">128</strong></div>
-          <div style="margin:0 6px;">•</div>
-          <div>Security Score: <strong style="margin-left:4px;">9.8</strong></div>
-        </div>
-        <button class="wallet-btn">Connect Wallet</button>
-        <button class="hamburger" id="mobileToggle" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
+      <div class="banner">
+        <img src="assets/hypepad-banner-integrated.jpg" alt="banner"/>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- Mobile menu -->
-<div id="mobileMenuContainer" style="display:none;">
-  <div class="mobile-backdrop" id="backdrop"></div>
-  <div class="mobile-menu" id="mobileMenu">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-      <div class="brand"><img src="/logo-192.png" alt="HYPEPAD" style="height:28px;"/><div style="margin-left:6px;font-weight:700;">HYPEPAD</div></div>
-      <button aria-label="Close" id="mobileClose" style="background:none;border:none;color:#fff;font-size:22px;cursor:pointer;">&times;</button>
-    </div>
-    <a href="/">Home</a>
-    <a href="/presale">Presale</a>
-    <a href="/launch">Launch</a>
-    <a href="/token">Token Creator</a>
-    <a href="/meme">Meme Launcher</a>
-    <a href="/dashboard">Dashboard</a>
-    <a href="/docs">Docs</a>
-    <a href="/community">Community</a>
-    <a href="/faq">FAQ</a>
-    <div style="margin-top:12px;">
-      <div class="badge-small">Support</div>
-      <a href="https://t.me/HYPEPAD_OFFICIAL" target="_blank">Telegram</a>
-      <a href="mailto:contact@hypepad.app">Email Support</a>
-    </div>
-  </div>
-</div>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <div class="container">
-      <h1>Launch. Graduate. Grow.</h1>
-      <p style="margin-top:8px;font-size:1.1rem;">Multi-chain token launches with rug-proof security and a built-in growth engine that rewards creators and investors alike.</p>
-      <a href="/presale" class="cta-primary">Join $HYPE Presale</a>
-      <a href="/launch" class="cta-primary" style="margin-left:12px;background:rgba(255,255,255,0.1);color:#fff;">Launch Your Token</a>
-    </div>
-  </div>
-  <div class="banner">
-    <img src="/assets/hypepad-banner-integrated.jpg" alt="HYPEPAD Banner"/>
-  </div>
-</section>
-
-<!-- WHY HYPEPAD -->
-<section class="features">
-  <div class="container">
-    <h2>Why HYPEPAD</h2>
-    <div class="feature-grid">
+    </section>
+    <section class="features">
       <div class="card">
-        <strong>Rug-Proof Graduation</strong>
-        <p>Mandatory LP burn and anti-rug mechanics protect investors and build trust.</p>
+        <h2>Why HYPEPAD</h2>
+        <p>Multi-chain, rug-proof graduation, and revenue sharing with holders. Participate early in the <a href="hype_presale.html" style="color:#ffcc66;">$HYPE Presale</a> for priority access.</p>
       </div>
       <div class="card">
-        <strong>Multi-Chain Reach</strong>
-        <p>Deploy on Solana and EVM chains from one dashboard to maximize liquidity.</p>
+        <h3>Presale & IDO</h3>
+        <p>The presale and IDO live in one unified flow. <a href="launch.html" style="color:#ffcc66;">See the current stage</a> and get in before public launch.</p>
       </div>
-      <div class="card">
-        <strong>Growth Engine</strong>
-        <p>Trending slots, referral commissions, KOL spotlighting, and graduated project promotion.</p>
+    </section>
+    <footer class="footer">
+      <div class="footer-col">
+        <div style="font-weight:700;">HYPEPAD</div>
+        <p>Secure, multi-chain launchpad with rug-proof graduation and growth engine.</p>
       </div>
-      <div class="card">
-        <strong>Investor Trust</strong>
-        <p>Real-time risk scoring, audit readiness, KYC/SAFU badges, and transparent metrics.</p>
+      <div class="footer-col">
+        <div style="font-weight:600;">Links</div>
+        <a href="hype_presale.html">$HYPE Presale</a><br/>
+        <a href="launch.html">Launch</a><br/>
+        <a href="/docs">Docs</a><br/>
+        <a href="https://t.me/HYPEPAD_OFFICIAL" target="_blank">Telegram</a>
       </div>
-    </div>
+      <div class="footer-col">
+        <div style="font-weight:600;">Support</div>
+        <a href="https://t.me/HYPEPAD_OFFICIAL" target="_blank">Telegram</a><br/>
+        <a href="mailto:contact@hypepad.app">Email</a>
+      </div>
+      <div class="footer-col">
+        <div style="font-weight:600;">Investors</div>
+        <p>Early backers get revenue share, vesting transparency, and priority launch access.</p>
+      </div>
+    </footer>
   </div>
-</section>
-
-<!-- SUPPORT -->
-<section class="support">
-  <div class="container">
-    <h2>Support & Community</h2>
-    <div class="support-grid">
-      <div>
-        <strong>Need Help?</strong>
-        <p>Reach out via our support channels.</p>
-        <p><a href="https://t.me/HYPEPAD_OFFICIAL" target="_blank">Telegram Community</a></p>
-        <p><a href="mailto:contact@hypepad.app">Email: contact@hypepad.app</a></p>
-      </div>
-      <div>
-        <strong>Join the Network</strong>
-        <p>Stay updated with launches, graduations, and exclusive invites.</p>
-        <p>Subscribe to our newsletter or follow on social channels for real-time updates.</p>
-      </div>
-      <div>
-        <strong>Why Choose Us</strong>
-        <p>Security-first launches, multi-chain distribution, and built-in growth loops ensure maximum adoption and investor confidence.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- INVESTOR PITCH -->
-<section class="pitch">
-  <div class="container">
-    <h2>Why Invest in HYPEPAD?</h2>
-    <p style="margin-top:8px;color:#ccc;">HYPEPAD combines trust, scalability, and network effects to power the next generation of token launches. Investors get visibility into risk, creators get growth, and the ecosystem compounds.</p>
-    <div class="pitch-grid">
-      <div class="card">
-        <h3 style="margin-top:0;">Security First</h3>
-        <p>Graduation with mandatory LP burn, anti-rug safeguards, and identity/verification badges.</p>
-      </div>
-      <div class="card">
-        <h3 style="margin-top:0;">Multi-Chain Distribution</h3>
-        <p>One launchpad to reach Solana and EVM audiences simultaneously.</p>
-      </div>
-      <div class="card">
-        <h3 style="margin-top:0;">Built-in Growth</h3>
-        <p>Referral rewards, trending boosts, and spotlighted graduated projects.</p>
-      </div>
-      <div class="card">
-        <h3 style="margin-top:0;">Compound Network Effects</h3>
-        <p>Affiliate loops and featured projects drive organic adoption and credibility.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-col">
-      <div style="font-weight:700;font-size:16px;">HYPEPAD</div>
-      <p>Secure, multi-chain, rug-proof token launchpad built for creators and investors.</p>
-    </div>
-    <div class="footer-col">
-      <div style="font-weight:600;">Links</div>
-      <a href="/">Home</a>
-      <a href="/presale">Presale</a>
-      <a href="/launch">Launch</a>
-      <a href="/token">Token Creator</a>
-      <a href="/meme">Meme Launcher</a>
-      <a href="/dashboard">Dashboard</a>
-      <a href="/docs">Docs</a>
-      <a href="/community">Community</a>
-      <a href="/faq">FAQ</a>
-    </div>
-    <div class="footer-col">
-      <div style="font-weight:600;">Support</div>
-      <a href="https://t.me/HYPEPAD_OFFICIAL" target="_blank">Telegram</a>
-      <a href="mailto:contact@hypepad.app">Email</a>
-      <a href="/terms">Terms of Service</a>
-      <a href="/privacy">Privacy Policy</a>
-    </div>
-    <div class="footer-col">
-      <div style="font-weight:600;">Investor</div>
-      <p>Lower fees, transparent mechanics, and built-in trust grading make HYPEPAD a preferred platform for reliable launches.</p>
-    </div>
-  </div>
-  <div class="copy">&copy; 2025 HYPEPAD. All rights reserved.</div>
-</footer>
-
-<script>
-const mobileToggle=document.getElementById('mobileToggle');
-const mobileMenuContainer=document.getElementById('mobileMenuContainer');
-const mobileMenu=document.getElementById('mobileMenu');
-const backdrop=document.getElementById('backdrop');
-const mobileClose=document.getElementById('mobileClose');
-function openMenu(){ mobileMenuContainer.style.display='block'; }
-function closeMenu(){ mobileMenuContainer.style.display='none'; }
-mobileToggle.addEventListener('click', openMenu);
-mobileClose.addEventListener('click', closeMenu);
-backdrop.addEventListener('click', closeMenu);
-</script>
-
 </body>
 </html>

@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>$HYPE Presale Dashboard</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description" content="Participate in the $HYPE presale. See remaining tokens, progress, vesting schedule, and claim vested tokens." />
+<link rel="icon" href="/favicon.ico" />
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.9.0/dist/ethers.min.js" integrity="" crossorigin="anonymous"></script>
+<style>
+:root{--bg:#0f111a;--fg:#f5f5f5;--accent:#ff8600;--radius:12px;}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--fg);}
+.container{max-width:1000px;margin:0 auto;padding:20px;}
+.card{background:#1f2230;border-radius:16px;padding:24px;box-shadow:0 25px 60px -15px rgba(255,134,0,0.25);margin-bottom:20px;}
+h1,h2{margin:0 0 12px;font-weight:700;}
+.small{font-size:.9rem;color:#bbb;}
+.progress-wrapper{background:rgba(255,255,255,0.07);border-radius:999px;overflow:hidden;position:relative;height:16px;margin:6px 0;}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),#ffcc66);transition:width .4s;}
+.label-row{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;margin-top:4px;}
+.btn{background:var(--accent);color:#000;padding:14px 28px;border:none;border-radius:999px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;margin-right:10px;}
+.rounds{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
+.table{width:100%;border-collapse:collapse;margin-top:8px;}
+.table th, .table td{padding:10px;border:1px solid rgba(255,255,255,0.08);text-align:left;font-size:.9rem;}
+.vesting-box{background:#0f142b;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px;margin-bottom:12px;}
+input, select{padding:8px;border-radius:6px;border:1px solid rgba(255,255,255,0.2);background:#1f2230;color:#fff;width:100%;margin-bottom:6px;}
+.claim-panel{display:flex;gap:20px;flex-wrap:wrap;}
+.claim-info{flex:1;min-width:220px;}
+</style>
+</head>
+<body>
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:20px;">
+      <div>
+        <h1>$HYPE Presale Dashboard</h1>
+        <div class="small">Early access presale before the public IDO. Back the launchpad, earn rewards, and claim vested tokens.</div>
+      </div>
+      <div>
+        <button class="btn" id="connectWalletBtn">Connect Wallet</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Presale Progress</h2>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:200px;">
+          <div class="label-row">
+            <div>Total Presale Allocation</div>
+            <div id="totalAllocationLabel">100,000,000</div>
+          </div>
+          <div class="label-row">
+            <div>Sold</div>
+            <div id="soldLabel">25,000,000</div>
+          </div>
+          <div class="label-row">
+            <div>Remaining</div>
+            <div id="remainingLabel">75,000,000</div>
+          </div>
+        </div>
+        <div style="flex:2;min-width:220px;">
+          <div class="progress-wrapper">
+            <div class="progress-bar" id="progressBar" style="width:25%;"></div>
+          </div>
+          <div class="label-row">
+            <div><span class="small">Presale filled</span></div>
+            <div><span id="percentLabel">25%</span></div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:12px;">
+        <span class="badge">Presale Price: <strong>$0.01</strong></span>
+        <span class="badge">Soft Cap: <strong>$100,000</strong></span>
+        <span class="badge">Hard Cap: <strong>$500,000</strong></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Claim & Vesting</h2>
+      <div class="claim-panel">
+        <div class="claim-info">
+          <h3>Your Allocation</h3>
+          <div id="userAddress">Not connected</div>
+          <div class="small">Connected wallet shows vesting status below.</div>
+          <div class="label-row"><div>Total Allocated:</div><div id="allocAmount">—</div></div>
+          <div class="label-row"><div>Total Claimed:</div><div id="claimedAmount">—</div></div>
+          <div class="label-row"><div>Currently Vested:</div><div id="vestedAmount">—</div></div>
+          <div class="label-row"><div>Claimable:</div><div id="claimableAmount">—</div></div>
+          <button class="btn" id="claimBtn" disabled>Claim Available</button>
+        </div>
+        <div class="vesting-box" style="flex:1;min-width:220px;">
+          <h3>Vesting Tiers</h3>
+          <div>
+            <label>Tier:</label>
+            <select id="tierSelect">
+              <option value="1">Tier 1: Founders/Early Backers</option>
+              <option value="2">Tier 2: Strategic/Advisors</option>
+              <option value="3">Tier 3: Public Early</option>
+            </select>
+          </div>
+          <div>
+            <label>Input Your Allocation:</label>
+            <input type="number" id="inputAlloc" placeholder="e.g., 1000000" />
+          </div>
+          <div id="calcResult">
+            <!-- dynamic vesting schedule -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Why Invest in $HYPE Presale</h2>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:200px;">
+          <div class="card" style="padding:16px;">
+            <h3>Security First</h3>
+            <p class="small">Rug-proof graduation, locked liquidity, and transparent mechanics reduce risk and build trust.</p>
+          </div>
+        </div>
+        <div style="flex:1;min-width:200px;">
+          <div class="card" style="padding:16px;">
+            <h3>Mass Adoption</h3>
+            <p class="small">Multi-chain distribution, referral growth loops, and featured launches compound network effects.</p>
+          </div>
+        </div>
+        <div style="flex:1;min-width:200px;">
+          <div class="card" style="padding:16px;">
+            <h3>Aligned Incentives</h3>
+            <p class="small">Revenue share channels rewards back to stakers and early presale participants.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Quick Stats & Comparison</h2>
+      <table class="table">
+        <tr><th>Metric</th><th>HYPEPAD Presale</th><th>Typical Launchpad</th></tr>
+        <tr><td>Rug-proof Graduation</td><td>Yes</td><td>Often No</td></tr>
+        <tr><td>Token Vesting</td><td>Tiered & Transparent</td><td>Opaque</td></tr>
+        <tr><td>Revenue Share</td><td>Holders Earn</td><td>Rare</td></tr>
+        <tr><td>Multi-Chain</td><td>Solana + EVM</td><td>Usually Single</td></tr>
+        <tr><td>Early Access</td><td>Discount + Priority</td><td>Delayed</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Next Steps</h2>
+      <ol>
+        <li>Connect your wallet.</li>
+        <li>Participate in the presale.</li>
+        <li>Claim vesting tranches as they unlock.</li>
+        <li>Stake $HYPE for revenue share.</li>
+        <li>Refer others to grow the network.</li>
+      </ol>
+    </div>
+  </div>
+
+<script>
+// Example stubbed vesting calculator
+function calcVesting(tier, alloc) {
+  const now = Date.now();
+  const TGE = now - 1000*60*60*24*30; // pretend started 30 days ago
+  let vested=0;
+  if(tier==='1'){
+    // 20% at TGE plus linear over 4 months
+    const immediate = 0.2 * alloc;
+    const monthsPassed = Math.min(4, Math.floor((now - TGE)/(1000*60*60*24*30)));
+    const linear = (monthsPassed/4)*0.8*alloc;
+    vested = immediate + linear;
+  } else if(tier==='2'){
+    // 10% at TGE, 1 month cliff, then 90% over 6 months
+    const immediate=0.1*alloc;
+    const monthsSinceTGE=Math.floor((now - TGE)/(1000*60*60*24*30));
+    let linear=0;
+    if(monthsSinceTGE>1){
+      const monthsVesting=Math.min(6, monthsSinceTGE-1);
+      linear = (monthsVesting/6)*0.9*alloc;
+    }
+    vested=immediate+linear;
+  } else {
+    // tier3: 2 month cliff, then 100% over 12
+    const monthsSinceTGE=Math.floor((now - TGE)/(1000*60*60*24*30));
+    let linear=0;
+    if(monthsSinceTGE>2){
+      const monthsVesting=Math.min(12, monthsSinceTGE-2);
+      linear = (monthsVesting/12)*alloc;
+    }
+    vested=linear;
+  }
+  return Math.min(vested, alloc);
+}
+
+function updateCalc() {
+  const tier=document.getElementById('tierSelect').value;
+  const alloc=parseFloat(document.getElementById('inputAlloc').value)||0;
+  const vested=calcVesting(tier, alloc);
+  const claimed=vested*0.3; // placeholder: assume 30% already claimed
+  const claimable=vested-claimed;
+  document.getElementById('calcResult').innerHTML=`
+    <p><strong>Vested:</strong> ${Math.round(vested).toLocaleString()}</p>
+    <p><strong>Already Claimed (example):</strong> ${Math.round(claimed).toLocaleString()}</p>
+    <p><strong>Claimable:</strong> ${Math.round(claimable).toLocaleString()}</p>
+  `;
+}
+
+document.getElementById('tierSelect').addEventListener('change', updateCalc);
+document.getElementById('inputAlloc').addEventListener('input', updateCalc);
+
+// Presale progress dummy values
+const totalAllocation=100000000;
+const sold=25000000;
+function updateProgress() {
+  const remaining=totalAllocation - sold;
+  const percent=Math.round((sold/totalAllocation)*100);
+  document.getElementById('totalAllocationLabel').textContent=totalAllocation.toLocaleString();
+  document.getElementById('soldLabel').textContent=sold.toLocaleString();
+  document.getElementById('remainingLabel').textContent=remaining.toLocaleString();
+  document.getElementById('progressBar').style.width=percent+'%';
+  document.getElementById('percentLabel').textContent=percent+'%';
+}
+updateProgress();
+
+// Wallet connect stub
+let provider;
+const connectBtn=document.getElementById('connectWalletBtn');
+connectBtn.addEventListener('click', async ()=>{
+  if(window.ethereum){
+    provider=new ethers.BrowserProvider(window.ethereum);
+    await provider.send("eth_requestAccounts", []);
+    const signer=await provider.getSigner();
+    const address=await signer.getAddress();
+    document.getElementById('userAddress').textContent=address;
+    // pretend fetch allocation/claimed
+    document.getElementById('allocAmount').textContent='1,000,000';
+    document.getElementById('claimedAmount').textContent='300,000';
+    document.getElementById('vestedAmount').textContent='500,000';
+    document.getElementById('claimableAmount').textContent='200,000';
+    document.getElementById('claimBtn').disabled=false;
+  } else {
+    alert('No wallet detected. Install MetaMask or compatible.');
+  }
+});
+
+document.getElementById('claimBtn').addEventListener('click', ()=>{ alert('Trigger claim() on presale contract here.'); });
+</script>
+</body>
+</html>
