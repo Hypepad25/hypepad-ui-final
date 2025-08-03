@@ -3,6 +3,7 @@ import '@rainbow-me/rainbowkit/styles.css';
 import {
   getDefaultWallets,
   RainbowKitProvider,
+  ConnectButton,
 } from '@rainbow-me/rainbowkit';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { mainnet, goerli } from 'wagmi/chains';
@@ -34,3 +35,5 @@ export function WalletProvider({ children }) {
     </WagmiConfig>
   );
 }
+
+export { ConnectButton };
