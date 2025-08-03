@@ -17,7 +17,7 @@ const { chains, publicClient } = configureChains(
 
 const { connectors } = getDefaultWallets({
   appName: 'HYPEPAD',
-  projectId: projectId, // required for RainbowKit / WalletConnect v2
+  projectId,
   chains,
 });
 
