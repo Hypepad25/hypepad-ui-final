@@ -1,3 +1,4 @@
+// frontend/src/wallet/setup.jsx
 import React from 'react';
 import '@rainbow-me/rainbowkit/styles.css';
 import {

@@ -1,31 +1,42 @@
-# HYPEPAD All-in-One Working Bundle
+# Final Fix Bundle
 
-## What’s included
-- Full frontend scaffold with Vite + React + Tailwind fallback.
-- SEO component, Navbar (large logo), Hero (no presale badge), Footer.
-- Presale page with countdown, progress, and RainbowKit ConnectButton wallet connect.
-- Wallet setup using RainbowKit v2 / wagmi v2 / viem v2 with required projectId support.
-- Correct build config (vite.config.js) including React plugin.
-- Dependencies in package.json aligned for successful build.
+This bundle contains the minimal wired files that address:
+- Hero banner updates (large logo, responsive headline, no presale badge)
+- Navbar with enlarged logo
+- Presale page with RainbowKit ConnectButton and wallet status
+- Wallet setup (RainbowKit v2 / wagmi v2) with projectId support
+- Favicon and SVG logo
+- Index.html with favicon links
 
-## Quick start
+## To apply:
+1. Copy these into your repo (replace existing):
+   - frontend/index.html
+   - frontend/src/components/Hero.jsx
+   - frontend/src/components/Navbar.jsx
+   - frontend/src/pages/Presale.jsx
+   - frontend/src/wallet/setup.jsx
+   - frontend/public/favicon.png
+   - frontend/public/rocket-logo.svg
 
-1. Push this into your repository root:
-   ```bash
+2. Ensure package.json has compatible deps:
+   ```
+   "@rainbow-me/rainbowkit": "^2.2.8",
+   "wagmi": "^2.9.0",
+   "viem": "^2.8.4",
+   "@vitejs/plugin-react": "^4.0.0"
+   ```
+
+3. Install, build, deploy:
+   ```
    cd frontend
+   rm -rf node_modules package-lock.json
    npm ci
    echo "WALLETCONNECT_PROJECT_ID=your_project_id_here" > .env
    npm run build
    git add .
-   git commit -m "chore: use all-in-one working bundle with wallet connect and UI"
+   git commit -m "fix: final hero/navbar/presale wallet connect favicon wiring"
    git push origin main
    ```
 
-2. In Vercel dashboard, set environment variable:
-   - `WALLETCONNECT_PROJECT_ID` = your real project ID
+4. Set `WALLETCONNECT_PROJECT_ID` in Vercel environment variables and redeploy (clear cache).
 
-3. Deploy with “Clear cache and deploy” to ensure fresh install.
-
-## Notes
-- Replace placeholder presale participation with real logic.
-- Ensure assets like `rocket-logo.svg` and `favicon.png` are in `public/` in your repo.

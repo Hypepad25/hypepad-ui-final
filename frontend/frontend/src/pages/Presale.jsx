@@ -1,3 +1,4 @@
+// frontend/src/pages/Presale.jsx
 import React, { useState, useEffect } from 'react';
 import SEO from '../components/SEO.jsx';
 import { useAccount, useBalance } from 'wagmi';
