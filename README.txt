@@ -1,16 +1,11 @@
-HYPEPAD Full Presale Integration Bundle
+HYPEPAD FINAL UI PACKAGE
 
-Includes:
-- index.html: Main homepage updated with links to $HYPE Presale and unified launch/IDO page.
-- presale_ui.html: Interactive presale dashboard with wallet connect stub (MetaMask via ethers.js), vesting calculator (three tiers), claim panel showing allocation, vested, claimable, and sample logic.
-- hype_presale.html: Standalone presale landing page linking into dashboard.
-- assets/hypepad-banner-integrated.jpg: branding banner.
-- logo-192.png, favicon.ico: brand icons.
+Contents:
+- index.html: polished homepage with full nav, mobile hamburger, header/footer, links to presale and launch.
+- launch.html: unified Presale/IDO page with tabs and content, now wrapped with consistent header/footer.
+- hype_presale.html: standalone presale landing page.
+- presale_ui.html: interactive presale dashboard (vesting calculator, claim stub), integrated.
+- assets/hypepad-banner-integrated.jpg: brand banner.
+- logo-192.png, favicon.ico: icons.
 
-Next steps:
-1. Replace placeholder contract references and implement real on-chain calls using your presale and $HYPE token contract ABIs.
-2. Hook up wallet interaction beyond stub to enable participation and claiming.
-3. Adjust vesting parameters if your real schedule differs; update the calculator logic accordingly.
-4. Deploy these files; ensure the root contains logo-192.png and favicon.ico.
-5. Update navigation on other pages to link to index.html or presale_ui.html as appropriate.
-
+Next: wire real contract logic into presale_ui.html and launch flows. Replace placeholder addresses, adapt as needed.

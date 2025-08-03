@@ -1,33 +1,115 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<title>$HYPE Presale Dashboard</title>
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="description" content="Participate in the $HYPE presale. See remaining tokens, progress, vesting schedule, and claim vested tokens." />
-<link rel="icon" href="/favicon.ico" />
-<script src="https://cdn.jsdelivr.net/npm/ethers@6.9.0/dist/ethers.min.js" integrity="" crossorigin="anonymous"></script>
+<meta charset="utf-8"/>
+<title>HYPEPAD - presale_ui</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link rel="icon" href="/favicon.ico"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/logo-192.png"/>
+<meta name="description" content="HYPEPAD presale and launch interface."/>
 <style>
-:root{--bg:#0f111a;--fg:#f5f5f5;--accent:#ff8600;--radius:12px;}
+:root{--bg:#0f111a;--fg:#f5f5f5;--accent:#ff8600;--radius:16px;}
 body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--fg);}
-.container{max-width:1000px;margin:0 auto;padding:20px;}
-.card{background:#1f2230;border-radius:16px;padding:24px;box-shadow:0 25px 60px -15px rgba(255,134,0,0.25);margin-bottom:20px;}
-h1,h2{margin:0 0 12px;font-weight:700;}
-.small{font-size:.9rem;color:#bbb;}
-.progress-wrapper{background:rgba(255,255,255,0.07);border-radius:999px;overflow:hidden;position:relative;height:16px;margin:6px 0;}
-.progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),#ffcc66);transition:width .4s;}
-.label-row{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;margin-top:4px;}
-.btn{background:var(--accent);color:#000;padding:14px 28px;border:none;border-radius:999px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;margin-right:10px;}
-.rounds{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
-.table{width:100%;border-collapse:collapse;margin-top:8px;}
-.table th, .table td{padding:10px;border:1px solid rgba(255,255,255,0.08);text-align:left;font-size:.9rem;}
-.vesting-box{background:#0f142b;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px;margin-bottom:12px;}
-input, select{padding:8px;border-radius:6px;border:1px solid rgba(255,255,255,0.2);background:#1f2230;color:#fff;width:100%;margin-bottom:6px;}
-.claim-panel{display:flex;gap:20px;flex-wrap:wrap;}
-.claim-info{flex:1;min-width:220px;}
+a{color:inherit;text-decoration:none;}
+button{cursor:pointer;}
+.site-header{position:sticky;top:0;z-index:1000;background:rgba(15,17,26,0.95);backdrop-filter:blur(8px);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.brand{display:flex;align-items:center;gap:8px;}
+.brand img{height:36px;}
+.nav{display:flex;gap:14px;align-items:center;flex-wrap:wrap;}
+.nav a{color:var(--fg);text-decoration:none;font-weight:600;position:relative;padding:6px 4px;}
+.nav a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:3px;background:linear-gradient(90deg,var(--accent),#ffcc66);border-radius:2px;transition:width .2s;}
+.nav a:hover::after{width:100%;}
+.actions{display:flex;gap:12px;align-items:center;}
+.wallet-btn{background:linear-gradient(90deg,var(--accent),#ff6600);padding:10px 18px;border:none;border-radius:999px;font-weight:700;color:#000;white-space:nowrap;}
+.hamburger{display:none;background:none;border:none;flex-direction:column;gap:4px;padding:8px;}
+.hamburger span{display:block;width:24px;height:3px;background:#fff;border-radius:3px;transition:transform .2s,opacity .2s;}
+.mobile-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;z-index:1100;}
+.mobile-menu{position:fixed;top:0;right:0;bottom:0;width:280px;background:#0f111a;padding:24px;display:flex;flex-direction:column;gap:16px;overflow-y:auto;box-shadow:-10px 0 70px -10px rgba(0,0,0,0.6);z-index:1200;transform:translateX(100%);transition:transform .25s ease;}
+.mobile-menu.open{transform:translateX(0);}
+.mobile-close{background:none;border:none;color:#fff;font-size:24px;cursor:pointer;align-self:flex-end;}
+@media (max-width:1024px){.nav{display:none;}.hamburger{display:flex;}}
 </style>
+
 </head>
 <body>
+<div class="site-header">
+  <div class="brand">
+    <a href="/"><img src="/logo-192.png" alt="HYPEPAD Logo" /></a>
+    <div style="font-weight:700;color:var(--fg);">HYPEPAD</div>
+  </div>
+  <div class="nav">
+    <a href="/">Home</a>
+    <a href="hype_presale.html">$HYPE Presale</a>
+    <a href="launch.html#presale">Presale/IDO</a>
+    <a href="launch.html">Launch</a>
+    <a href="/token">Token Creator</a>
+    <a href="/meme">Meme Launcher</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/docs">Docs</a>
+    <a href="/community">Community</a>
+    <a href="/faq">FAQ</a>
+    <div style="position:relative;">
+      <button id="supportToggle" style="background:none;border:none;color:var(--fg);cursor:pointer;font-weight:600;padding:6px 4px;">Support ▾</button>
+      <div id="supportMenu" style="position:absolute;top:32px;left:0;background:#1f2230;border-radius:8px;padding:10px;display:none;flex-direction:column;gap:6px;min-width:160px;box-shadow:0 25px 60px rgba(0,0,0,0.4);">
+        <a href="https://t.me/HYPEPAD_OFFICIAL" target="_blank">Telegram</a>
+        <a href="mailto:contact@hypepad.app">Email Support</a>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="wallet-btn">Connect Wallet</button>
+    <button class="hamburger" id="mobileToggle" aria-label="menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</div>
+<div class="mobile-overlay" id="mobileBackdrop"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">&times;</button>
+  <div class="brand" style="display:flex;gap:8px;align-items:center;margin-bottom:12px;">
+    <img src="/logo-192.png" alt="HYPEPAD" style="height:28px;"/>
+    <div style="font-weight:700;">HYPEPAD</div>
+  </div>
+  <a href="/">Home</a>
+  <a href="hype_presale.html">$HYPE Presale</a>
+  <a href="launch.html#presale">Presale/IDO</a>
+  <a href="launch.html">Launch</a>
+  <a href="/token">Token Creator</a>
+  <a href="/meme">Meme Launcher</a>
+  <a href="/dashboard">Dashboard</a>
+  <a href="/docs">Docs</a>
+  <a href="/community">Community</a>
+  <a href="/faq">FAQ</a>
+  <div style="margin-top:12px;">
+    <div style="font-weight:600;margin-bottom:4px;">Support</div>
+    <a href="https://t.me/HYPEPAD_OFFICIAL" target="_blank">Telegram</a>
+    <a href="mailto:contact@hypepad.app">Email</a>
+  </div>
+</div>
+<script>
+  const supportToggle = document.getElementById('supportToggle');
+  const supportMenu = document.getElementById('supportMenu');
+  document.addEventListener('click', e => {
+    if (supportToggle && supportToggle.contains(e.target)) {
+      supportMenu.style.display = supportMenu.style.display === 'flex' ? 'none' : 'flex';
+      supportMenu.style.flexDirection='column';
+    } else if (supportMenu && !supportMenu.contains(e.target)) {
+      supportMenu.style.display = 'none';
+    }
+  });
+  const mobileToggle = document.getElementById('mobileToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileBackdrop = document.getElementById('mobileBackdrop');
+  const mobileClose = document.getElementById('mobileClose');
+  function openMobile(){ mobileMenu.classList.add('open'); mobileBackdrop.style.display='block'; }
+  function closeMobile(){ mobileMenu.classList.remove('open'); mobileBackdrop.style.display='none'; }
+  if(mobileToggle) mobileToggle.addEventListener('click', openMobile);
+  if(mobileClose) mobileClose.addEventListener('click', closeMobile);
+  if(mobileBackdrop) mobileBackdrop.addEventListener('click', closeMobile);
+</script>
+
+<div style="max-width:1100px;margin:0 auto;padding:20px;">
+
   <div class="container">
     <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:20px;">
       <div>
@@ -243,5 +325,13 @@ connectBtn.addEventListener('click', async ()=>{
 
 document.getElementById('claimBtn').addEventListener('click', ()=>{ alert('Trigger claim() on presale contract here.'); });
 </script>
+
+</div>
+<footer style="padding:60px 16px;display:flex;gap:40px;flex-wrap:wrap;font-size:14px;">
+  <div style="flex:1;min-width:220px;"><div style="font-weight:700;">HYPEPAD</div><p>Secure, multi-chain launchpad with rug-proof graduation and growth engine.</p></div>
+  <div style="flex:1;min-width:220px;"><div style="font-weight:600;">Links</div><div><a href="hype_presale.html">$HYPE Presale</a></div><div><a href="launch.html">Launch</a></div><div><a href="/docs">Docs</a></div><div><a href="https://t.me/HYPEPAD_OFFICIAL" target="_blank">Telegram</a></div></div>
+  <div style="flex:1;min-width:220px;"><div style="font-weight:600;">Support</div><div><a href="https://t.me/HYPEPAD_OFFICIAL" target="_blank">Telegram</a></div><div><a href="mailto:contact@hypepad.app">Email</a></div></div>
+  <div style="flex:1;min-width:220px;"><div style="font-weight:600;">Investors</div><p>Early backers get revenue share, vesting transparency, and priority launch access.</p></div>
+</footer>
 </body>
 </html>
