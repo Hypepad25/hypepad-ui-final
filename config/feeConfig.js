@@ -1,1 +1,0 @@
-export const fees = { presale: 3.5, private: 2 };
