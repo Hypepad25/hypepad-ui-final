@@ -1,21 +1,26 @@
-export function HeroBanner() {
+export default function HeroBanner() {
   return (
-    <section className="relative flex flex-col items-center justify-center h-screen bg-black text-white">
-      <div
-        className="absolute inset-0 -z-10"
-        style={{
-          width: '80%',
-          height: '130%',
-          backgroundImage: "url('/hypepad-banner.jpg')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          opacity: 0.15,
-          filter: 'blur(30px)',
-          pointerEvents: 'none',
-          transform: 'scale(1.2)',
-        }}
-      />
-      {/* ...existing hero content... */}
+    <section className="hero">
+      <div className="hero-text">
+        <h1>Launch securely. Dominate the hype.</h1>
+        <p>Next-gen multi-chain launchpad with meme coin tools, staking, graduated launches, and rug-proof launch intelligence. Built for creators and investors who demand security and speed.</p>
+        <div className="cta-group">
+          <a href="/launch">
+            <button className="btn-primary">Get Started</button>
+          </a>
+          <a href="/docs">
+            <button className="btn-secondary">View Docs</button>
+          </a>
+        </div>
+      </div>
+      <div className="hero-image">
+        <div
+          className="banner"
+          style={{ backgroundImage: "url('/hypepad-banner.png')" }}
+        >
+          <div className="overlay" />
+        </div>
+      </div>
     </section>
   );
 }
