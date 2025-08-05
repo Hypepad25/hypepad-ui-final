@@ -1,43 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>HYPEPAD</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Include your existing CSS links here -->
-</head>
-<body>
-  <!-- Updated Header -->
-  <div class="site-header" style="display:flex;align-items:center;justify-content:space-between;padding:16px;">
-    <div class="brand" style="display:flex;align-items:center;gap:12px;">
-      <!-- Larger logo -->
-      <a href="/">
-        <img
-          src="/logo-192.png"
-          alt="HYPEPAD Logo"
-          style="height:80px; width:auto; display:block;"
-        />
-      </a>
-      <span style="font-size:1.5rem; font-weight:700; color:var(--fg);">HYPEPAD</span>
-    </div>
-
-    <!-- Wrapped, scrollable nav links -->
-    <nav style="display:flex; gap:24px; overflow-x:auto; white-space:nowrap;">
-      <a href="/"                class="hover:underline">Home</a>
-      <a href="hype_presale.html" class="hover:underline">$HYPE Presale</a>
-      <a href="launch.html#presale" class="hover:underline">Presale/IDO</a>
-      <a href="launch.html"      class="hover:underline">Launch</a>
-      <a href="/token"           class="hover:underline">Token Creator</a>
-      <a href="/meme"            class="hover:underline">Meme Launcher</a>
-      <a href="/dashboard"       class="hover:underline">Dashboard</a>
-      <a href="/docs"            class="hover:underline">Docs</a>
-      <a href="/community"       class="hover:underline">Community</a>
-      <a href="/faq"             class="hover:underline">FAQ</a>
-      <a href="support.html"     class="hover:underline">Support ▾</a>
-    </nav>
-  </div>
-
-  <!-- Rest of your existing body content goes here -->
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HYPEPAD</title>
+    <link rel="icon" href="/favicon.png" />
+    <!-- Tailwind CSS if any -->
+    <script type="module" src="/src/main.jsx"></script>
+  </head>
+  <body class="bg-black text-white m-0 p-0">
+    <!-- Header -->
+    <header class="site-header flex items-center justify-between px-6 py-4 bg-black text-white">
+      <div class="brand flex items-center gap-3">
+        <a href="/"><img src="/logo-192.png" alt="HYPEPAD Logo" style="height:80px; width:auto; display:block;" /></a>
+        <span style="font-size:1.5rem; font-weight:700; color:var(--fg);">HYPEPAD</span>
+      </div>
+      <nav class="flex gap-6 overflow-x-auto whitespace-nowrap">
+        <a href="/"                class="text-base font-medium hover:text-orange-400">Home</a>
+        <a href="/hype-presale"     class="text-base font-medium hover:text-orange-400">$HYPE Presale</a>
+        <a href="/presale-ido"      class="text-base font-medium hover:text-orange-400">Presale/IDO</a>
+        <a href="/launch"           class="text-base font-medium hover:text-orange-400">Launch</a>
+        <a href="/token-creator"    class="text-base font-medium hover:text-orange-400">Token Creator</a>
+        <a href="/meme-launcher"    class="text-base font-medium hover:text-orange-400">Meme Launcher</a>
+        <a href="/dashboard"        class="text-base font-medium hover:text-orange-400">Dashboard</a>
+        <a href="/docs"             class="text-base font-medium hover:text-orange-400">Docs</a>
+        <a href="/community"        class="text-base font-medium hover:text-orange-400">Community</a>
+        <a href="/faq"              class="text-base font-medium hover:text-orange-400">FAQ</a>
+        <a href="/support"          class="text-base font-medium hover:text-orange-400">Support ▾</a>
+      </nav>
+    </header>
+    <!-- React root -->
+    <div id="root"></div>
+  </body>
 </html>
