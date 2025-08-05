@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { routeConfig } from './routes/index.js';
-import { Navbar } from './components/Navbar.jsx';
+import Navbar from './components/Navbar.jsx';
 import HeroSection from './components/HeroSection.jsx';
 
 function App() {
