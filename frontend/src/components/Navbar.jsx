@@ -1,63 +1,52 @@
-import { useState } from "react";
-
-const cx = (...classes) => classes.filter(Boolean).join(" ");
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import logoSrc from '/logo-192.png';
+import { routeConfig } from '../routes/index.js';
 
 export default function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
-    <nav className="bg-[#0f111a] text-white p-4 flex items-center justify-between relative flex-wrap max-w-full">
-      <div className="flex items-center gap-3">
-        <img src="/logo.svg" alt="HYPEPAD" className="h-8 w-auto" />
-        <div className="hidden md:flex gap-6">
-          <a href="/" className="hover:underline">Home</a>
-          <a href="/launch" className="hover:underline">Launch</a>
-          <a href="/token" className="hover:underline">Token Creator</a>
-          <a href="/meme" className="hover:underline">Meme Launcher</a>
-          <a href="/faq" className="hover:underline">FAQ</a>
+    <header className="bg-black text-white">
+      <div className="max-w-7xl mx-auto flex items-center justify-between p-4">
+        <div className="flex items-center space-x-3">
+          <Link to="/">
+            <img src={logoSrc} alt="HYPEPAD" className="h-20 w-auto" />
+          </Link>
+          <span className="text-2xl font-bold">HYPEPAD</span>
         </div>
-      </div>
 
-      <div className="flex items-center gap-3">
-        <div className="md:hidden relative">
-          <button
-            aria-label="Toggle menu"
-            onClick={() => setMobileOpen((o) => !o)}
-            className="flex flex-col gap-1 w-8 h-6 z-20"
-          >
-            <span
-              className={cx(
-                "block w-6 h-0.5 bg-white transition-transform",
-                mobileOpen ? "rotate-45 translate-y-1.5" : ""
-              )}
-            />
-            <span
-              className={cx(
-                "block w-6 h-0.5 bg-white transition-opacity",
-                mobileOpen ? "opacity-0" : "opacity-100"
-              )}
-            />
-            <span
-              className={cx(
-                "block w-6 h-0.5 bg-white transition-transform",
-                mobileOpen ? "-rotate-45 -translate-y-1.5" : ""
-              )}
-            />
-          </button>
-          {mobileOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-[#1f2230] border border-gray-700 rounded-lg shadow-lg py-2 flex flex-col gap-2">
-              <a href="/" className="px-4 py-2 hover:bg-gray-800">Home</a>
-              <a href="/launch" className="px-4 py-2 hover:bg-gray-800">Launch</a>
-              <a href="/token" className="px-4 py-2 hover:bg-gray-800">Token Creator</a>
-              <a href="/meme" className="px-4 py-2 hover:bg-gray-800">Meme Launcher</a>
-              <a href="/faq" className="px-4 py-2 hover:bg-gray-800">FAQ</a>
-            </div>
-          )}
-        </div>
-        <button className="px-4 py-2 bg-orange-500 rounded-full font-semibold whitespace-nowrap z-10">
-          Connect Wallet
+        <nav className="hidden md:flex space-x-6 overflow-x-auto whitespace-nowrap">
+          {routeConfig.map(({ path, label }) => (
+            <Link key={path} to={path} className="text-base hover:text-orange-400">
+              {label}
+            </Link>
+          ))}
+        </nav>
+
+        <button
+          className="md:hidden p-2 focus:outline-none"
+          onClick={() => setOpen(!open)}
+        >
+          <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+              d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
         </button>
       </div>
-    </nav>
+
+      {open && (
+        <div className="md:hidden bg-black p-4 space-y-3">
+          {routeConfig.map(({ path, label }) => (
+            <Link key={path} to={path}
+              className="block text-base hover:text-orange-400"
+              onClick={() => setOpen(false)}
+            >
+              {label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </header>
   );
 }
