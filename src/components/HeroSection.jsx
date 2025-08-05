@@ -1,19 +1,9 @@
 export default function HeroSection() {
   return (
-    <section className="relative flex flex-col items-center justify-center h-screen bg-black text-white">
-      {/* Hero Banner Logo */}
-      <img
-        src="/hypepad-banner.png"
-        alt="HYPEPAD"
-        className="max-w-lg w-full sm:w-3/4 md:w-1/2 lg:w-1/3 mb-8"
-        style={{ objectFit: 'contain' }}
-      />
-      {/* Wrapped text container */}
-      <div className="text-center px-4 max-w-3xl mx-auto">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-          Fuel Your Launch. Rule the Hype.
-        </h1>
-      </div>
+    <section className="flex flex-col items-center justify-center h-screen bg-black text-white">
+      <h1 className="text-5xl font-bold mb-4">The Future of Web3 Starts Here</h1>
+      <p className="mb-6">Secure, launch-native token launches + multi-chain innovation with HYPEPAD.</p>
+      <button className="bg-orange-500 text-black px-6 py-3 rounded-full">Join $HYPE Presale</button>
     </section>
   );
 }
