@@ -1,10 +1,12 @@
+// src/pages/Presale.jsx
 import React, { useState, useEffect } from 'react';
 import SEO from '../components/SEO.jsx';
-import { useAccount, useBalance } from 'wagmi';
-import { ConnectButton } from '../wallet/setup.jsx';
+import { useAccount, useConnect, useBalance } from 'wagmi';
+import { InjectedConnector } from 'wagmi/connectors/injected';
 
 function Countdown({ target }) {
   const [remaining, setRemaining] = useState(() => Math.max(0, target - Date.now()));
+
   useEffect(() => {
     const iv = setInterval(() => {
       setRemaining(Math.max(0, target - Date.now()));
@@ -30,10 +32,14 @@ function Countdown({ target }) {
 }
 
 export default function Presale() {
-  const startTimestamp = Date.now() + 1000 * 60 * 60 * 24;
-  const totalAllocation = 1000000;
-  const [sold] = useState(250000);
+  const startTimestamp = Date.now() + 1000 * 60 * 60 * 24; // 24h from now
+  const totalAllocation = 1000000; // tokens
+  const [sold, setSold] = useState(250000); // example
   const progress = Math.min(1, sold / totalAllocation);
+
+  const { connect } = useConnect({
+    connector: new InjectedConnector(),
+  });
   const { address, isConnected } = useAccount();
   const { data: balance } = useBalance({
     address: address,
@@ -44,17 +50,10 @@ export default function Presale() {
     <>
       <SEO title="Presale | HYPEPAD" description="Join the HYPEPAD presale. Secure, graduated launches with rug-proof intelligence." />
       <div className="max-w-4xl mx-auto px-6 py-12">
-        <div className="flex justify-between items-center mb-6">
-          <div>
-            <h1 className="text-4xl font-bold mb-2">Presale</h1>
-            <p className="text-gray-300">
-              Participate in the upcoming presale. Secure your spot, view progress, and connect your wallet to join.
-            </p>
-          </div>
-          <div>
-            <ConnectButton />
-          </div>
-        </div>
+        <h1 className="text-4xl font-bold mb-2">Presale</h1>
+        <p className="text-gray-300 mb-6">
+          Participate in the upcoming presale. Secure your spot, view progress, and connect your wallet to join.
+        </p>
 
         <Countdown target={startTimestamp} />
 
@@ -95,9 +94,12 @@ export default function Presale() {
               </button>
             </div>
           ) : (
-            <div className="text-center">
-              <p className="text-sm text-gray-400 mb-2">Connect your wallet to participate</p>
-            </div>
+            <button
+              onClick={() => connect()}
+              className="px-6 py-3 bg-accent text-black font-semibold rounded-full"
+            >
+              Connect Wallet
+            </button>
           )}
         </div>
 
