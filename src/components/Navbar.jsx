@@ -7,7 +7,7 @@ export function Navbar() {
     <nav className="bg-black text-white px-6 py-4 flex items-center justify-between">
       {/* Logo */}
       <Link to="/">
-        <img src={logoSrc} alt="HYPEPAD" className="h-20 w-auto" />
+        <img src={logoSrc} alt="HYPEPAD" className="h-24 w-auto" />
       </Link>
 
       {/* Dynamic Links */}

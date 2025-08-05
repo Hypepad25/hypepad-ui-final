@@ -1,13 +1,11 @@
-import Navbar from '../components/Navbar';
-import HeroBanner from '../components/HeroBanner';
-import TrendingSection from '../components/TrendingSection';
+import Navbar from './components/Navbar';
+import HeroBanner from './components/HeroBanner';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div style={{ background: '#0f111f', minHeight: '100vh' }}>
       <Navbar />
       <HeroBanner />
-      <TrendingSection />
     </div>
   );
 }
