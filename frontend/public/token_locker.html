@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>Token Locker</title></head><body>
+  <h1>Token & LP Locker</h1>
+  <form id="locker">
+    <input id="addr" placeholder="Token Address"/><input id="amt" type="number" placeholder="Amount"/>
+    <input id="dur" type="number" placeholder="Lock duration (months)"/>
+    <button type="submit">Lock Now</button>
+  </form>
+  <script>
+    document.getElementById('locker').onsubmit = e => {
+      e.preventDefault();
+      alert(`Locked ${document.getElementById('amt').value} for ${document.getElementById('dur').value} months`);
+    };
+  </script>
+</body></html>
