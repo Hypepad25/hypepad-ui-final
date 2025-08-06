@@ -1,42 +1,48 @@
-import Link from 'next/link';
+import logo from '../assets/rocket-logo.svg';
 import { useState } from 'react';
 
 export default function Navbar() {
-  console.log('Navbar loaded');
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const links = [
+    { href: '/', label: 'Home' },
+    { href: '/presale', label: '$HYPE Presale' },
+    { href: '/launch', label: 'Presale/IDO' },
+    { href: '/launchpad', label: 'Launch' },
+    { href: '/creator', label: 'Token Creator' },
+    { href: '/meme', label: 'Meme Launcher' },
+    { href: '/dashboard', label: 'Dashboard' },
+    { href: '/docs', label: 'Docs' },
+    { href: '/community', label: 'Community' },
+    { href: '/faq', label: 'FAQ' }
+  ];
+
   return (
-    <nav className="flex items-center justify-between bg-dark-background px-6 py-4">
-      <div className="flex items-center">
-        <Link href="/">
-          <a className="flex items-center">
-            <img src="/rocket-logo.svg" alt="HYPEPAD" className="h-12 mr-2" />
-            <span className="text-2xl font-extrabold text-white">HYPEPAD</span>
-          </a>
-        </Link>
-      </div>
+    <nav className="flex items-center justify-between bg-dark-background px-6 py-4 relative">
+      <a href="/" className="flex items-center">
+        <img src={logo} alt="HYPEPAD" className="h-12 mr-2" />
+        <span className="text-2xl font-extrabold text-white">HYPEPAD</span>
+      </a>
 
       {/* Desktop Links */}
       <div className="hidden md:flex space-x-6 items-center">
-        {['/', '/presale', '/launch', '/launchpad', '/creator', '/meme', '/dashboard', '/docs', '/community', '/faq'].map((path, idx) => (
-          <Link key={idx} href={path}>
-            <a className="text-white hover:text-gray-200">
-              {['Home', '$HYPE Presale', 'Presale/IDO', 'Launch', 'Token Creator', 'Meme Launcher', 'Dashboard', 'Docs', 'Community', 'FAQ'][idx]}
-            </a>
-          </Link>
+        {links.map(({ href, label }) => (
+          <a key={href} href={href} className="text-white hover:text-gray-200">
+            {label}
+          </a>
         ))}
         <div className="relative group">
           <button className="text-white hover:text-gray-200">Support</button>
-          <div className="absolute hidden group-hover:block right-0 bg-dark-background mt-2 rounded shadow-lg z-10">
-            <Link href="/support/email"><a className="block px-4 py-2 text-white hover:bg-gray-700">Email</a></Link>
-            <Link href="/support/telegram"><a className="block px-4 py-2 text-white hover:bg-gray-700">Telegram</a></Link>
+          <div className="absolute hidden group-hover:block bg-dark-background mt-2 rounded shadow-lg right-0">
+            <a href="/support/email" className="block px-4 py-2 text-white hover:bg-gray-700">Email</a>
+            <a href="/support/telegram" className="block px-4 py-2 text-white hover:bg-gray-700">Telegram</a>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu Toggle */}
+      {/* Mobile Toggle */}
       <button 
-        className="md:hidden text-white focus:outline-none" 
+        className="md:hidden text-white focus:outline-none"
         onClick={() => setMenuOpen(!menuOpen)}
       >
         {menuOpen ? 'Close' : 'Menu'}
@@ -44,16 +50,12 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="absolute top-full left-0 w-full bg-dark-background md:hidden space-y-2 px-6 py-4">
-          {['/', '/presale', '/launch', '/launchpad', '/creator', '/meme', '/dashboard', '/docs', '/community', '/faq'].map((path, idx) => (
-            <Link key={idx} href={path}>
-              <a className="block text-white hover:text-gray-200">{['Home', '$HYPE Presale', 'Presale/IDO', 'Launch', 'Token Creator', 'Meme Launcher', 'Dashboard', 'Docs', 'Community', 'FAQ'][idx]}</a>
-            </Link>
+        <div className="absolute top-full left-0 w-full bg-dark-background md:hidden flex flex-col space-y-2 px-6 py-4">
+          {links.map(({ href, label }) => (
+            <a key={href} href={href} className="block text-white hover:text-gray-200">{label}</a>
           ))}
-          <div className="border-t border-gray-700 pt-2">
-            <Link href="/support/email"><a className="block text-white py-1">Email Support</a></Link>
-            <Link href="/support/telegram"><a className="block text-white py-1">Telegram Support</a></Link>
-          </div>
+          <a href="/support/email" className="block text-white hover:text-gray-200">Email</a>
+          <a href="/support/telegram" className="block text-white hover:text-gray-200">Telegram</a>
         </div>
       )}
 

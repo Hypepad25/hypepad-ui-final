@@ -1,34 +1,21 @@
-# HYPEPAD Full Navbar Integration
+# HYPEPAD Vite Component Simplification
 
-This package ensures your custom Navbar is properly loaded and routed in a Next.js App Router setup.
+## Purpose
+Use static imports for assets and plain `<a>` links for navigation in a Vite React setup.
 
-## Files:
-
-- `src/components/Navbar.jsx`
-- `app/layout.jsx`
-
-## Steps to Apply:
-
-1. **Replace** your existing `src/components/Navbar.jsx` with the provided version.
-2. **Replace or update** `app/layout.jsx` in the root of your `app/` directory with the provided layout file.
-3. **Ensure** you have the following assets in `public/`:
+## Steps
+1. **Place assets** in `src/assets/`:
    - `rocket-logo.svg`
    - `hypepad-banner.jpg`
-4. **Check** that your `next.config.js` allows absolute imports (if using `@/components`):
-   ```js
-   // next.config.js
-   module.exports = {
-     compiler: {
-       // Enables the styled-components SWC transform
-       styledComponents: true
-     },
-     webpack: (config) => {
-       config.resolve.alias['@'] = path.resolve(__dirname);
-       return config;
-     }
-   };
+2. **Replace** your components:
+   - `src/components/Navbar.jsx`
+   - `src/components/Hero.jsx`
+3. **Install** dependencies and **build**:
+   ```bash
+   cd frontend        # if your code is in a subdirectory
+   npm install
+   npm run build
    ```
-5. **Redeploy** your app.  
-6. **Open** the browser console to confirm you see `Navbar loaded`. If not, the component isn't being mounted.
+4. **Deploy** again to Vercel.
 
-This ensures the Navbar renders before your content, all links are active, and the mobile dropdown works.
+This approach uses Vite’s asset handling to reference the hashed files automatically and ensures your navbar links and dropdown work via standard anchor tags.

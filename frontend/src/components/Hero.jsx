@@ -1,3 +1,5 @@
+import banner from '../assets/hypepad-banner.jpg';
+
 export default function Hero() {
   return (
     <section className="flex flex-col-reverse md:flex-row items-center px-6 py-20 bg-dark-background">
@@ -18,7 +20,7 @@ export default function Hero() {
         </div>
       </div>
       <div className="md:w-1/2 mb-8 md:mb-0">
-        <img src="/hypepad-banner.jpg" alt="HYPEPAD banner" className="w-full h-auto object-contain" />
+        <img src={banner} alt="HYPEPAD banner" className="w-full h-auto object-contain" />
       </div>
     </section>
 );
