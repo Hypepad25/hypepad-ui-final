@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "HYPEPAD Launchpad",
+  "url": "https://yourdomain.com",
+  "description": "Multi-chain token launchpad with rug-proof graduation, security, and growth tools for creators and investors.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "name": "Token Launch",
+    "price": "Variable",
+    "priceCurrency": "USD"
+  }
+}

@@ -1,0 +1,1 @@
+// Trending page placeholder

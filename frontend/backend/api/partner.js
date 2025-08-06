@@ -1,0 +1,1 @@
+// partner.js placeholder
