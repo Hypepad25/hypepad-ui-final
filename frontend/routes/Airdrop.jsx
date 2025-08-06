@@ -1,0 +1,1 @@
+// Airdrop page placeholder
