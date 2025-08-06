@@ -1,21 +1,50 @@
-# HYPEPAD Vite Component Simplification
+# HYPEPAD Root Integration Patch
 
-## Purpose
-Use static imports for assets and plain `<a>` links for navigation in a Vite React setup.
+If Navbar and Hero components aren’t showing up, they likely aren’t imported in your root App file.
 
-## Steps
-1. **Place assets** in `src/assets/`:
-   - `rocket-logo.svg`
-   - `hypepad-banner.jpg`
-2. **Replace** your components:
-   - `src/components/Navbar.jsx`
-   - `src/components/Hero.jsx`
-3. **Install** dependencies and **build**:
-   ```bash
-   cd frontend        # if your code is in a subdirectory
+## Steps:
+
+1. Replace `src/App.jsx` with the following:
+
+```jsx
+import React from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import './index.css';
+
+export default function App() {
+  return (
+    <>
+      <Navbar />
+      <Hero />
+      {/* Other components or routes go here */}
+    </>
+  );
+}
+```
+
+2. Ensure your entry point (`src/main.jsx` or `src/index.jsx`) renders `<App />`:
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import './index.css';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+
+3. Place this patch’s files into your project’s `frontend/` directory (or wherever your source is).
+4. Run:
+   ```
    npm install
    npm run build
    ```
-4. **Deploy** again to Vercel.
+5. Redeploy to Vercel.
 
-This approach uses Vite’s asset handling to reference the hashed files automatically and ensures your navbar links and dropdown work via standard anchor tags.
+This ensures the Navbar and Hero components are actually mounted in your application. If you’re using a different file name or path, adjust the imports accordingly.
