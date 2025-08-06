@@ -1,1 +1,0 @@
-// MemeLauncher.sol placeholder contract
