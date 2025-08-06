@@ -1,52 +1,39 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import logoSrc from '/logo-192.png';
-import { routeConfig } from '../routes/index.js';
+import Link from 'next/link';
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
-
   return (
-    <header className="bg-black text-white">
-      <div className="max-w-7xl mx-auto flex items-center justify-between p-4">
-        <div className="flex items-center space-x-3">
-          <Link to="/">
-            <img src={logoSrc} alt="HYPEPAD" className="h-20 w-auto" />
-          </Link>
-          <span className="text-2xl font-bold">HYPEPAD</span>
-        </div>
-
-        <nav className="hidden md:flex space-x-6 overflow-x-auto whitespace-nowrap">
-          {routeConfig.map(({ path, label }) => (
-            <Link key={path} to={path} className="text-base hover:text-orange-400">
-              {label}
-            </Link>
-          ))}
-        </nav>
-
-        <button
-          className="md:hidden p-2 focus:outline-none"
-          onClick={() => setOpen(!open)}
-        >
-          <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
+    <nav className="flex items-center justify-between bg-dark-background px-6 py-4">
+      <div className="flex items-center">
+        <Link href="/" className="flex items-center">
+          <img src="/rocket-logo.svg" alt="HYPEPAD" className="h-12 mr-2" />
+          <span className="text-2xl font-extrabold text-white">HYPEPAD</span>
+        </Link>
       </div>
-
-      {open && (
-        <div className="md:hidden bg-black p-4 space-y-3">
-          {routeConfig.map(({ path, label }) => (
-            <Link key={path} to={path}
-              className="block text-base hover:text-orange-400"
-              onClick={() => setOpen(false)}
-            >
-              {label}
-            </Link>
-          ))}
+      <div className="hidden md:flex space-x-6">
+        <Link href="/" className="text-white hover:text-gray-200">Home</Link>
+        <Link href="/presale" className="text-white hover:text-gray-200">$HYPE Presale</Link>
+        <Link href="/launch" className="text-white hover:text-gray-200">Presale/IDO</Link>
+        <Link href="/launchpad" className="text-white hover:text-gray-200">Launch</Link>
+        <Link href="/creator" className="text-white hover:text-gray-200">Token Creator</Link>
+        <Link href="/meme" className="text-white hover:text-gray-200">Meme Launcher</Link>
+        <Link href="/dashboard" className="text-white hover:text-gray-200">Dashboard</Link>
+        <Link href="/docs" className="text-white hover:text-gray-200">Docs</Link>
+        <Link href="/community" className="text-white hover:text-gray-200">Community</Link>
+        <Link href="/faq" className="text-white hover:text-gray-200">FAQ</Link>
+        <div className="relative group">
+          <button className="text-white hover:text-gray-200">Support</button>
+          <div className="absolute hidden group-hover:block bg-dark-background mt-2 rounded shadow-lg">
+            <Link href="/support/email" className="block px-4 py-2 text-white hover:bg-gray-700">Email</Link>
+            <Link href="/support/telegram" className="block px-4 py-2 text-white hover:bg-gray-700">Telegram</Link>
+          </div>
         </div>
-      )}
-    </header>
-  );
+      </div>
+      <button className="md:hidden">
+        {/* Mobile menu button */}
+      </button>
+      <button className="bg-orange-500 text-dark-background px-4 py-2 rounded-full hover:bg-orange-600">
+        Connect Wallet
+      </button>
+    </nav>
+);
 }
