@@ -2,107 +2,345 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>HYPEPAD - Launch Securely. Dominate the Hype.</title>
-  <meta name="description" content="Next-gen multi-chain launchpad with meme coin tools, staking, graduated launches, and paid trending. Built for creators and investors who demand security and speed.">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- SEO: Open Graph -->
-  <meta property="og:title" content="HYPEPAD - Launch Securely. Dominate the Hype." />
-  <meta property="og:description" content="Next-gen multi-chain launchpad with meme coin tools, staking, graduated launches, and paid trending." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="hypepad-banner.jpg" />
-  <meta property="og:url" content="https://yourdomain.com" />
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="HYPEPAD - Launch Securely. Dominate the Hype." />
-  <meta name="twitter:description" content="Next-gen multi-chain launchpad with meme coin tools, staking, graduated launches, and paid trending." />
-  <meta name="twitter:image" content="hypepad-banner.jpg" />
-  <!-- Structured Data JSON-LD -->
+  <title>HYPEPAD Presale & Launchpad</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Launch tokens with lower fees, multi-chain support, rug-proof graduation, and enterprise-grade security on HYPEPAD.">
+  <meta name="keywords" content="crypto launchpad, meme coin launcher, token launch, HYPE presale, multi-chain, Solana, Ethereum, IDO, secure launchpad">
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/logo-192.png" />
+  <link rel="canonical" href="https://yourdomain.com/">
+  <meta property="og:title" content="HYPEPAD Presale & Launchpad">
+  <meta property="og:description" content="Join the $HYPE presale and launch with best-in-class security and multi-chain support.">
+  <meta property="og:image" content="/hypepad-banner.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "HYPEPAD",
-    "url": "https://yourdomain.com",
-    "description": "Next-gen multi-chain launchpad with meme coin tools, staking, graduated launches, and paid trending."
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"HYPEPAD Launchpad",
+    "url":"https://yourdomain.com",
+    "description":"Multi-chain token launchpad with rug-proof graduation, security, and growth tools for creators and investors."
   }
   </script>
-  <link rel="icon" href="favicon.ico" />
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --bg:#0f111a;
+      --fg:#f5f5f5;
+      --accent:#ff8600;
+      --radius:16px;
+    }
+    *{box-sizing:border-box;}
+    body {
+      margin:0;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+      background:var(--bg);
+      color:var(--fg);
+      line-height:1.45;
+    }
+    a { color:inherit; text-decoration:none; }
+    h1 { font-size:2.8rem; margin:0; font-weight:700; }
+    h2 { font-size:2rem; margin:0 0 12px; font-weight:700; }
+    .sticky { position:sticky; top:0; z-index:100; }
+    .container { max-width:1200px; margin:0 auto; padding:0 16px; }
+    .header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px 0;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .brand { display:flex; align-items:center; gap:8px; }
+    .brand img { height:32px; width:auto; }
+    .nav { display:flex; gap:18px; font-size:0.9rem; flex-wrap:wrap; }
+    .nav a { position:relative; padding:6px 4px; }
+    .nav a::after {
+      content:'';
+      position:absolute;
+      left:0; bottom:-4px;
+      width:0;
+      height:3px;
+      background:linear-gradient(90deg,var(--accent),#ffcc66);
+      border-radius:2px;
+      transition:width .25s;
+    }
+    .nav a:hover::after { width:100%; }
+    .actions { display:flex; align-items:center; gap:12px; position:relative; flex-wrap:wrap; }
+    .badge {
+      background:#1f2230;
+      padding:6px 12px;
+      border-radius:999px;
+      font-size:11px;
+      display:flex;
+      gap:6px;
+      align-items:center;
+    }
+    .wallet-btn {
+      background: linear-gradient(90deg,var(--accent) 0%, #ff6600 100%);
+      padding:10px 18px;
+      border-radius:999px;
+      font-weight:600;
+      color:#000;
+      border:none;
+      cursor:pointer;
+      white-space:nowrap;
+      box-shadow:0 20px 50px -10px rgba(255,134,0,0.5);
+      transition:filter .2s;
+    }
+    .wallet-btn:hover { filter:brightness(1.05); }
+    .hamburger {
+      display:none;
+      background:none;
+      border:none;
+      flex-direction:column;
+      gap:4px;
+      padding:6px;
+      cursor:pointer;
+    }
+    .hamburger span {
+      display:block;
+      width:24px;
+      height:3px;
+      background:#fff;
+      border-radius:2px;
+      transition:transform .2s, opacity .2s;
+    }
+    .mobile-menu {
+      position:absolute;
+      top:100%;
+      right:0;
+      background:#1f2230;
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:12px;
+      padding:8px 0;
+      min-width:220px;
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      margin-top:8px;
+      overflow:hidden;
+    }
+    .mobile-menu a { padding:10px 16px; }
+    .hero {
+      display:flex;
+      flex-wrap:wrap;
+      gap:40px;
+      padding:80px 16px;
+      align-items:center;
+    }
+    .hero-left { flex:1; min-width:280px; }
+    .hero-right { flex:1; min-width:280px; }
+    .hero-cta {
+      display:inline-block;
+      background:var(--accent);
+      padding:16px 28px;
+      border-radius:999px;
+      font-weight:700;
+      color:#000;
+      margin-top:16px;
+    }
+    .banner-wrapper {
+      background:#1f2230;
+      border-radius:16px;
+      padding:8px;
+      overflow:hidden;
+    }
+    .banner-wrapper img {
+      width:100%;
+      display:block;
+      border-radius:12px;
+    }
+    .features {
+      padding:60px 16px;
+    }
+    .feature-grid {
+      display:grid;
+      gap:16px;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      margin-top:16px;
+    }
+    .card {
+      background:#1f2230;
+      padding:18px;
+      border-radius:16px;
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 25px 60px -15px rgba(255,134,0,0.25);
+      min-height:120px;
+    }
+    .card strong { display:block; font-size:1rem; margin-bottom:6px; }
+    .pitch {
+      padding:60px 16px;
+      background:linear-gradient(135deg,#0f111a,#1f2230);
+    }
+    .pitch-grid {
+      display:grid;
+      gap:16px;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      margin-top:20px;
+    }
+    .footer {
+      padding:60px 16px;
+      font-size:14px;
+      color:#aaa;
+    }
+    .footer-inner {
+      display:flex;
+      flex-wrap:wrap;
+      gap:30px;
+      max-width:1100px;
+      margin:0 auto;
+    }
+    .footer-col { flex:1; min-width:200px; }
+    .footer a { color:#fff; display:block; margin-bottom:6px; }
+    .copy { text-align:center; margin-top:30px; font-size:13px; opacity:0.8; }
+    @media (max-width:1024px){
+      .nav { display:none; }
+      .hamburger { display:flex; }
+    }
+  </style>
 </head>
 <body>
-  <header class="nav">
-    <div class="logo">
-      <img src="rocket-icon.svg" alt="HYPEPAD" class="logo-img" />
-      <span class="logo-text">HYPEPAD</span>
-    </div>
-    <nav class="links">
-      <a href="#" aria-label="Home">Home</a>
-      <a href="#launch" aria-label="Launch">Launch</a>
-      <a href="#docs" aria-label="Docs">Docs</a>
-      <a href="#trending" aria-label="Trending">Trending</a>
-      <a href="#staking" aria-label="Staking">Staking</a>
-      <a href="#faq" aria-label="FAQ">FAQ</a>
-      <a href="#contact" aria-label="Support">Support</a>
-      <a href="#legal" aria-label="Legal">Legal</a>
-    </nav>
-    <button class="wallet-btn">Connect Wallet</button>
-    <div class="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </div>
-  </header>
-  <main>
-    <section class="hero">
-      <div class="badge">Secure & Multi-Chain</div>
-      <h1>Launch Securely.<br/>Dominate the Hype.</h1>
-      <p>Next-gen multi-chain launchpad with meme coin tools, staking, graduated launches, and paid trending. Built for creators and investors who demand security and speed.</p>
-      <div class="cta">
-        <a href="#launch" class="primary-btn">Start Launching</a>
-        <a href="#docs" class="secondary-btn">View Docs</a>
-      </div>
-    </section>
-    <section id="trending" class="trending-card">
-      <div class="trending-inner">
-        <div class="left">
-          <div class="label">Trending Token</div>
-          <div class="token-name">$HYPE</div>
-          <div class="progress-label">Graduation progress: <span class="percent">75%</span></div>
-          <div class="progress-bar">
-            <div class="fill" style="width:75%;"></div>
+  <!-- HEADER -->
+  <div class="sticky">
+    <div class="container">
+      <div class="header">
+        <div class="brand">
+          <img src="./logo-192.png" alt="HYPEPAD Logo" />
+          <div class="brand-text" style="font-weight:700; font-size:1rem; letter-spacing:1px;">HYPEPAD</div>
+        </div>
+        <div class="nav">
+          <a href="/">Home</a>
+          <a href="/presale">Presale</a>
+          <a href="/launch">Launch</a>
+          <a href="/token">Token Creator</a>
+          <a href="/meme">Meme Launcher</a>
+          <a href="/dashboard">Dashboard</a>
+          <a href="/docs">Docs</a>
+          <a href="/community">Community</a>
+          <a href="/faq">FAQ</a>
+        </div>
+        <div class="actions">
+          <div class="badge">
+            <div>Live Projects: <strong style="margin-left:4px;">128</strong></div>
+            <div style="margin:0 6px;">•</div>
+            <div>Security Score: <strong style="margin-left:4px;">9.8</strong></div>
+          </div>
+          <button class="wallet-btn">Connect Wallet</button>
+          <div class="mobile-wrapper" style="position:relative;">
+            <button class="hamburger" aria-label="Menu" id="mobileBtn">
+              <span></span><span></span><span></span>
+            </button>
+            <div class="mobile-menu" id="mobileMenu" style="display:none;">
+              <a href="/">Home</a>
+              <a href="/presale">Presale</a>
+              <a href="/launch">Launch</a>
+              <a href="/token">Token Creator</a>
+              <a href="/meme">Meme Launcher</a>
+              <a href="/dashboard">Dashboard</a>
+              <a href="/docs">Docs</a>
+              <a href="/community">Community</a>
+              <a href="/faq">FAQ</a>
+            </div>
           </div>
         </div>
-        <div class="right">
-          <div class="score-label">Score</div>
-          <div class="score">9.8</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="container">
+        <h1>The Future of Web3 Starts Here</h1>
+        <p>Secure, launch-native token launches + multi-chain innovation with HYPEPAD.</p>
+        <a href="/presale" class="hero-cta">Join $HYPE Presale</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="container">
+        <div class="banner-wrapper">
+          <img src="./hypepad-banner.jpg" alt="HYPEPAD Banner" />
         </div>
       </div>
-    </section>
-    <!-- Placeholder sections for links -->
-    <section id="launch" class="placeholder">Token Launch Forms, Meme Coin Launcher, IDO/Presale Dashboard</section>
-    <section id="staking" class="placeholder">Staking Dashboard</section>
-    <section id="faq" class="placeholder">FAQ Section with Search</section>
-    <section id="contact" class="placeholder">Support: contact@hypepad.app</section>
-    <section id="legal" class="legal">
-      <h2>Legal Disclaimers</h2>
-      <p>Use of HYPEPAD is subject to terms and conditions. Cryptocurrency investments carry risk. Users must perform their own due diligence. HYPEPAD is not responsible for loss of funds, security breaches, or regulatory compliance of individual projects. All launchpad services are provided "as is" without warranty.</p>
-      <p>Privacy Policy, Terms of Service, and other legal documents should be linked here.</p>
-    </section>
-    <footer class="footer">
-      <div class="links">
-        <div><strong>Launchpad</strong><br/><a href="#">Token Creator</a><br/><a href="#">Meme Coin Launcher</a><br/><a href="#">Staking</a></div>
-        <div><strong>Resources</strong><br/><a href="#">Docs</a><br/><a href="#">Support</a><br/><a href="#">FAQ</a></div>
-        <div><strong>Legal</strong><br/><a href="#">Terms</a><br/><a href="#">Privacy</a><br/><a href="#">Disclaimers</a></div>
-        <div><strong>Contact</strong><br/>contact@hypepad.app<br/>Telegram: @hypepad25</div>
+    </div>
+  </section>
+
+  <!-- WHY HYPEPAD -->
+  <section class="features">
+    <div class="container">
+      <h2>Why HYPEPAD</h2>
+      <div class="feature-grid">
+        <div class="card">
+          <strong>Multi-chain</strong>
+          <div>Solana + EVM support</div>
+        </div>
+        <div class="card">
+          <strong>Rug-Proof Graduation</strong>
+          <div>Mandatory LP burn at $65K cap</div>
+        </div>
+        <div class="card">
+          <strong>Security</strong>
+          <div>Anti-bot, KYC badges, audits</div>
+        </div>
       </div>
-      <div class="bottom">
-        <div>&copy; HYPEPAD 2025. All rights reserved.</div>
-        <div class="small">Designed for security, speed, and transparency.</div>
+    </div>
+  </section>
+
+  <!-- INVESTOR PITCH -->
+  <section class="pitch">
+    <div class="container">
+      <h2 style="color:#fff;">Why Invest in HYPEPAD?</h2>
+      <p style="margin-top:8px; color:#ccc;">
+        HYPEPAD solves fragmented & insecure token launches by providing a unified, multi-chain, rug-proof platform designed for creators and investors.
+      </p>
+      <div class="pitch-grid">
+        <div class="card">
+          <h3 style="margin-top:0;">Security First</h3>
+          <p>Mandatory LP burn, anti-rug graduation, KYC/SAFU badges, and live risk scoring.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0;">Multi-Chain Reach</h3>
+          <p>Launch on Solana and EVM from one dashboard to maximize audience and liquidity.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0;">Growth Engine</h3>
+          <p>Trending slots, referral commissions, KOL spotlighting, and graduated project promotion.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0;">Network Effects</h3>
+          <p>Affiliate rewards and visibility loops drive compounding adoption.</p>
+        </div>
       </div>
-    </footer>
-  </main>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <div style="font-weight:700; font-size:16px;">HYPEPAD</div>
+        <div>Contact: <a href="mailto:contact@hypepad.app">contact@hypepad.app</a></div>
+      </div>
+      <div class="footer-col">
+        <a href="/terms">Terms of Service</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/disclaimer">Legal Disclaimer</a>
+      </div>
+      <div class="footer-col">
+        <div style="max-width:300px;">
+          Legal: Users must conduct their own due diligence. HYPEPAD is not financial advice. Token launches are subject to jurisdictional compliance.
+        </div>
+      </div>
+    </div>
+    <div class="copy">&copy; 2025 HYPEPAD. All rights reserved.</div>
+  </footer>
+
   <script>
-    // Mobile menu toggle
-    document.querySelector('.hamburger').addEventListener('click', function(){
-      document.body.classList.toggle('menu-open');
+    const mobileBtn = document.getElementById('mobileBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
     });
   </script>
 </body>
